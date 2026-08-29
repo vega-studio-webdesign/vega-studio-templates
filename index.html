@@ -1,126 +1,101 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Bibliothèque de templates — Vega Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#EFEFED;color:#111;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #EFEFED; color: #111; min-height: 100vh; display: flex; flex-direction: column; }
+a { text-decoration: none; color: inherit; }
 
-/* TITRE */
-.page-title{
-  padding:3.5rem 2.5rem 2.5rem;
-  font-family:'Syne',sans-serif;
-  font-size:2.2rem;
-  font-weight:800;
-  letter-spacing:-.04em;
-  text-align:center;
-  color:#2E2A26;
+.page-title {
+  padding: 3.5rem 2.5rem 2.5rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  text-align: center;
+  color: #2E2A26;
 }
 
-/* GRILLE */
-main{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:1rem 2.5rem 3rem;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1.4rem;
-  max-width:1100px;
-  width:100%;
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem 3rem;
 }
 
-/* CARTE ENTIÈRE CLIQUABLE */
-.card{
-  background:#fff;
-  border-radius:10px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  cursor:pointer;
-  color:inherit;
-  border:none;
-  transition:transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s cubic-bezier(.4,0,.2,1);
-  position:relative;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 48px rgba(0,0,0,.13);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  max-width: 1100px;
+  width: 100%;
 }
 
-/* PRÉVISUALISATION */
-.preview{
-  position:relative;
-  height:210px;
-  overflow:hidden;
-  flex-shrink:0;
-  background:#e0e0de;
+.card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: inherit;
+  transition: transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s cubic-bezier(.4,0,.2,1);
 }
-.preview iframe{
-  width:1440px;height:860px;
-  border:none;
-  transform:scale(0.278);
-  transform-origin:top left;
-  pointer-events:none;
-  display:block;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.12);
 }
 
-
-/* INFO */
-.info{padding:1rem 1.3rem 1.3rem;display:flex;flex-direction:column;gap:.4rem}
-.info-name{font-size:.92rem;font-weight:500;letter-spacing:-.01em;color:#1A1A1A}
-.info-desc{font-size:.75rem;color:#999;line-height:1.55;font-weight:300}
-.info-colors{display:flex;gap:.3rem;margin-top:.4rem}
-.dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.07);flex-shrink:0}
-
-/* FOOTER */
-footer{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  padding:1.1rem 4rem;
-  font-size:.82rem;
-  color:#bbb;
-  border-top:1px solid rgba(0,0,0,.07);
+.preview {
+  height: 210px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #e0e0de;
+  display: block;
 }
-footer .foot-left{justify-self:start}
-footer .foot-mid{justify-self:center}
-footer .foot-right{justify-self:end}
-footer a{color:#bbb;transition:color .2s}
-footer a:hover{color:#555}
-
-/* OVERLAY PLEIN ÉCRAN */
-#overlay{
-  position:fixed;inset:0;z-index:200;
-  background:#fff;
-  transform:translateY(100%);
-  transition:transform .45s cubic-bezier(.4,0,.2,1);
-  pointer-events:none;
-  will-change:transform;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-}
-#overlay.open{transform:translateY(0);pointer-events:all}
-#overlay iframe{
-  width:100%;height:100%;border:none;display:block;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
+.preview iframe {
+  width: 1440px;
+  height: 860px;
+  border: none;
+  transform: scale(0.278);
+  transform-origin: top left;
+  pointer-events: none;
+  display: block;
 }
 
+.info { padding: 1rem 1.3rem 1.3rem; display: flex; flex-direction: column; gap: .4rem; }
+.info-name { font-size: .92rem; font-weight: 500; letter-spacing: -.01em; color: #1A1A1A; }
+.info-desc { font-size: .75rem; color: #999; line-height: 1.55; font-weight: 300; }
+.info-colors { display: flex; gap: .3rem; margin-top: .4rem; }
+.dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(0,0,0,.07); flex-shrink: 0; }
 
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){
-  .grid{grid-template-columns:1fr}
-  .page-title{font-size:1.6rem;padding:2rem 1.25rem 1.5rem}
-  main{padding:.5rem 1.25rem 2rem}
-  footer{grid-template-columns:1fr;gap:.35rem;text-align:center;padding:1rem 1.5rem}
-  footer .foot-left,.footer .foot-right{justify-self:center}
+footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 1.1rem 4rem;
+  font-size: .82rem;
+  color: #bbb;
+  border-top: 1px solid rgba(0,0,0,.07);
+}
+.foot-left { justify-self: start; }
+.foot-mid  { justify-self: center; }
+.foot-right{ justify-self: end; }
+footer a { color: #bbb; transition: color .2s; }
+footer a:hover { color: #555; }
+
+@media (max-width: 1000px) { .grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .page-title { font-size: 1.6rem; padding: 2rem 1.25rem 1.5rem; }
+  main { padding: .5rem 1.25rem 2rem; }
+  footer { grid-template-columns: 1fr; gap: .35rem; text-align: center; padding: 1rem 1.5rem; }
+  .foot-left, .foot-right { justify-self: center; }
 }
 </style>
 </head>
@@ -222,68 +197,6 @@ footer a:hover{color:#555}
     </a>
 
   </div>
-      <div class="info">
-        <p class="info-name">Robuste</p>
-        <p class="info-desc">Fond sombre, orange vif. Direct et sans fioritures.</p>
-        <div class="info-colors">
-          <div class="dot" style="background:#1A1A1A"></div>
-          <div class="dot" style="background:#E8621A"></div>
-          <div class="dot" style="background:#F4F1ED"></div>
-        </div>
-      </div>
-    </div>
-      <div class="info">
-        <p class="info-name">Confiance</p>
-        <p class="info-desc">Bleu marine et jaune ambre. Professionnel et rassurant.</p>
-        <div class="info-colors">
-          <div class="dot" style="background:#1B3A5C"></div>
-          <div class="dot" style="background:#F59E0B"></div>
-          <div class="dot" style="background:#F0F4F8"></div>
-        </div>
-      </div>
-    </div>
-      <div class="info">
-        <p class="info-name">Local Chaleureux</p>
-        <p class="info-desc">Vert forêt et terre cuite. Proximité et confiance humaine.</p>
-        <div class="info-colors">
-          <div class="dot" style="background:#1D4035"></div>
-          <div class="dot" style="background:#C4581D"></div>
-          <div class="dot" style="background:#F7F3EE"></div>
-        </div>
-      </div>
-    </div>
-      <div class="info">
-        <p class="info-name">Direct</p>
-        <p class="info-desc">Noir et rouge vif. Éditorial, tranche avec la concurrence.</p>
-        <div class="info-colors">
-          <div class="dot" style="background:#0A0A0A"></div>
-          <div class="dot" style="background:#D42B2B"></div>
-          <div class="dot" style="background:#F5F5F3"></div>
-        </div>
-      </div>
-    </div>
-      <div class="info">
-        <p class="info-name">Premium</p>
-        <p class="info-desc">Sable et or, serif élégant. Pour les artisans haut de gamme.</p>
-        <div class="info-colors">
-          <div class="dot" style="background:#FAF8F5"></div>
-          <div class="dot" style="background:#B89050"></div>
-          <div class="dot" style="background:#1E1C1A"></div>
-        </div>
-      </div>
-    </div>
-      <div class="info">
-        <p class="info-name">Clair</p>
-        <p class="info-desc">Blanc et bleu cobalt. Contemporain, aéré, très lisible.</p>
-        <div class="info-colors">
-          <div class="dot" style="background:#1A54BA"></div>
-          <div class="dot" style="background:#EEF3FC"></div>
-          <div class="dot" style="background:#F8F9FB"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </main>
 
 <footer>
@@ -291,7 +204,6 @@ footer a:hover{color:#555}
   <span class="foot-mid">© 2025 Vega Studio</span>
   <a class="foot-right" href="https://vegastudio.fr/mentions.html">Mentions légales</a>
 </footer>
-
 
 </body>
 </html>
