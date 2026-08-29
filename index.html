@@ -99,13 +99,19 @@ footer a:hover{color:#555}
 #overlay{
   position:fixed;inset:0;z-index:200;
   background:#fff;
-  opacity:0;
+  transform:translateY(100%);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
   pointer-events:none;
-  transition:opacity .35s ease;
+  will-change:transform;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
 }
-#overlay.open{opacity:1;pointer-events:all}
-#overlay iframe{width:100%;height:100%;border:none;display:block}
-
+#overlay.open{transform:translateY(0);pointer-events:all}
+#overlay iframe{
+  width:100%;height:100%;border:none;display:block;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
 
 
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
@@ -236,15 +242,25 @@ function openTemplate(url) {
   frame.src = url;
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+  // Ajouter une entrée dans l'historique → le bouton retour du navigateur ferme l'overlay
+  history.pushState({ overlay: true }, '');
 }
+
 function closeTemplate() {
   const overlay = document.getElementById('overlay');
+  if (!overlay.classList.contains('open')) return;
   overlay.classList.remove('open');
   document.body.style.overflow = '';
-  setTimeout(() => { document.getElementById('template-frame').src = ''; }, 350);
+  setTimeout(() => { document.getElementById('template-frame').src = ''; }, 450);
 }
+
 // Fermer avec Echap
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeTemplate(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (history.state?.overlay) history.back(); else closeTemplate(); } });
+
+// Fermer avec le bouton retour du navigateur
+window.addEventListener('popstate', () => {
+  closeTemplate();
+});
 </script>
 
 </body>
