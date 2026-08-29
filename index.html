@@ -70,27 +70,7 @@ main{
   pointer-events:none;
   display:block;
 }
-/* Overlay hover : "Ouvrir →" */
-.preview-overlay{
-  position:absolute;inset:0;
-  background:rgba(20,18,16,0);
-  display:flex;align-items:center;justify-content:center;
-  transition:background .28s;
-}
-.preview-label{
-  background:rgba(20,18,16,.88);
-  color:#fff;
-  font-size:.78rem;
-  font-weight:500;
-  padding:.5rem 1.1rem;
-  border-radius:999px;
-  letter-spacing:.02em;
-  opacity:0;
-  transform:translateY(6px);
-  transition:opacity .25s, transform .25s;
-}
-.card:hover .preview-overlay{background:rgba(20,18,16,.22)}
-.card:hover .preview-label{opacity:1;transform:translateY(0)}
+
 
 /* INFO */
 .info{padding:1rem 1.3rem 1.3rem;display:flex;flex-direction:column;gap:.4rem}
@@ -119,27 +99,14 @@ footer a:hover{color:#555}
 #overlay{
   position:fixed;inset:0;z-index:200;
   background:#fff;
-  transform:translateY(100%);
-  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  opacity:0;
   pointer-events:none;
+  transition:opacity .35s ease;
 }
-#overlay.open{transform:translateY(0);pointer-events:all}
+#overlay.open{opacity:1;pointer-events:all}
 #overlay iframe{width:100%;height:100%;border:none;display:block}
 
-.close-btn{
-  position:fixed;top:1.25rem;right:1.5rem;z-index:201;
-  background:rgba(10,10,10,.8);color:#fff;
-  border:none;border-radius:999px;
-  padding:.5rem 1.1rem;
-  font-size:.82rem;font-weight:500;
-  font-family:'Inter',sans-serif;
-  cursor:pointer;letter-spacing:.02em;
-  opacity:0;pointer-events:none;
-  transition:opacity .3s .15s, background .2s;
-  backdrop-filter:blur(4px);
-}
-.close-btn:hover{background:rgba(10,10,10,1)}
-#overlay.open ~ .close-btn{opacity:1;pointer-events:all}
+
 
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
@@ -161,7 +128,6 @@ footer a:hover{color:#555}
     <div class="card" onclick="openTemplate('template-robuste.html')">
       <div class="preview">
         <iframe src="template-robuste.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Robuste</p>
@@ -177,7 +143,6 @@ footer a:hover{color:#555}
     <div class="card" onclick="openTemplate('template-confiance.html')">
       <div class="preview">
         <iframe src="template-confiance.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Confiance</p>
@@ -193,7 +158,6 @@ footer a:hover{color:#555}
     <div class="card" onclick="openTemplate('template-local.html')">
       <div class="preview">
         <iframe src="template-local.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Local Chaleureux</p>
@@ -209,7 +173,6 @@ footer a:hover{color:#555}
     <div class="card" onclick="openTemplate('template-direct.html')">
       <div class="preview">
         <iframe src="template-direct.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Direct</p>
@@ -225,7 +188,6 @@ footer a:hover{color:#555}
     <div class="card" onclick="openTemplate('template-premium.html')">
       <div class="preview">
         <iframe src="template-premium.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Premium</p>
@@ -241,7 +203,6 @@ footer a:hover{color:#555}
     <div class="card" onclick="openTemplate('template-clair.html')">
       <div class="preview">
         <iframe src="template-clair.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Clair</p>
@@ -267,7 +228,6 @@ footer a:hover{color:#555}
 <div id="overlay">
   <iframe id="template-frame" src="" scrolling="yes"></iframe>
 </div>
-<button class="close-btn" onclick="closeTemplate()">← Retour</button>
 
 <script>
 function openTemplate(url) {
@@ -281,7 +241,7 @@ function closeTemplate() {
   const overlay = document.getElementById('overlay');
   overlay.classList.remove('open');
   document.body.style.overflow = '';
-  setTimeout(() => { document.getElementById('template-frame').src = ''; }, 450);
+  setTimeout(() => { document.getElementById('template-frame').src = ''; }, 350);
 }
 // Fermer avec Echap
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeTemplate(); });
