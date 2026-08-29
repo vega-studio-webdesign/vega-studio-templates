@@ -2,160 +2,157 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Atelier Bernard — Template Premium</title>
+<title>Atelier Bernard</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--sand:#FAF8F5;--dark:#1E1C1A;--gold:#B89050;--goldLight:#D4AA6A;--warm:#3D3632;--muted:#9A948E;--white:#fff;--border:rgba(0,0,0,.09)}
-body{font-family:'Inter',sans-serif;background:var(--sand);color:var(--dark)}
+:root{--s:#FAF8F5;--d:#1E1C1A;--g:#B89050;--gl:#D4AA6A;--m:#9A948E;--w:#fff;--bd:rgba(0,0,0,.09)}
+body{font-family:'Inter',sans-serif;background:var(--s);color:var(--d)}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-.nav{background:var(--sand);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;position:sticky;top:0;z-index:10}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--dark);letter-spacing:.02em}
-.nav-logo small{display:block;font-family:'Inter',sans-serif;font-size:.6rem;color:var(--muted);font-weight:400;letter-spacing:.12em;text-transform:uppercase;margin-top:-4px}
+nav{background:var(--s);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:1.3rem 3rem;position:sticky;top:0;z-index:10}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--d);letter-spacing:.02em}
+.logo small{display:block;font-family:'Inter',sans-serif;font-size:.58rem;color:var(--m);font-weight:400;letter-spacing:.12em;text-transform:uppercase;margin-top:-3px}
 .nav-links{display:flex;gap:2.5rem}
-.nav-links a{font-size:.8rem;font-weight:400;color:var(--muted);letter-spacing:.04em;transition:color .2s}
-.nav-links a:hover{color:var(--dark)}
-.nav-contact{border:1px solid var(--border);color:var(--dark);font-size:.8rem;font-weight:400;padding:.5rem 1.4rem;letter-spacing:.04em;transition:background .2s,color .2s}
-.nav-contact:hover{background:var(--dark);color:#fff}
+.nav-links a{font-size:.78rem;color:var(--m);letter-spacing:.04em;transition:color .2s}
+.nav-links a:hover{color:var(--d)}
+.nav-cta{border:1px solid var(--bd);color:var(--d);font-size:.78rem;padding:.5rem 1.3rem;letter-spacing:.04em;transition:all .2s}
+.nav-cta:hover{background:var(--d);color:var(--w)}
+@media(max-width:700px){.nav-links{display:none};nav{padding:1rem 1.75rem}}
 
 /* HERO */
-.hero{min-height:92vh;display:flex;flex-direction:column;padding:0 4rem}
-.hero-top{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;padding:6rem 0 3rem}
-.hero-left{display:flex;flex-direction:column;gap:2.5rem}
-.hero-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5.5vw,5rem);font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--dark)}
-.hero-title em{font-style:italic;font-weight:400;color:var(--gold)}
-.hero-body{font-size:.92rem;color:var(--muted);line-height:1.85;font-weight:300;max-width:380px}
-.hero-footer{display:flex;align-items:center;gap:2rem;padding-top:2rem;border-top:1px solid var(--border)}
-.hero-tel{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--dark)}
-.hero-tel small{display:block;font-family:'Inter',sans-serif;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:.1rem}
-.hero-tel-btn{border:1px solid var(--dark);padding:.7rem 1.75rem;font-size:.82rem;color:var(--dark);letter-spacing:.04em;transition:all .2s}
-.hero-tel-btn:hover{background:var(--dark);color:#fff}
-.hero-right{position:relative}
-.hero-img{background:linear-gradient(135deg,#C8BFB0 0%,#8C7D6A 100%);height:560px;position:relative;overflow:hidden}
-.hero-img::before{content:'ATELIER';position:absolute;bottom:-1.5rem;right:-1rem;font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:600;color:rgba(255,255,255,.06);letter-spacing:-.05em}
-.hero-detail{position:absolute;bottom:-1.5rem;left:2rem;background:var(--sand);padding:1.5rem 2rem;width:calc(100% - 6rem)}
-.hero-detail-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
-.hero-detail-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--dark)}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh}
+@media(max-width:750px){.hero{grid-template-columns:1fr;min-height:auto}}
+.hero-l{padding:6rem 3.5rem 5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-weight:500;margin-bottom:2.25rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.8rem);font-weight:600;line-height:1.08;letter-spacing:-.01em;color:var(--d)}
+h1 em{font-style:italic;font-weight:400;color:var(--g)}
+.hero-body{margin-top:1.75rem;font-size:.9rem;color:var(--m);line-height:1.9;font-weight:300;max-width:380px}
+.hero-sep{border:none;border-top:1px solid var(--bd);margin:2.25rem 0}
+.hero-contact{display:flex;align-items:center;gap:1.75rem;flex-wrap:wrap}
+.hero-tel{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--d)}
+.hero-tel small{display:block;font-family:'Inter',sans-serif;font-size:.6rem;color:var(--m);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.15rem}
+.btn-rv{border:1px solid var(--d);padding:.7rem 1.75rem;font-size:.78rem;color:var(--d);letter-spacing:.04em;transition:all .2s}
+.btn-rv:hover{background:var(--d);color:var(--w)}
+.hero-r{background:linear-gradient(150deg,#C8BFB0 0%,#8C7D6A 100%);position:relative;overflow:hidden;min-height:400px}
+.hero-r::before{content:'ATELIER';position:absolute;bottom:-2rem;right:-1rem;font-family:'Cormorant Garamond',serif;font-size:9rem;font-weight:600;color:rgba(255,255,255,.07);letter-spacing:-.06em;line-height:1}
+.hero-badge{position:absolute;bottom:2.5rem;left:2.5rem;background:var(--s);padding:1.25rem 1.75rem}
+.hero-badge-l{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:.4rem}
+.hero-badge-t{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--d)}
 
-/* APPROCHE */
-.approche{padding:8rem 4rem 6rem;display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start}
-.approche-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:500;padding-top:.3rem}
-.approche-right h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.5vw,2.5rem);font-weight:400;line-height:1.35;color:var(--dark)}
-.approche-right h2 em{font-style:italic;color:var(--gold)}
-.approche-right p{margin-top:1.5rem;font-size:.9rem;color:var(--muted);line-height:1.85;font-weight:300;max-width:560px}
-.approche-right p+p{margin-top:.85rem}
+/* PHIL */
+.phil{padding:6rem 3rem;display:grid;grid-template-columns:180px 1fr;gap:4rem;align-items:start;max-width:1000px;margin:0 auto}
+@media(max-width:700px){.phil{grid-template-columns:1fr;gap:1.5rem;padding:4rem 1.75rem}}
+.phil-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--m);font-weight:500;padding-top:.4rem}
+.phil-r h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.5vw,2.5rem);font-weight:400;line-height:1.35;color:var(--d)}
+.phil-r h2 em{font-style:italic;color:var(--g)}
+.phil-r p{margin-top:1.25rem;font-size:.88rem;color:var(--m);line-height:1.9;font-weight:300}
 
 /* SERVICES */
-.services{padding:0 4rem 6rem}
-.services-header{display:flex;align-items:center;gap:3rem;margin-bottom:3.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
-.services-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2vw,2rem);font-weight:600;color:var(--dark)}
-.services-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
-.sg{display:flex;flex-direction:column;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--border)}
-.sg-num{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--gold)}
-.sg h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--dark);line-height:1.3}
-.sg p{font-size:.83rem;color:var(--muted);line-height:1.75;font-weight:300}
+.svcs{padding:0 3rem 6rem}
+@media(max-width:700px){.svcs{padding:0 1.75rem 4rem}}
+.svcs-head{display:flex;align-items:center;gap:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--bd);margin-bottom:3rem}
+.eyebrow-g{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--m);font-weight:500;white-space:nowrap}
+.svcs-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2vw,1.9rem);font-weight:600;color:var(--d)}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+@media(max-width:700px){.sg{grid-template-columns:1fr}}
+.sc{padding-top:1.5rem;border-top:1px solid var(--bd)}
+.sc-num{font-family:'Cormorant Garamond',serif;font-size:.88rem;color:var(--g);margin-bottom:.9rem}
+.sc h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--d);line-height:1.3;margin-bottom:.5rem}
+.sc p{font-size:.82rem;color:var(--m);line-height:1.8;font-weight:300}
 
 /* CONFIANCE */
-.confiance{background:var(--dark);padding:5rem 4rem}
-.conf-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.conf-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);color:#fff;font-weight:400;line-height:1.35}
-.conf-left h2 em{font-style:italic;color:var(--goldLight)}
-.conf-left p{margin-top:1.25rem;font-size:.88rem;color:rgba(255,255,255,.45);line-height:1.85;font-weight:300}
+.conf{background:var(--d);padding:5rem 3rem}
+@media(max-width:700px){.conf{padding:4rem 1.75rem}}
+.conf-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+@media(max-width:700px){.conf-inner{grid-template-columns:1fr;gap:2.5rem}}
+.conf-l h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);color:var(--w);font-weight:400;line-height:1.35}
+.conf-l h2 em{font-style:italic;color:var(--gl)}
+.conf-l p{margin-top:1.25rem;font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.9;font-weight:300}
 .conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.cg{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem}
-.cg-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--goldLight);line-height:1}
-.cg-label{font-size:.73rem;color:rgba(255,255,255,.35);margin-top:.4rem;letter-spacing:.04em}
+.cg{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem}
+.cg-n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gl);line-height:1}
+.cg-l{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.35rem;letter-spacing:.04em}
 
 /* CTA */
-.cta{padding:6rem 4rem;text-align:center;background:var(--sand)}
-.cta-inner{max-width:560px;margin:0 auto}
-.cta-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:500}
-.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,3rem);font-weight:400;color:var(--dark);line-height:1.25}
-.cta h2 em{font-style:italic}
-.cta p{margin-top:1.25rem;font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300}
-.cta-actions{margin-top:3rem;display:flex;justify-content:center;gap:1.25rem}
-.btn-dark{background:var(--dark);color:#fff;padding:.9rem 2.25rem;font-size:.85rem;letter-spacing:.05em}
-.btn-outlined{border:1px solid var(--border);color:var(--dark);padding:.9rem 2.25rem;font-size:.85rem;letter-spacing:.05em}
+.cta{padding:6rem 3rem;text-align:center;background:var(--s)}
+@media(max-width:700px){.cta{padding:4rem 1.75rem}}
+.cta-inner{max-width:500px;margin:0 auto}
+.cta-eyebrow{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-weight:500;margin-bottom:1.5rem}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,3rem);font-weight:400;color:var(--d);line-height:1.25}
+.cta h2 em{font-style:italic;color:var(--g)}
+.cta p{margin-top:1.1rem;font-size:.88rem;color:var(--m);line-height:1.8;font-weight:300}
+.cta-btns{margin-top:2.5rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.btn-dk{background:var(--d);color:var(--w);padding:.88rem 2.25rem;font-size:.82rem;letter-spacing:.05em}
+.btn-ol{border:1px solid var(--bd);color:var(--d);padding:.88rem 2.25rem;font-size:.82rem;letter-spacing:.05em}
 
-footer{background:var(--dark);color:rgba(255,255,255,.28);padding:1.75rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.75rem;letter-spacing:.03em}
-.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,.7)}
+footer{background:var(--d);color:rgba(255,255,255,.25);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.72rem;letter-spacing:.03em}
+.foot-logo{font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,.65);font-size:.95rem}
+footer a{color:rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav-logo">Atelier Bernard<small>Menuiserie & agencement</small></div>
-  <div class="nav-links">
-    <a href="#approche">Notre approche</a>
-    <a href="#services">Réalisations</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <a href="#contact" class="nav-contact">Nous contacter</a>
+<nav>
+  <div class="logo">Atelier Bernard<small>Menuiserie & agencement</small></div>
+  <div class="nav-links"><a href="#approche">Approche</a><a href="#services">Réalisations</a><a href="#contact">Contact</a></div>
+  <a href="#contact" class="nav-cta">Prendre rendez-vous</a>
 </nav>
 
 <section class="hero">
-  <div class="hero-top">
-    <div class="hero-left">
-      <p class="hero-eyebrow">Menuiserie & agencement sur mesure — Paris</p>
-      <h1 class="hero-title">Le bois<br />travaillé<br /><em>à la main.</em></h1>
-      <p class="hero-body">Depuis trois générations, l'Atelier Bernard fabrique et pose des menuiseries d'exception. Cuisine, bibliothèque, dressing, escalier — chaque pièce est unique.</p>
-      <div class="hero-footer">
-        <div class="hero-tel">
-          <small>Téléphone</small>
-          01 23 45 67 89
-        </div>
-        <a href="#contact" class="hero-tel-btn">Demander un rendez-vous</a>
-      </div>
+  <div class="hero-l">
+    <p class="hero-eyebrow">Menuiserie sur mesure — Paris</p>
+    <h1>Le bois<br />travaillé<br /><em>à la main.</em></h1>
+    <p class="hero-body">Depuis trois générations, l'Atelier Bernard fabrique et pose des menuiseries d'exception. Cuisine, bibliothèque, dressing, escalier — chaque pièce est unique.</p>
+    <hr class="hero-sep"/>
+    <div class="hero-contact">
+      <div class="hero-tel"><small>Téléphone</small>01 23 45 67 89</div>
+      <a href="#contact" class="btn-rv">Prendre rendez-vous</a>
     </div>
-    <div class="hero-right">
-      <div class="hero-img"></div>
-      <div class="hero-detail">
-        <div class="hero-detail-label">En ce moment</div>
-        <div class="hero-detail-text">Bibliothèque sur mesure — Paris 16e, 2024</div>
-      </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-badge">
+      <div class="hero-badge-l">Réalisation récente</div>
+      <div class="hero-badge-t">Bibliothèque sur mesure — Paris 16e</div>
     </div>
   </div>
 </section>
 
-<section class="approche" id="approche">
-  <p class="approche-label">Notre approche</p>
-  <div class="approche-right">
+<section class="phil" id="approche">
+  <p class="phil-label">Notre approche</p>
+  <div class="phil-r">
     <h2>Chaque meuble raconte <em>une histoire</em> — la vôtre.</h2>
     <p>Nous ne proposons pas de catalogue. Chaque réalisation commence par une conversation — votre espace, vos usages, vos envies. Ensuite vient le bois, choisi avec soin, travaillé sans précipitation.</p>
     <p>L'Atelier Bernard, c'est trois générations de menuisiers parisiens. On ne cherche pas à grossir. On cherche à bien faire.</p>
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="services-header">
-    <span class="services-label">Ce que nous créons</span>
-    <h2>Agencement intérieur, menuiserie, escaliers.</h2>
+<section class="svcs" id="services">
+  <div class="svcs-head">
+    <span class="eyebrow-g">Ce que nous créons</span>
+    <h2>Agencement, menuiserie, escaliers.</h2>
   </div>
-  <div class="services-grid">
-    <div class="sg"><div class="sg-num">I.</div><h3>Cuisines sur mesure</h3><p>Plans de travail, façades, îlot central — conçus pour votre espace exact. Chaque centimètre compte.</p></div>
-    <div class="sg"><div class="sg-num">II.</div><h3>Bibliothèques & rangements</h3><p>Du sol au plafond ou encastrée dans une niche. Hêtre, chêne, merisier — selon votre goût.</p></div>
-    <div class="sg"><div class="sg-num">III.</div><h3>Dressings & armoires</h3><p>Organisation pensée avec vous, volumes optimisés, finitions soignées. Portes coulissantes ou battantes.</p></div>
-    <div class="sg"><div class="sg-num">IV.</div><h3>Escaliers</h3><p>Escaliers droits, quart tournant, hélicoïdaux. Structure bois massif ou mixte métal-bois.</p></div>
-    <div class="sg"><div class="sg-num">V.</div><h3>Portes & fenêtres</h3><p>Fabrication et pose. Entrée, intérieur, double vitrage — toujours en bois massif, jamais en PVC.</p></div>
-    <div class="sg"><div class="sg-num">VI.</div><h3>Restauration</h3><p>Volets anciens, parquet, boiseries classées. On respecte l'existant et on prolonge sa durée de vie.</p></div>
+  <div class="sg">
+    <div class="sc"><div class="sc-num">I.</div><h3>Cuisines sur mesure</h3><p>Plans de travail, façades, îlot central — conçus pour votre espace exact. Chaque centimètre compte.</p></div>
+    <div class="sc"><div class="sc-num">II.</div><h3>Bibliothèques & rangements</h3><p>Du sol au plafond ou encastrée dans une niche. Hêtre, chêne, merisier — selon votre goût.</p></div>
+    <div class="sc"><div class="sc-num">III.</div><h3>Dressings & armoires</h3><p>Organisation pensée avec vous, volumes optimisés. Portes coulissantes ou battantes.</p></div>
+    <div class="sc"><div class="sc-num">IV.</div><h3>Escaliers</h3><p>Droits, quart tournant, hélicoïdaux. Bois massif ou mixte métal-bois.</p></div>
+    <div class="sc"><div class="sc-num">V.</div><h3>Portes & fenêtres</h3><p>Fabrication et pose en bois massif. Jamais en PVC.</p></div>
+    <div class="sc"><div class="sc-num">VI.</div><h3>Restauration</h3><p>Volets anciens, parquet, boiseries classées. On respecte l'existant.</p></div>
   </div>
 </section>
 
-<section class="confiance">
+<section class="conf">
   <div class="conf-inner">
-    <div class="conf-left">
+    <div class="conf-l">
       <h2>Trois générations<br />au service <em>d'un seul métier.</em></h2>
       <p>Fondé en 1967 par Robert Bernard, repris par son fils puis par sa petite-fille Camille. Le savoir-faire se transmet, les exigences restent les mêmes.</p>
     </div>
     <div class="conf-grid">
-      <div class="cg"><div class="cg-num">57 ans</div><div class="cg-label">d'existence</div></div>
-      <div class="cg"><div class="cg-num">3</div><div class="cg-label">générations</div></div>
-      <div class="cg"><div class="cg-num">100%</div><div class="cg-label">bois massif</div></div>
-      <div class="cg"><div class="cg-num">Paris</div><div class="cg-label">et Île-de-France</div></div>
+      <div class="cg"><div class="cg-n">57 ans</div><div class="cg-l">d'existence</div></div>
+      <div class="cg"><div class="cg-n">3</div><div class="cg-l">générations</div></div>
+      <div class="cg"><div class="cg-n">100%</div><div class="cg-l">bois massif</div></div>
+      <div class="cg"><div class="cg-n">Paris</div><div class="cg-l">Île-de-France</div></div>
     </div>
   </div>
 </section>
@@ -164,18 +161,18 @@ footer{background:var(--dark);color:rgba(255,255,255,.28);padding:1.75rem 4rem;d
   <div class="cta-inner">
     <p class="cta-eyebrow">Travailler ensemble</p>
     <h2>Un projet <em>en tête</em> ?<br />Parlons-en.</h2>
-    <p>Nous recevons sur rendez-vous dans notre atelier du 11e arrondissement, ou nous nous déplaçons chez vous pour mesurer et conseiller. Devis gratuit, délai de réalisation annoncé sans surprise.</p>
-    <div class="cta-actions">
-      <a href="tel:0123456789" class="btn-dark">01 23 45 67 89</a>
-      <a href="mailto:contact@atelier-bernard.fr" class="btn-outlined">Écrire un email</a>
+    <p>Nous recevons sur rendez-vous dans notre atelier du 11e, ou nous nous déplaçons chez vous. Devis gratuit.</p>
+    <div class="cta-btns">
+      <a href="tel:0123456789" class="btn-dk">01 23 45 67 89</a>
+      <a href="mailto:contact@atelier-bernard.fr" class="btn-ol">Écrire un email</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="foot-logo">Atelier Bernard</div>
-  <span>Paris 11e — 3 rue de la Forge — Ouvert lun–ven 9h–18h</span>
-  <span>Réalisé par <a href="https://vegastudio.fr" style="color:rgba(255,255,255,.4)">Vega Studio</a></span>
+  <span>Paris 11e — 3 rue de la Forge</span>
+  <a href="https://vegastudio.fr">Vega Studio</a>
 </footer>
 </body>
 </html>

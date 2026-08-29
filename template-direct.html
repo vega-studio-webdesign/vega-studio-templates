@@ -2,165 +2,145 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Ferrara Maçonnerie — Template Direct</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
+<title>Ferrara Maçonnerie</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--black:#0A0A0A;--red:#D42B2B;--white:#FFFFFF;--off:#F5F5F3;--mid:#2A2A2A;--muted:#888}
-body{font-family:'Space Grotesk',sans-serif;background:var(--white);color:var(--black)}
+:root{--k:#0A0A0A;--r:#CC2929;--o:#F5F5F3;--w:#fff;--m:#666;--bd:#E0E0E0}
+body{font-family:'Space Grotesk',sans-serif;background:var(--w);color:var(--k)}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-.nav{background:var(--black);display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:60px;position:sticky;top:0;z-index:10}
-.nav-logo{font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:-.02em}
-.nav-logo span{color:var(--red)}
-.nav-items{display:flex;align-items:center;gap:.1rem}
-.nav-items a{color:rgba(255,255,255,.4);font-size:.82rem;font-weight:400;padding:.4rem .9rem;transition:color .2s}
-.nav-items a:hover{color:#fff}
-.nav-phone{color:var(--red);font-size:.95rem;font-weight:700;letter-spacing:.02em}
+nav{background:var(--k);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:58px;position:sticky;top:0;z-index:10}
+.logo{font-size:.95rem;font-weight:700;color:var(--w);letter-spacing:-.02em}
+.logo b{color:var(--r)}
+.nav-r{display:flex;align-items:center;gap:1.5rem}
+.nav-r a:first-child{font-size:.8rem;color:rgba(255,255,255,.35);display:none}
+.nav-tel{color:var(--r);font-size:.9rem;font-weight:700;letter-spacing:.01em}
+@media(min-width:600px){.nav-r a:first-child{display:block}}
 
 /* HERO */
-.hero{background:var(--black);padding:4.5rem 3rem 3.5rem;display:grid;grid-template-rows:auto auto;gap:3rem}
-.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem}
-.hero-title-block{flex:1}
-.hero-label{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
-.hero-title{font-size:clamp(3rem,7vw,7rem);font-weight:700;color:#fff;line-height:.95;letter-spacing:-.04em}
-.hero-title .stroke{-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent}
-.hero-right-block{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:1.5rem;padding-top:.5rem}
-.hero-body{font-family:'Inter',sans-serif;font-size:.92rem;color:rgba(255,255,255,.5);line-height:1.75;font-weight:300}
-.hero-cta-block{display:flex;flex-direction:column;gap:.75rem}
-.btn-red{background:var(--red);color:#fff;padding:.85rem 1.75rem;font-size:.9rem;font-weight:600;display:block;text-align:center;transition:opacity .2s}
-.btn-red:hover{opacity:.88}
-.btn-border{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);padding:.85rem 1.75rem;font-size:.9rem;display:block;text-align:center;transition:border-color .2s}
-.btn-border:hover{border-color:rgba(255,255,255,.5);color:#fff}
-.hero-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:2.5rem;display:flex;gap:0}
-.hstat{flex:1;padding:0 2rem;border-right:1px solid rgba(255,255,255,.07)}
-.hstat:first-child{padding-left:0}
-.hstat:last-child{border-right:none}
-.hstat-num{font-size:2.4rem;font-weight:700;color:#fff;letter-spacing:-.04em;line-height:1}
-.hstat-label{font-size:.73rem;color:rgba(255,255,255,.35);margin-top:.4rem;font-family:'Inter',sans-serif}
+.hero{background:var(--k);padding:5.5rem 2.5rem 4.5rem;overflow:hidden;position:relative}
+.hero::after{content:'FERRARA';position:absolute;right:-1.5rem;bottom:-2rem;font-size:clamp(6rem,18vw,18rem);font-weight:700;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;letter-spacing:-.06em}
+.hero-kicker{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero-kicker::before{content:'';display:block;width:28px;height:1px;background:var(--r)}
+h1{font-size:clamp(3.5rem,10vw,9rem);font-weight:700;color:var(--w);line-height:.92;letter-spacing:-.05em}
+.h1-stroke{-webkit-text-stroke:1px rgba(255,255,255,.2);color:transparent}
+.hero-bottom{display:flex;gap:4rem;align-items:flex-end;margin-top:4rem;flex-wrap:wrap}
+.hero-sub{font-family:'Inter',sans-serif;font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.8;font-weight:300;max-width:340px}
+.hero-sub strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:600}
+.hero-cta{background:var(--r);color:var(--w);padding:.9rem 2rem;font-size:.9rem;font-weight:600;display:inline-block;flex-shrink:0;transition:opacity .2s}
+.hero-cta:hover{opacity:.88}
+
+/* STATS */
+.stats{border-top:1px solid var(--k);display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:1.75rem 2rem;border-right:1px solid var(--k)}
+.stat:last-child{border-right:none}
+.stat-n{font-size:2rem;font-weight:700;letter-spacing:-.04em}
+.stat-l{font-size:.7rem;color:var(--m);margin-top:.25rem;letter-spacing:.04em;text-transform:uppercase}
 
 /* SERVICES */
-.services{padding:5rem 3rem}
-.srv-header{display:flex;align-items:center;gap:2rem;margin-bottom:3rem}
-.srv-label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
-.srv-title{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;letter-spacing:-.03em}
-.srv-line{flex:1;height:1px;background:var(--black)}
-.srv-list{display:flex;flex-direction:column;gap:0}
-.sl{display:flex;align-items:center;padding:1.75rem 0;border-bottom:1px solid #EBEBEB;gap:2rem;transition:background .15s;cursor:default}
-.sl:hover{background:var(--off);margin:0 -3rem;padding:1.75rem 3rem}
-.sl-num{font-size:.8rem;font-weight:700;color:var(--muted);width:2.5rem;flex-shrink:0}
-.sl-name{font-size:1.05rem;font-weight:700;flex:1;letter-spacing:-.02em}
-.sl-detail{font-size:.85rem;color:var(--muted);font-family:'Inter',sans-serif;max-width:340px}
-.sl-tag{font-size:.7rem;font-weight:600;background:var(--off);color:var(--muted);padding:.3rem .75rem;white-space:nowrap}
+.svcs{padding:5rem 2.5rem;background:var(--o)}
+.svcs-top{display:flex;align-items:center;gap:2rem;margin-bottom:3rem;padding-bottom:1.5rem;border-bottom:1px solid var(--bd)}
+.eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--r)}
+.svcs-top h2{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-.03em}
+.sv-line{flex:1;height:1px;background:var(--bd)}
+.sv-list{display:flex;flex-direction:column;gap:0}
+.sv{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:2rem;padding:1.5rem 0;border-bottom:1px solid var(--bd);transition:background .15s}
+.sv:hover{background:rgba(0,0,0,.02);margin:0 -2.5rem;padding:1.5rem 2.5rem}
+.sv-num{font-size:.72rem;font-weight:600;color:var(--m);letter-spacing:.04em}
+.sv h3{font-size:1rem;font-weight:600;letter-spacing:-.02em}
+.sv p{font-size:.82rem;color:var(--m);font-family:'Inter',sans-serif;font-weight:300;margin-top:.25rem}
+.sv-tag{font-size:.65rem;font-weight:600;background:rgba(0,0,0,.06);padding:.28rem .7rem;letter-spacing:.04em;white-space:nowrap;text-transform:uppercase}
 
-/* REALISATION */
-.real{background:var(--off);padding:5rem 3rem}
-.real-label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem}
-.real-title{font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:3rem}
-.real-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem}
-.rg-main{background:var(--mid);border-radius:2px;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem;position:relative;overflow:hidden}
-.rg-main::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#2A2A2A 0%,#1A1A1A 100%)}
-.rg-side{display:flex;flex-direction:column;gap:1rem}
-.rg-small{background:var(--mid);border-radius:2px;flex:1;position:relative;overflow:hidden}
-.rg-small::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--mid) 0%,#3A3A3A 100%)}
-.rg-caption{position:relative;z-index:1;font-size:.82rem;color:rgba(255,255,255,.6);font-family:'Inter',sans-serif}
-.rg-caption strong{display:block;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.2rem}
+/* REAL */
+.real{padding:5rem 2.5rem;background:var(--w)}
+.real h2{font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;letter-spacing:-.03em;margin-bottom:2.5rem}
+.rg{display:grid;grid-template-columns:2fr 1fr;gap:.75rem}
+@media(max-width:600px){.rg{grid-template-columns:1fr}}
+.rm{background:var(--k);min-height:340px;position:relative;overflow:hidden;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end}
+.rm::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,#2A2A2A 0%,var(--k) 100%)}
+.rm-cap{position:relative;z-index:1}
+.rm-cap strong{display:block;color:var(--w);font-size:1rem;font-weight:600;letter-spacing:-.01em}
+.rm-cap span{font-size:.75rem;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif}
+.rs{display:flex;flex-direction:column;gap:.75rem}
+.rs-item{background:var(--o);flex:1;position:relative}
 
 /* CTA */
-.cta{background:var(--red);padding:5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
-.cta h2{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1.1}
-.cta p{color:rgba(255,255,255,.7);margin-top:.5rem;font-family:'Inter',sans-serif}
-.cta-right{display:flex;flex-direction:column;gap:.75rem;align-items:flex-start;flex-shrink:0}
-.btn-white{background:#fff;color:var(--red);padding:.9rem 2.25rem;font-size:1rem;font-weight:700;display:inline-block}
-.cta-phone{color:rgba(255,255,255,.75);font-size:.9rem}
+.cta{background:var(--r);padding:4.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+.cta h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:var(--w);letter-spacing:-.04em;line-height:1}
+.cta p{color:rgba(255,255,255,.65);margin-top:.5rem;font-family:'Inter',sans-serif;font-size:.88rem}
+.cta-r{flex-shrink:0}
+.btn-w{background:var(--w);color:var(--r);padding:.9rem 2.25rem;font-size:.95rem;font-weight:700;display:inline-block}
 
-footer{background:var(--black);color:rgba(255,255,255,.3);padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.78rem}
-footer strong{color:rgba(255,255,255,.75)}
+footer{background:var(--k);color:rgba(255,255,255,.3);padding:1.4rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.75rem}
+footer strong{color:rgba(255,255,255,.65)}
+footer a{color:rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav-logo">Ferrara<span>Maçonnerie</span></div>
-  <div class="nav-items">
+<nav>
+  <div class="logo"><b>Ferrara</b> Maçonnerie</div>
+  <div class="nav-r">
     <a href="#services">Prestations</a>
-    <a href="#realisations">Réalisations</a>
-    <a href="#contact">Contact</a>
+    <a href="tel:0645678901" class="nav-tel">06 45 67 89 01</a>
   </div>
-  <a href="tel:0645678901" class="nav-phone">06 45 67 89 01</a>
 </nav>
 
 <section class="hero">
-  <div class="hero-top">
-    <div class="hero-title-block">
-      <p class="hero-label">Maçon — Rhône-Alpes</p>
-      <h1 class="hero-title">On<br />bâtit.<br /><span class="stroke">Solide.</span></h1>
-    </div>
-    <div class="hero-right-block">
-      <p class="hero-body">Maçonnerie générale, fondations, murs porteurs, rénovation de façade. On travaille vite et on fait bien. Devis gratuit, prix ferme.</p>
-      <div class="hero-cta-block">
-        <a href="tel:0645678901" class="btn-red">Appeler Ferrara</a>
-        <a href="#contact" class="btn-border">Devis gratuit</a>
-      </div>
-    </div>
-  </div>
+  <p class="hero-kicker">Maçon — Rhône-Alpes depuis 2002</p>
+  <h1>On<br />bâtit.<br /><span class="h1-stroke">Solide.</span></h1>
   <div class="hero-bottom">
-    <div class="hstat"><div class="hstat-num">22 ans</div><div class="hstat-label">de maçonnerie</div></div>
-    <div class="hstat"><div class="hstat-num">+400</div><div class="hstat-label">chantiers</div></div>
-    <div class="hstat"><div class="hstat-num">48h</div><div class="hstat-label">pour un devis</div></div>
-    <div class="hstat"><div class="hstat-num">Garanti</div><div class="hstat-label">décennal assuré</div></div>
+    <div class="hero-sub"><strong>Maçonnerie générale & gros œuvre</strong>Fondations, murs porteurs, extension, ravalement — on prend en charge l'intégralité de votre chantier. Devis gratuit, prix ferme.</div>
+    <a href="tel:0645678901" class="hero-cta">Appeler Ferrara →</a>
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="srv-header">
-    <span class="srv-label">Prestations</span>
-    <h2 class="srv-title">Ce qu'on fait.</h2>
-    <div class="srv-line"></div>
+<div class="stats">
+  <div class="stat"><div class="stat-n">22 ans</div><div class="stat-l">de maçonnerie</div></div>
+  <div class="stat"><div class="stat-n">+400</div><div class="stat-l">chantiers</div></div>
+  <div class="stat"><div class="stat-n">48h</div><div class="stat-l">pour un devis</div></div>
+  <div class="stat"><div class="stat-n">Décennal</div><div class="stat-l">assuré</div></div>
+</div>
+
+<section class="svcs" id="services">
+  <div class="svcs-top">
+    <span class="eyebrow">Prestations</span>
+    <h2>Ce qu'on fait.</h2>
+    <div class="sv-line"></div>
   </div>
-  <div class="srv-list">
-    <div class="sl"><span class="sl-num">01</span><span class="sl-name">Maçonnerie générale</span><span class="sl-detail">Murs porteurs, cloisons, seuils, linteaux — toute la structure d'une maison.</span><span class="sl-tag">Intérieur & extérieur</span></div>
-    <div class="sl"><span class="sl-num">02</span><span class="sl-name">Fondations</span><span class="sl-detail">Terrassement, béton armé, plots de fondation. On part du bon pied.</span><span class="sl-tag">Construction neuve</span></div>
-    <div class="sl"><span class="sl-num">03</span><span class="sl-name">Ravalement de façade</span><span class="sl-detail">Piquage, rejointoiement, enduit à la chaux ou projeté. Aspect garanti 10 ans.</span><span class="sl-tag">Rénovation</span></div>
-    <div class="sl"><span class="sl-num">04</span><span class="sl-name">Extension & agrandissement</span><span class="sl-detail">Véranda, garage, pièce supplémentaire. On gère le gros-œuvre de A à Z.</span><span class="sl-tag">Projet</span></div>
-    <div class="sl"><span class="sl-num">05</span><span class="sl-name">Réparations & urgence</span><span class="sl-detail">Fissures, effondrements partiels, mur qui bouge. Diagnostic et intervention rapide.</span><span class="sl-tag">Urgent</span></div>
+  <div class="sv-list">
+    <div class="sv"><span class="sv-num">01</span><div><h3>Maçonnerie générale</h3><p>Murs porteurs, cloisons, seuils, linteaux — toute la structure.</p></div><span class="sv-tag">Int. & ext.</span></div>
+    <div class="sv"><span class="sv-num">02</span><div><h3>Fondations</h3><p>Terrassement, béton armé, plots. On part du bon pied.</p></div><span class="sv-tag">Neuf</span></div>
+    <div class="sv"><span class="sv-num">03</span><div><h3>Ravalement de façade</h3><p>Piquage, rejointoiement, enduit. Aspect garanti 10 ans.</p></div><span class="sv-tag">Rénovation</span></div>
+    <div class="sv"><span class="sv-num">04</span><div><h3>Extension & agrandissement</h3><p>Véranda, garage, pièce en plus. Gros-œuvre complet.</p></div><span class="sv-tag">Projet</span></div>
+    <div class="sv"><span class="sv-num">05</span><div><h3>Urgence & réparations</h3><p>Fissures, mur instable. Diagnostic et intervention rapide.</p></div><span class="sv-tag">Urgent</span></div>
   </div>
 </section>
 
-<section class="real" id="realisations">
-  <p class="real-label">Réalisations récentes</p>
-  <h2 class="real-title">Quelques chantiers.</h2>
-  <div class="real-grid">
-    <div class="rg-main">
-      <div class="rg-caption"><strong>Extension bois + maçonnerie</strong>Saint-Étienne — 2024</div>
-    </div>
-    <div class="rg-side">
-      <div class="rg-small"></div>
-      <div class="rg-small"></div>
-    </div>
-    <div class="rg-side">
-      <div class="rg-small"></div>
-      <div class="rg-small"></div>
-    </div>
+<section class="real">
+  <h2>Quelques chantiers récents.</h2>
+  <div class="rg">
+    <div class="rm"><div class="rm-cap"><strong>Extension bois + maçonnerie</strong><span>Saint-Étienne — 2024</span></div></div>
+    <div class="rs"><div class="rs-item"></div><div class="rs-item"></div></div>
   </div>
 </section>
 
 <section class="cta" id="contact">
   <div>
-    <h2>Un chantier ?<br />Appelez-nous.</h2>
-    <p>On se déplace pour établir le devis. Gratuit, sans engagement.</p>
+    <h2>Un chantier ?<br />Appelez.</h2>
+    <p>On se déplace gratuitement pour établir le devis.</p>
   </div>
-  <div class="cta-right">
-    <a href="tel:0645678901" class="btn-white">06 45 67 89 01</a>
-    <span class="cta-phone">ferrara@maconnerie-lyon.fr</span>
+  <div class="cta-r">
+    <a href="tel:0645678901" class="btn-w">06 45 67 89 01</a>
   </div>
 </section>
 
 <footer>
   <strong>Ferrara Maçonnerie</strong>
-  <span>Lyon & Rhône-Alpes — SIRET 234 567 890 00023</span>
-  <span>Réalisé par <a href="https://vegastudio.fr" style="color:rgba(255,255,255,.4)">Vega Studio</a></span>
+  <span>Lyon & Rhône-Alpes</span>
+  <a href="https://vegastudio.fr">Vega Studio</a>
 </footer>
 </body>
 </html>

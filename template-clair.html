@@ -2,166 +2,179 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Renard Couverture — Template Clair</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<title>Renard Couverture</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#1A54BA;--blueDark:#1240A0;--blueLight:#EEF3FC;--white:#FFFFFF;--off:#F8F9FB;--dark:#111827;--muted:#6B7280;--border:#E5E7EB}
-body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--dark)}
+:root{--b:#1A54BA;--bl:#EEF3FC;--w:#fff;--f:#F8F9FB;--d:#0D1117;--m:#60697A;--bd:#E2E6ED}
+body{font-family:'Outfit',sans-serif;background:var(--w);color:var(--d)}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-.nav{background:var(--white);border-bottom:1px solid var(--border);padding:.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.logo{display:flex;align-items:center;gap:.6rem}
-.logo-mark{width:32px;height:32px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem;font-weight:700}
-.logo-text{font-size:1rem;font-weight:600;color:var(--dark)}
-.logo-sub{font-size:.65rem;color:var(--muted);font-weight:400;display:block;margin-top:-2px}
-.nav-right{display:flex;align-items:center;gap:1rem}
-.nav-link{font-size:.85rem;color:var(--muted);font-weight:400}
-.nav-btn{background:var(--blue);color:#fff;padding:.55rem 1.35rem;border-radius:6px;font-size:.85rem;font-weight:500}
+nav{background:var(--w);border-bottom:1px solid var(--bd);padding:.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:.65rem}
+.logo-mark{width:34px;height:34px;background:var(--b);border-radius:8px;display:grid;place-items:center;color:var(--w);font-size:1rem;font-weight:800;flex-shrink:0}
+.logo-t{font-size:1rem;font-weight:600;line-height:1.1}
+.logo-s{font-size:.6rem;color:var(--m);font-weight:400;letter-spacing:.06em}
+.nav-r{display:flex;align-items:center;gap:1rem}
+.nav-link{font-size:.82rem;color:var(--m);display:none}
+.nav-cert{background:var(--bl);color:var(--b);font-size:.68rem;font-weight:600;padding:.3rem .75rem;border-radius:999px;letter-spacing:.03em}
+.nav-tel{background:var(--b);color:var(--w);padding:.52rem 1.25rem;border-radius:7px;font-size:.85rem;font-weight:500}
+@media(min-width:700px){.nav-link{display:block}}
 
 /* HERO */
-.hero{padding:6rem 2.5rem 5rem;background:var(--white);max-width:1100px;margin:0 auto}
-.hero-row{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--blueLight);color:var(--blue);font-size:.72rem;font-weight:600;padding:.35rem .85rem;border-radius:999px;letter-spacing:.03em;margin-bottom:1.75rem}
-.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
-.hero-title{font-size:clamp(2rem,4.5vw,3.6rem);font-weight:700;line-height:1.1;letter-spacing:-.03em}
-.hero-title em{font-style:normal;color:var(--blue)}
-.hero-sub{margin-top:1.25rem;font-size:.95rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:400px}
-.hero-actions{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap}
-.btn-blue{background:var(--blue);color:#fff;padding:.85rem 1.9rem;border-radius:7px;font-size:.95rem;font-weight:500;transition:background .2s}
-.btn-blue:hover{background:var(--blueDark)}
-.btn-light{background:var(--blueLight);color:var(--blue);padding:.85rem 1.9rem;border-radius:7px;font-size:.95rem;font-weight:500}
-.hero-trust{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;gap:2rem;flex-wrap:wrap}
-.ht{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted)}
-.ht-dot{width:7px;height:7px;border-radius:50%;background:#22C55E}
-.hero-visual{background:var(--blueLight);border-radius:12px;min-height:420px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
-.hv-pattern{position:absolute;inset:0;background:linear-gradient(160deg,#C8DBFF 0%,#8AAFF5 50%,#3B7AF5 100%)}
-.hv-card{position:relative;z-index:1;margin:1.5rem;background:#fff;border-radius:10px;padding:1.25rem 1.5rem;box-shadow:0 4px 24px rgba(0,0,0,.1)}
-.hvc-row{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--muted)}
-.hvc-row strong{color:var(--dark);font-size:.9rem}
-.hvc-bar{height:4px;background:var(--blueLight);border-radius:2px;margin:.75rem 0}
-.hvc-fill{height:4px;background:var(--blue);border-radius:2px;width:70%}
-
-/* SERVICES */
-.section{padding:5rem 2.5rem;max-width:1100px;margin:0 auto}
-.section-tag{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.75rem}
-.section-title{font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:700;letter-spacing:-.025em;line-height:1.15}
-.services-grid{margin-top:3rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.svc{background:var(--off);border-radius:10px;padding:1.75rem;border:1px solid transparent;transition:border-color .2s,background .2s}
-.svc:hover{background:#fff;border-color:var(--blue)}
-.svc-num{font-size:.72rem;font-weight:600;color:var(--blue);margin-bottom:1rem;letter-spacing:.04em}
-.svc h3{font-size:1rem;font-weight:600;margin-bottom:.4rem}
-.svc p{font-size:.83rem;color:var(--muted);line-height:1.65;font-weight:300}
+.hero{padding:5rem 2.5rem 0;background:var(--w)}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center;max-width:1060px;margin:0 auto}
+@media(max-width:750px){.hero-inner{grid-template-columns:1fr;gap:3rem}}
+.hero-tag{display:inline-flex;align-items:center;gap:.45rem;background:var(--bl);color:var(--b);font-size:.7rem;font-weight:600;padding:.32rem .85rem;border-radius:999px;margin-bottom:1.75rem}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--b);flex-shrink:0}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--b)}
+.hero-body{margin-top:1.25rem;font-size:.92rem;color:var(--m);line-height:1.75;font-weight:300;max-width:420px}
+.hero-ctas{margin-top:2.25rem;display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-b{background:var(--b);color:var(--w);padding:.85rem 1.75rem;border-radius:8px;font-size:.9rem;font-weight:500}
+.btn-l{background:var(--bl);color:var(--b);padding:.85rem 1.75rem;border-radius:8px;font-size:.9rem;font-weight:500}
+.hero-trust{margin-top:2.25rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.ht{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--m);font-weight:400}
+.ht::before{content:'✓';color:#22C55E;font-weight:700}
+.hero-visual{background:var(--bl);border-radius:14px;overflow:hidden;position:relative;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
+.hv-bg{position:absolute;inset:0;background:linear-gradient(145deg,#C8DBFF 0%,#8AAFF5 55%,#3B7AF5 100%)}
+.hv-card{position:relative;z-index:1;background:var(--w);border-radius:10px;padding:1.25rem 1.5rem;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.hvc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.hvc-label{font-size:.68rem;color:var(--m);letter-spacing:.04em;text-transform:uppercase}
+.hvc-status{font-size:.68rem;font-weight:600;background:#DCFCE7;color:#166534;padding:.2rem .6rem;border-radius:999px}
+.hvc-val{font-size:1.4rem;font-weight:700;color:var(--d);margin-bottom:.25rem}
+.hvc-sub{font-size:.75rem;color:var(--m)}
+.hvc-bar{height:3px;background:var(--bl);border-radius:2px;margin:.9rem 0;overflow:hidden}
+.hvc-fill{height:3px;background:var(--b);border-radius:2px;width:65%}
+.hvc-row{display:flex;justify-content:space-between;font-size:.75rem;color:var(--m)}
 
 /* STATS */
-.stats-band{background:var(--blue);padding:3.5rem 2.5rem;margin:0}
-.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
-.st-num{font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-.03em}
-.st-label{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.3rem}
+.stats{background:var(--b);padding:2.5rem 2.5rem;margin-top:4rem}
+.stats-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+@media(max-width:600px){.stats-inner{grid-template-columns:repeat(2,1fr);gap:2rem}}
+.st{text-align:center;padding:0 1.5rem;border-right:1px solid rgba(255,255,255,.12)}
+.st:last-child{border-right:none}
+.st-n{font-size:2rem;font-weight:800;color:var(--w);letter-spacing:-.04em;line-height:1}
+.st-l{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:.3rem;letter-spacing:.02em}
 
-/* TEMOIGNAGE */
-.testi{padding:5rem 2.5rem;background:var(--off)}
+/* SERVICES */
+.svcs{padding:5rem 2.5rem;background:var(--f)}
+.svcs-top{max-width:1060px;margin:0 auto 3rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:.5rem}
+.svcs-top h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.15}
+.svcs-top p{font-size:.86rem;color:var(--m);max-width:280px;line-height:1.7;font-weight:300}
+.sg{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media(max-width:600px){.sg{grid-template-columns:1fr}}
+.sc{background:var(--w);border-radius:10px;padding:1.75rem;border:1.5px solid transparent;transition:border-color .2s,box-shadow .2s}
+.sc:hover{border-color:var(--b);box-shadow:0 4px 20px rgba(26,84,186,.08)}
+.sc-num{font-size:.7rem;font-weight:700;color:var(--b);letter-spacing:.06em;margin-bottom:.9rem}
+.sc h3{font-size:.95rem;font-weight:600;color:var(--d);margin-bottom:.4rem}
+.sc p{font-size:.82rem;color:var(--m);line-height:1.65;font-weight:300}
+
+/* TESTI */
+.testi{padding:4.5rem 2.5rem;background:var(--w)}
 .testi-inner{max-width:700px;margin:0 auto;text-align:center}
-.testi-inner blockquote{font-size:clamp(1.1rem,2vw,1.5rem);font-weight:400;line-height:1.55;color:var(--dark)}
-.testi-inner cite{display:block;margin-top:1.5rem;font-size:.82rem;color:var(--muted);font-style:normal}
-.stars{color:#F59E0B;font-size:1rem;letter-spacing:.1em;margin-bottom:1.5rem}
+.stars{color:#F59E0B;font-size:1.1rem;letter-spacing:.15em;margin-bottom:1.5rem}
+blockquote{font-size:clamp(1rem,2.2vw,1.4rem);font-weight:400;line-height:1.6;color:var(--d)}
+cite{display:block;margin-top:1.25rem;font-size:.78rem;color:var(--m);font-style:normal}
 
 /* CTA */
-.cta{background:var(--white);padding:5rem 2.5rem;text-align:center;border-top:1px solid var(--border)}
-.cta h2{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em}
-.cta p{color:var(--muted);margin-top:.75rem;font-size:.95rem;font-weight:300}
-.cta-wrap{margin-top:2.5rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
-.cta-tel{display:flex;align-items:center;gap:.5rem;font-size:1.1rem;font-weight:600;color:var(--blue)}
+.cta{padding:5rem 2.5rem;background:var(--f);text-align:center;border-top:1px solid var(--bd)}
+.cta h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-.03em}
+.cta p{color:var(--m);margin-top:.75rem;font-size:.9rem;font-weight:300}
+.cta-btns{margin-top:2.25rem;display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
 
-footer{background:#F3F4F6;color:#9CA3AF;padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:.75rem}
-footer a{color:#6B7280}footer a:hover{color:var(--dark)}
+footer{background:var(--d);color:rgba(255,255,255,.3);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.75rem}
+footer strong{color:rgba(255,255,255,.7)}
+footer a{color:rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
-
-<nav class="nav">
+<nav>
   <div class="logo">
     <div class="logo-mark">R</div>
-    <div class="logo-text">Renard Couverture<span class="logo-sub">Couvreur zingueur</span></div>
+    <div><div class="logo-t">Renard Couverture</div><div class="logo-s">Couvreur zingueur</div></div>
   </div>
-  <div class="nav-right">
+  <div class="nav-r">
     <a href="#services" class="nav-link">Prestations</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="tel:0656789012" class="nav-btn">06 56 78 90 12</a>
+    <span class="nav-cert">Qualibat</span>
+    <a href="tel:0656789012" class="nav-tel">06 56 78 90 12</a>
   </div>
 </nav>
 
-<div style="background:var(--white);padding-top:1rem">
 <section class="hero">
-  <div class="hero-row">
+  <div class="hero-inner">
     <div>
       <span class="hero-tag">Couvreur agréé — Normandie</span>
-      <h1 class="hero-title">Votre toit,<br /><em>protégé pour 20 ans.</em></h1>
-      <p class="hero-sub">Réfection de toiture, zinguerie, isolation, dépannage urgent. On intervient vite et on garantit notre travail.</p>
-      <div class="hero-actions">
-        <a href="tel:0656789012" class="btn-blue">06 56 78 90 12</a>
-        <a href="#contact" class="btn-light">Devis gratuit</a>
+      <h1>Votre toit,<br /><em>protégé</em><br />pour 20 ans.</h1>
+      <p class="hero-body">Réfection de toiture, zinguerie, isolation, dépannage urgent. On intervient vite, on garantit notre travail.</p>
+      <div class="hero-ctas">
+        <a href="tel:0656789012" class="btn-b">06 56 78 90 12</a>
+        <a href="#contact" class="btn-l">Devis gratuit</a>
       </div>
       <div class="hero-trust">
-        <span class="ht"><span class="ht-dot"></span> Intervention sous 48h</span>
-        <span class="ht"><span class="ht-dot"></span> Devis gratuit</span>
-        <span class="ht"><span class="ht-dot"></span> Certifié Qualibat</span>
+        <span class="ht">Intervention 48h</span>
+        <span class="ht">Devis gratuit</span>
+        <span class="ht">Certifié Qualibat</span>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hv-pattern"></div>
+      <div class="hv-bg"></div>
       <div class="hv-card">
-        <div class="hvc-row"><span>Chantiers en cours</span><strong>3 actifs</strong></div>
+        <div class="hvc-top"><span class="hvc-label">Disponibilité</span><span class="hvc-status">Disponible</span></div>
+        <div class="hvc-val">Lundi — créneau libre</div>
+        <div class="hvc-sub">Intervention possible cette semaine</div>
         <div class="hvc-bar"><div class="hvc-fill"></div></div>
-        <div class="hvc-row"><span>Prochain créneau libre</span><strong>Lundi 9h</strong></div>
+        <div class="hvc-row"><span>3 chantiers en cours</span><span>Devis sous 48h</span></div>
       </div>
     </div>
   </div>
-</section>
-</div>
-
-<div class="stats-band">
-  <div class="stats-inner">
-    <div><div class="st-num">14 ans</div><div class="st-label">d'expérience</div></div>
-    <div><div class="st-num">+350</div><div class="st-label">toitures réalisées</div></div>
-    <div><div class="st-num">20 ans</div><div class="st-label">garantie travaux</div></div>
-    <div><div class="st-num">4.8★</div><div class="st-label">avis Google</div></div>
-  </div>
-</div>
-
-<section class="section" id="services">
-  <p class="section-tag">Ce qu'on fait</p>
-  <h2 class="section-title">Couverture et zinguerie,<br />tout type de toiture.</h2>
-  <div class="services-grid">
-    <div class="svc"><p class="svc-num">01</p><h3>Réfection complète</h3><p>Tuiles, ardoises, bac acier — on dépose l'ancienne couverture et on repose avec les matériaux de votre choix.</p></div>
-    <div class="svc"><p class="svc-num">02</p><h3>Zinguerie</h3><p>Gouttières, chéneaux, descentes pluviales, noues et faîtages. Zinc, cuivre ou aluminium laqué.</p></div>
-    <div class="svc"><p class="svc-num">03</p><h3>Isolation des combles</h3><p>Isolation par soufflage ou rouleaux. Réduction de la facture de chauffage garantie. Eligible aux aides CEE.</p></div>
-    <div class="svc"><p class="svc-num">04</p><h3>Dépannage & urgence</h3><p>Fuite après tempête, tuile cassée, infiltration — on intervient rapidement pour sécuriser votre toiture.</p></div>
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="st"><div class="st-n">14 ans</div><div class="st-l">d'expérience</div></div>
+      <div class="st"><div class="st-n">+350</div><div class="st-l">toitures</div></div>
+      <div class="st"><div class="st-n">20 ans</div><div class="st-l">garantie</div></div>
+      <div class="st"><div class="st-n">4.8★</div><div class="st-l">Google</div></div>
+    </div>
   </div>
 </section>
 
-<div class="testi" style="padding:4rem 2.5rem">
+<section class="svcs" id="services">
+  <div class="svcs-top">
+    <div><p class="eyebrow">Prestations</p><h2>Couverture & zinguerie,<br />tout type de toiture.</h2></div>
+    <p>Tuiles, ardoises, bac acier — on maîtrise tous les matériaux et intervient sur tous types de bâtiments.</p>
+  </div>
+  <div class="sg">
+    <div class="sc"><div class="sc-num">01</div><h3>Réfection complète</h3><p>On dépose l'ancienne couverture et on repose avec les matériaux de votre choix. Travail soigné, délai tenu.</p></div>
+    <div class="sc"><div class="sc-num">02</div><h3>Zinguerie</h3><p>Gouttières, chéneaux, descentes, noues et faîtages. Zinc, cuivre ou aluminium laqué.</p></div>
+    <div class="sc"><div class="sc-num">03</div><h3>Isolation des combles</h3><p>Soufflage ou rouleaux. Réduction de la facture de chauffage. Éligible aux aides CEE.</p></div>
+    <div class="sc"><div class="sc-num">04</div><h3>Dépannage & urgence</h3><p>Fuite après tempête, tuile cassée, infiltration. Intervention rapide pour sécuriser votre toit.</p></div>
+  </div>
+</section>
+
+<section class="testi">
   <div class="testi-inner">
     <p class="stars">★★★★★</p>
     <blockquote>« Renard a refait toute la toiture de notre maison en 4 jours. Propres, ponctuels, et le résultat est impeccable. Le devis était précis, pas de surprise. »</blockquote>
     <cite>— Martine L., Rouen (76)</cite>
   </div>
-</div>
+</section>
 
 <section class="cta" id="contact">
   <h2>Un projet de toiture ?</h2>
   <p>On se déplace gratuitement pour établir votre devis. Sous 48h.</p>
-  <div class="cta-wrap">
-    <a href="tel:0656789012" class="btn-blue">Appeler maintenant</a>
-    <span class="cta-tel">ou 06 56 78 90 12</span>
+  <div class="cta-btns">
+    <a href="tel:0656789012" class="btn-b">Appeler maintenant</a>
+    <a href="mailto:contact@renard-couverture.fr" class="btn-l">Envoyer un message</a>
   </div>
 </section>
 
 <footer>
-  <span>Renard Couverture — Normandie</span>
-  <span>© 2025 — SIRET 345 678 901 00034</span>
-  <span>Réalisé par <a href="https://vegastudio.fr">Vega Studio</a></span>
+  <strong>Renard Couverture</strong>
+  <span>Normandie — SIRET 345 678 901 00034</span>
+  <a href="https://vegastudio.fr">Vega Studio</a>
 </footer>
 </body>
 </html>

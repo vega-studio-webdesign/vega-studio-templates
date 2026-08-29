@@ -1,122 +1,147 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Martin Plomberie — Template Robuste</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Martin Plomberie</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--orange:#E8621A;--dark:#1A1A1A;--mid:#2E2E2E;--light:#F4F1ED;--white:#FFFFFF;--muted:#888}
-body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark);line-height:1.6}
+:root{--o:#E8611A;--d:#171717;--g:#262626;--f:#F3F0EC;--w:#fff;--m:#888}
+body{font-family:'Inter',sans-serif;background:var(--w);color:var(--d)}
 a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
-nav{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;position:sticky;top:0;z-index:10}
-.nav-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:#fff}
-.nav-logo span{color:var(--orange)}
-.nav-phone{background:var(--orange);color:#fff;font-size:.9rem;font-weight:500;padding:.55rem 1.4rem;border-radius:4px}
+/* NAV */
+nav{background:var(--d);display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;position:sticky;top:0;z-index:10}
+.logo{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--w);letter-spacing:-.02em}
+.logo b{color:var(--o)}
+.nav-r{display:flex;align-items:center;gap:1.5rem}
+.nav-r a:first-child{font-size:.82rem;color:rgba(255,255,255,.45);display:none}
+.tel{background:var(--o);color:var(--w);padding:.5rem 1.25rem;border-radius:4px;font-size:.88rem;font-weight:500}
+@media(min-width:600px){.nav-r a:first-child{display:block}}
 
-.hero{background:var(--dark);min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 3rem;position:relative;overflow:hidden}
-.hero-bg-text{position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:'Syne',sans-serif;font-size:clamp(8rem,18vw,22rem);font-weight:800;color:rgba(255,255,255,.03);line-height:1;user-select:none;pointer-events:none;letter-spacing:-.05em}
-.hero-eyebrow{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem}
-.hero-title{font-family:'Syne',sans-serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:800;color:#fff;line-height:1.05;letter-spacing:-.03em;max-width:700px}
-.hero-title em{font-style:normal;color:var(--orange)}
-.hero-sub{color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:460px;margin-top:1.5rem;line-height:1.7}
-.hero-actions{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;flex-wrap:wrap}
-.btn-orange{background:var(--orange);color:#fff;padding:.88rem 2rem;font-size:1rem;font-weight:500;border-radius:4px}
-.btn-ghost{color:rgba(255,255,255,.55);font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px}
-.hero-stats{display:flex;gap:3rem;margin-top:5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.07);flex-wrap:wrap}
-.stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--orange)}
-.stat-label{font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.15rem}
+/* HERO */
+.hero{background:var(--d);padding:5rem 2.5rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-4rem;top:-2rem;width:500px;height:500px;border-radius:50%;background:rgba(232,97,26,.06);pointer-events:none}
+.hero-inner{max-width:800px}
+.hero-tag{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:1.75rem;display:flex;align-items:center;gap:.6rem}
+.hero-tag::before{content:'';display:block;width:24px;height:2px;background:var(--o)}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,7vw,5.5rem);font-weight:800;color:var(--w);line-height:1;letter-spacing:-.04em}
+h1 em{font-style:normal;color:var(--o)}
+.hero-sub{color:rgba(255,255,255,.45);font-size:.95rem;line-height:1.8;margin-top:1.75rem;max-width:460px;font-weight:300}
+.hero-btns{display:flex;gap:.75rem;margin-top:2.75rem;flex-wrap:wrap}
+.btn-o{background:var(--o);color:var(--w);padding:.85rem 1.9rem;border-radius:4px;font-size:.9rem;font-weight:500}
+.btn-g{border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7);padding:.85rem 1.9rem;border-radius:4px;font-size:.9rem}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.07)}
+@media(max-width:600px){.hero-stats{grid-template-columns:repeat(2,1fr);gap:1.5rem}}
+.stat{padding-right:1.5rem}
+.stat-n{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--o);line-height:1}
+.stat-l{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:.35rem;letter-spacing:.02em}
 
-section.services{padding:5rem 3rem}
-.section-label{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.75rem}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;letter-spacing:-.03em}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--dark);margin-top:3rem;border:1px solid var(--dark)}
-.sc{background:#fff;padding:2.25rem 2rem;transition:background .2s}
-.sc:hover{background:var(--light)}
-.sc-num{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--light);line-height:1;margin-bottom:1rem}
-.sc-name{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-.sc-desc{font-size:.86rem;color:var(--muted);line-height:1.65}
+/* SERVICES */
+.s{padding:4.5rem 2.5rem;background:var(--w)}
+.s-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--o);margin-bottom:.6rem}
+.s-head h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.s-head p{font-size:.88rem;color:var(--m);max-width:280px;line-height:1.7;font-weight:300}
+.s-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#E8E8E8}
+@media(max-width:500px){.s-grid{grid-template-columns:1fr}}
+.sc{background:var(--w);padding:2rem;border-left:3px solid transparent;transition:border-color .2s,background .2s}
+.sc:hover{border-left-color:var(--o);background:var(--f)}
+.sc-num{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;color:#EBEBEB;line-height:1;margin-bottom:1rem}
+.sc h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.sc p{font-size:.83rem;color:var(--m);line-height:1.7;font-weight:300}
 
-.trust{background:var(--light);padding:4.5rem 3rem}
-.trust-inner{display:flex;gap:4rem;flex-wrap:wrap;align-items:flex-start}
-.trust-text{flex:1;min-width:260px}
-.trust-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;letter-spacing:-.025em;line-height:1.2}
-.trust-text p{margin-top:1rem;font-size:.9rem;color:#666;line-height:1.75;max-width:400px}
-.badges{display:flex;flex-direction:column;gap:.65rem;flex:1;min-width:240px}
-.badge{display:flex;align-items:center;gap:.75rem;background:#fff;padding:.85rem 1.2rem;border-left:3px solid var(--orange);font-size:.86rem;font-weight:500}
+/* CONFIANCE */
+.conf{background:var(--f);padding:4rem 2.5rem}
+.conf-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:700px){.conf-inner{grid-template-columns:1fr;gap:2rem}}
+.conf-left h2{font-family:'Syne',sans-serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.conf-left p{margin-top:1rem;font-size:.88rem;color:var(--m);line-height:1.8;font-weight:300}
+.badges{display:flex;flex-direction:column;gap:.65rem}
+.badge{display:flex;align-items:center;gap:.85rem;background:var(--w);padding:.9rem 1.1rem}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--o);flex-shrink:0}
+.badge p{font-size:.83rem;font-weight:500}
 
-.cta-section{background:var(--orange);padding:5rem 3rem;text-align:center}
-.cta-section h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-.03em}
-.cta-section p{color:rgba(255,255,255,.75);margin-top:.7rem}
-.cta-section .btn-w{display:inline-block;background:#fff;color:var(--orange);font-weight:700;font-size:1rem;padding:.9rem 2.4rem;border-radius:4px;margin-top:2.5rem;font-family:'Syne',sans-serif;letter-spacing:-.01em}
-.cta-section .phone{display:block;color:rgba(255,255,255,.8);margin-top:1.25rem;font-size:.95rem}
+/* CTA */
+.cta{background:var(--o);padding:4.5rem 2.5rem;text-align:center}
+.cta h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:var(--w);letter-spacing:-.03em}
+.cta p{color:rgba(255,255,255,.7);margin:.7rem auto 0;max-width:380px;font-size:.9rem}
+.btn-w{display:inline-block;background:var(--w);color:var(--o);font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;padding:.9rem 2.25rem;border-radius:4px;margin-top:2.5rem;letter-spacing:-.01em}
+.cta-em{display:block;color:rgba(255,255,255,.65);font-size:.82rem;margin-top:1.1rem}
 
-footer{background:var(--dark);color:rgba(255,255,255,.35);padding:1.75rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem}
-footer strong{color:rgba(255,255,255,.8);font-family:'Syne',sans-serif}
+footer{background:var(--d);color:rgba(255,255,255,.3);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.75rem}
+footer strong{color:rgba(255,255,255,.7);font-family:'Syne',sans-serif}
+footer a{color:rgba(255,255,255,.3)}
 </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-logo">Martin<span>Plomberie</span></div>
-  <a href="tel:0612345678" class="nav-phone">06 12 34 56 78</a>
+  <div class="logo"><b>Martin</b> Plomberie</div>
+  <div class="nav-r">
+    <a href="#services">Prestations</a>
+    <a href="tel:0612345678" class="tel">06 12 34 56 78</a>
+  </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-bg-text">PLO<br/>MBE<br/>RIE</div>
-  <p class="hero-eyebrow">Plombier agréé — Finistère 29</p>
-  <h1 class="hero-title">Une fuite ?<br />On arrive.<br /><em>Aujourd'hui.</em></h1>
-  <p class="hero-sub">Intervention rapide dans les 2 heures. Travail soigné, prix annoncé à l'avance. Disponible week-end et jours fériés.</p>
-  <div class="hero-actions">
-    <a href="tel:0612345678" class="btn-orange">Appeler maintenant</a>
-    <a href="#services" class="btn-ghost">Nos prestations →</a>
-  </div>
-  <div class="hero-stats">
-    <div><div class="stat-num">18 ans</div><div class="stat-label">d'expérience</div></div>
-    <div><div class="stat-num">+800</div><div class="stat-label">chantiers réalisés</div></div>
-    <div><div class="stat-num">2 h</div><div class="stat-label">délai max garanti</div></div>
-    <div><div class="stat-num">Gratuit</div><div class="stat-label">devis sans engagement</div></div>
-  </div>
-</section>
-
-<section class="services" id="services">
-  <p class="section-label">Nos interventions</p>
-  <h2 class="section-title">De la fuite à la rénovation complète.</h2>
-  <div class="services-grid">
-    <div class="sc"><div class="sc-num">01</div><div class="sc-name">Dépannage urgent</div><div class="sc-desc">Fuite, canalisation bouchée, rupture de tuyau — on intervient le jour même, week-end compris.</div></div>
-    <div class="sc"><div class="sc-num">02</div><div class="sc-name">Sanitaires</div><div class="sc-desc">Pose de baignoire, douche, WC, évier. Remplacement de robinetterie. Devis offert.</div></div>
-    <div class="sc"><div class="sc-num">03</div><div class="sc-name">Chauffe-eau & chaudière</div><div class="sc-desc">Installation, entretien et remplacement. Thermodynamique, gaz, solaire.</div></div>
-    <div class="sc"><div class="sc-num">04</div><div class="sc-name">Rénovation salle de bain</div><div class="sc-desc">De la conception à la finition, on gère l'intégralité du chantier. Budget maîtrisé.</div></div>
+  <div class="hero-inner">
+    <p class="hero-tag">Plombier agréé — Finistère</p>
+    <h1>Votre plombier.<br /><em>Aujourd'hui.</em></h1>
+    <p class="hero-sub">Fuite, canalisation bouchée, chauffe-eau en panne — on intervient le jour même dans tout le Finistère. Prix annoncé avant chaque intervention.</p>
+    <div class="hero-btns">
+      <a href="tel:0612345678" class="btn-o">Appeler maintenant</a>
+      <a href="#contact" class="btn-g">Devis gratuit</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">18 ans</div><div class="stat-l">d'expérience</div></div>
+      <div class="stat"><div class="stat-n">+800</div><div class="stat-l">interventions</div></div>
+      <div class="stat"><div class="stat-n">2 h</div><div class="stat-l">délai garanti</div></div>
+      <div class="stat"><div class="stat-n">Gratuit</div><div class="stat-l">devis</div></div>
+    </div>
   </div>
 </section>
 
-<div class="trust">
-  <div class="trust-inner">
-    <div class="trust-text">
+<section class="s" id="services">
+  <div class="s-head">
+    <div><p class="eyebrow">Nos interventions</p><h2>De la fuite<br />à la rénovation.</h2></div>
+    <p>Particuliers et professionnels, urgence ou chantier planifié — on couvre tout le 29.</p>
+  </div>
+  <div class="s-grid">
+    <div class="sc"><div class="sc-num">01</div><h3>Dépannage urgent</h3><p>Fuite, rupture de canalisation, WC bouché. On intervient 7j/7 dans les 2 heures.</p></div>
+    <div class="sc"><div class="sc-num">02</div><h3>Sanitaires</h3><p>Pose de baignoire, douche, WC, lavabo. Remplacement de robinetterie toutes marques.</p></div>
+    <div class="sc"><div class="sc-num">03</div><h3>Chauffe-eau & chaudière</h3><p>Installation, entretien annuel, remplacement. Thermodynamique, gaz, solaire.</p></div>
+    <div class="sc"><div class="sc-num">04</div><h3>Rénovation salle de bain</h3><p>De la conception à la pose. Budget maîtrisé, délai tenu, résultat garanti.</p></div>
+  </div>
+</section>
+
+<section class="conf">
+  <div class="conf-inner">
+    <div class="conf-left">
+      <p class="eyebrow">Pourquoi nous choisir</p>
       <h2>Un artisan de confiance, pas un inconnu.</h2>
-      <p>Depuis 18 ans dans le Finistère, ma réputation repose sur une chose : quand je dis que j'arrive à 14h, j'arrive à 14h. Pas à 17h, pas le lendemain.</p>
+      <p>Depuis 18 ans dans le Finistère, ma réputation repose sur une règle : quand je dis que j'arrive à 14h, j'arrive à 14h. Pas à 17h, pas le lendemain.</p>
     </div>
     <div class="badges">
-      <div class="badge"><span>✓</span> Certifié RGE — travaux éligibles aux aides de l'État</div>
-      <div class="badge"><span>✓</span> Devis gratuit, prix fixé avant intervention</div>
-      <div class="badge"><span>✓</span> Rappel sous 30 minutes garanti</div>
-      <div class="badge"><span>✓</span> Garantie décennale assurée</div>
+      <div class="badge"><div class="badge-dot"></div><p>Certifié RGE — travaux éligibles aux aides</p></div>
+      <div class="badge"><div class="badge-dot"></div><p>Devis gratuit, prix fixé avant intervention</p></div>
+      <div class="badge"><div class="badge-dot"></div><p>Rappel sous 30 minutes garanti</p></div>
+      <div class="badge"><div class="badge-dot"></div><p>Garantie décennale assurée</p></div>
     </div>
   </div>
-</div>
+</section>
 
-<section class="cta-section">
-  <h2>Un projet à prévoir ?</h2>
-  <p>Devis gratuit, réponse sous 24h</p>
+<section class="cta" id="contact">
+  <h2>Un projet à nous confier ?</h2>
+  <p>Devis gratuit, réponse sous 24h. On se déplace gratuitement.</p>
   <a href="tel:0612345678" class="btn-w">06 12 34 56 78</a>
-  <span class="phone">ou : martin@plomberie-finistere.fr</span>
+  <span class="cta-em">ou martin@plomberie-finistere.fr</span>
 </section>
 
 <footer>
   <strong>Martin Plomberie</strong>
-  <span>Brest et alentours — Finistère 29</span>
-  <span>Réalisé par <a href="https://vegastudio.fr" style="color:rgba(255,255,255,.55)">Vega Studio</a></span>
+  <span>Brest & alentours — Finistère 29</span>
+  <a href="https://vegastudio.fr">Vega Studio</a>
 </footer>
 </body>
 </html>
