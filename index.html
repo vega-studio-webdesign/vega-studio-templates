@@ -10,14 +10,14 @@ body{font-family:'Inter',sans-serif;background:#EFEFED;color:#111;min-height:100
 a{text-decoration:none;color:inherit}
 
 /* TITRE */
-.page-title{padding:2.5rem 2.5rem 2rem;font-size:.88rem;font-weight:400;color:#888;letter-spacing:.01em}
+.page-title{padding:2.5rem 2.5rem 2rem;font-size:1.5rem;font-weight:500;color:#111;letter-spacing:-.02em;text-align:center}
 
 /* GRILLE */
 main{flex:1;padding:0 2.5rem 3rem}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1280px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:1280px;margin:0 auto}
 
 /* CARTE */
-.card{background:#fff;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s}
+.card{background:#fff;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s;cursor:pointer;color:inherit}
 .card:hover{box-shadow:0 6px 28px rgba(0,0,0,.1)}
 
 /* PREVIEW */
@@ -33,7 +33,7 @@ main{flex:1;padding:0 2.5rem 3rem}
 .dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.07);flex-shrink:0}
 
 /* FOOTER */
-footer{padding:.9rem 2.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:#aaa;flex-wrap:wrap;gap:.5rem}
+footer{padding:.9rem 2.5rem;display:flex;justify-content:center;align-items:center;font-size:.82rem;color:#aaa;flex-wrap:wrap;gap:1.75rem}
 footer a{color:#bbb;transition:color .2s}
 footer a:hover{color:#555}
 
@@ -48,10 +48,10 @@ footer a:hover{color:#555}
 <main>
   <div class="grid">
 
-    <div class="card">
-      <a class="preview" href="template-robuste.html" target="_blank">
+    <a class="card" href="template-robuste.html" target="_blank">
+      <div class="preview">
         <iframe src="template-robuste.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
-      </a>
+      </div>
       <div class="info">
         <p class="info-name">Robuste</p>
         <p class="info-desc">Fond sombre, orange vif. Direct et sans fioritures.</p>
@@ -60,6 +60,85 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#E8621A"></div>
           <div class="dot" style="background:#F4F1ED"></div>
         </div>
+      </div>
+    </a>
+
+    <a class="card" href="template-confiance.html" target="_blank">
+      <div class="preview">
+        <iframe src="template-confiance.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </div>
+      <div class="info">
+        <p class="info-name">Confiance</p>
+        <p class="info-desc">Bleu marine et jaune ambre. Professionnel et rassurant.</p>
+        <div class="info-colors">
+          <div class="dot" style="background:#1B3A5C"></div>
+          <div class="dot" style="background:#F59E0B"></div>
+          <div class="dot" style="background:#F0F4F8"></div>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="template-local.html" target="_blank">
+      <div class="preview">
+        <iframe src="template-local.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </div>
+      <div class="info">
+        <p class="info-name">Local Chaleureux</p>
+        <p class="info-desc">Vert forêt et terre cuite. Proximité et confiance humaine.</p>
+        <div class="info-colors">
+          <div class="dot" style="background:#1D4035"></div>
+          <div class="dot" style="background:#C4581D"></div>
+          <div class="dot" style="background:#F7F3EE"></div>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="template-direct.html" target="_blank">
+      <div class="preview">
+        <iframe src="template-direct.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </div>
+      <div class="info">
+        <p class="info-name">Direct</p>
+        <p class="info-desc">Noir et rouge vif. Editorial, tranche avec la concurrence.</p>
+        <div class="info-colors">
+          <div class="dot" style="background:#0A0A0A"></div>
+          <div class="dot" style="background:#D42B2B"></div>
+          <div class="dot" style="background:#F5F5F3"></div>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="template-premium.html" target="_blank">
+      <div class="preview">
+        <iframe src="template-premium.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </div>
+      <div class="info">
+        <p class="info-name">Premium</p>
+        <p class="info-desc">Sable et or, serif élégant. Pour les artisans haut de gamme.</p>
+        <div class="info-colors">
+          <div class="dot" style="background:#FAF8F5"></div>
+          <div class="dot" style="background:#B89050"></div>
+          <div class="dot" style="background:#1E1C1A"></div>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="template-clair.html" target="_blank">
+      <div class="preview">
+        <iframe src="template-clair.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+      </div>
+      <div class="info">
+        <p class="info-name">Clair</p>
+        <p class="info-desc">Blanc et bleu cobalt. Contemporain, aéré, très lisible.</p>
+        <div class="info-colors">
+          <div class="dot" style="background:#1A54BA"></div>
+          <div class="dot" style="background:#EEF3FC"></div>
+          <div class="dot" style="background:#F8F9FB"></div>
+        </div>
+      </div>
+    </a>
+
+  </div>
       </div>
     </div>
 
