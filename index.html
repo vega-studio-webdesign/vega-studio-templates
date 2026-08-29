@@ -3,51 +3,64 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Bibliothèque de templates — Vega Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:#EFEFED;color:#111;min-height:100vh;display:flex;flex-direction:column}
+body{font-family:'Inter',sans-serif;background:#EFEFED;color:#111;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 
+/* TITRE */
 .page-title{
-  padding:3rem 2.5rem 2.5rem;
+  padding:3.5rem 2.5rem 2.5rem;
   font-family:'Syne',sans-serif;
-  font-size:1.6rem;
-  font-weight:700;
-  letter-spacing:-.03em;
+  font-size:2.2rem;
+  font-weight:800;
+  letter-spacing:-.04em;
   text-align:center;
-  color:#1A1A1A;
+  color:#2E2A26;
 }
 
-main{flex:1;padding:0 2.5rem 3rem}
-
+/* GRILLE */
+main{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1rem 2.5rem 3rem;
+}
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:1rem;
+  gap:1.4rem;
   max-width:1100px;
-  margin:0 auto;
+  width:100%;
 }
 
+/* CARTE ENTIÈRE CLIQUABLE */
 .card{
   background:#fff;
-  border-radius:8px;
+  border-radius:10px;
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  transition:box-shadow .2s;
   cursor:pointer;
   color:inherit;
+  border:none;
+  transition:transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s cubic-bezier(.4,0,.2,1);
+  position:relative;
 }
-.card:hover{box-shadow:0 6px 28px rgba(0,0,0,.1)}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 48px rgba(0,0,0,.13);
+}
 
+/* PRÉVISUALISATION */
 .preview{
   position:relative;
   height:210px;
   overflow:hidden;
   flex-shrink:0;
   background:#e0e0de;
-  display:block;
 }
 .preview iframe{
   width:1440px;height:860px;
@@ -57,31 +70,84 @@ main{flex:1;padding:0 2.5rem 3rem}
   pointer-events:none;
   display:block;
 }
+/* Overlay hover : "Ouvrir →" */
+.preview-overlay{
+  position:absolute;inset:0;
+  background:rgba(20,18,16,0);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .28s;
+}
+.preview-label{
+  background:rgba(20,18,16,.88);
+  color:#fff;
+  font-size:.78rem;
+  font-weight:500;
+  padding:.5rem 1.1rem;
+  border-radius:999px;
+  letter-spacing:.02em;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .25s, transform .25s;
+}
+.card:hover .preview-overlay{background:rgba(20,18,16,.22)}
+.card:hover .preview-label{opacity:1;transform:translateY(0)}
 
-.info{padding:1rem 1.25rem 1.25rem;display:flex;flex-direction:column;gap:.4rem}
-.info-name{font-size:.9rem;font-weight:500;letter-spacing:-.01em}
+/* INFO */
+.info{padding:1rem 1.3rem 1.3rem;display:flex;flex-direction:column;gap:.4rem}
+.info-name{font-size:.92rem;font-weight:500;letter-spacing:-.01em;color:#1A1A1A}
 .info-desc{font-size:.75rem;color:#999;line-height:1.55;font-weight:300}
-.info-colors{display:flex;gap:.3rem;margin-top:.35rem}
+.info-colors{display:flex;gap:.3rem;margin-top:.4rem}
 .dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.07);flex-shrink:0}
 
+/* FOOTER */
 footer{
-  padding:1rem 2.5rem;
-  display:flex;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
   align-items:center;
-  gap:3rem;
+  padding:1.1rem 4rem;
   font-size:.82rem;
   color:#bbb;
-  flex-wrap:wrap;
+  border-top:1px solid rgba(0,0,0,.07);
 }
+footer .foot-left{justify-self:start}
+footer .foot-mid{justify-self:center}
+footer .foot-right{justify-self:end}
 footer a{color:#bbb;transition:color .2s}
 footer a:hover{color:#555}
+
+/* OVERLAY PLEIN ÉCRAN */
+#overlay{
+  position:fixed;inset:0;z-index:200;
+  background:#fff;
+  transform:translateY(100%);
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;
+}
+#overlay.open{transform:translateY(0);pointer-events:all}
+#overlay iframe{width:100%;height:100%;border:none;display:block}
+
+.close-btn{
+  position:fixed;top:1.25rem;right:1.5rem;z-index:201;
+  background:rgba(10,10,10,.8);color:#fff;
+  border:none;border-radius:999px;
+  padding:.5rem 1.1rem;
+  font-size:.82rem;font-weight:500;
+  font-family:'Inter',sans-serif;
+  cursor:pointer;letter-spacing:.02em;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s .15s, background .2s;
+  backdrop-filter:blur(4px);
+}
+.close-btn:hover{background:rgba(10,10,10,1)}
+#overlay.open ~ .close-btn{opacity:1;pointer-events:all}
 
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
   .grid{grid-template-columns:1fr}
-  .page-title{padding:1.75rem 1.25rem 1.25rem;font-size:1.3rem}
-  main{padding:0 1.25rem 2rem}
+  .page-title{font-size:1.6rem;padding:2rem 1.25rem 1.5rem}
+  main{padding:.5rem 1.25rem 2rem}
+  footer{grid-template-columns:1fr;gap:.35rem;text-align:center;padding:1rem 1.5rem}
+  footer .foot-left,.footer .foot-right{justify-self:center}
 }
 </style>
 </head>
@@ -92,9 +158,10 @@ footer a:hover{color:#555}
 <main>
   <div class="grid">
 
-    <a class="card" href="template-robuste.html" target="_blank">
+    <div class="card" onclick="openTemplate('template-robuste.html')">
       <div class="preview">
         <iframe src="template-robuste.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Robuste</p>
@@ -105,11 +172,12 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#F4F1ED"></div>
         </div>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="template-confiance.html" target="_blank">
+    <div class="card" onclick="openTemplate('template-confiance.html')">
       <div class="preview">
         <iframe src="template-confiance.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Confiance</p>
@@ -120,11 +188,12 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#F0F4F8"></div>
         </div>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="template-local.html" target="_blank">
+    <div class="card" onclick="openTemplate('template-local.html')">
       <div class="preview">
         <iframe src="template-local.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Local Chaleureux</p>
@@ -135,11 +204,12 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#F7F3EE"></div>
         </div>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="template-direct.html" target="_blank">
+    <div class="card" onclick="openTemplate('template-direct.html')">
       <div class="preview">
         <iframe src="template-direct.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Direct</p>
@@ -150,11 +220,12 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#F5F5F3"></div>
         </div>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="template-premium.html" target="_blank">
+    <div class="card" onclick="openTemplate('template-premium.html')">
       <div class="preview">
         <iframe src="template-premium.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Premium</p>
@@ -165,11 +236,12 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#1E1C1A"></div>
         </div>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="template-clair.html" target="_blank">
+    <div class="card" onclick="openTemplate('template-clair.html')">
       <div class="preview">
         <iframe src="template-clair.html" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        <div class="preview-overlay"><span class="preview-label">Ouvrir →</span></div>
       </div>
       <div class="info">
         <p class="info-name">Clair</p>
@@ -180,16 +252,40 @@ footer a:hover{color:#555}
           <div class="dot" style="background:#F8F9FB"></div>
         </div>
       </div>
-    </a>
+    </div>
 
   </div>
 </main>
 
 <footer>
-  <a href="https://vegastudio.fr/contact.html">Contact</a>
-  <span>© 2025 Vega Studio</span>
-  <a href="https://vegastudio.fr/mentions.html">Mentions légales</a>
+  <a class="foot-left" href="https://vegastudio.fr/contact.html">Contact</a>
+  <span class="foot-mid">© 2025 Vega Studio</span>
+  <a class="foot-right" href="https://vegastudio.fr/mentions.html">Mentions légales</a>
 </footer>
+
+<!-- Overlay plein écran -->
+<div id="overlay">
+  <iframe id="template-frame" src="" scrolling="yes"></iframe>
+</div>
+<button class="close-btn" onclick="closeTemplate()">← Retour</button>
+
+<script>
+function openTemplate(url) {
+  const overlay = document.getElementById('overlay');
+  const frame   = document.getElementById('template-frame');
+  frame.src = url;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTemplate() {
+  const overlay = document.getElementById('overlay');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { document.getElementById('template-frame').src = ''; }, 450);
+}
+// Fermer avec Echap
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeTemplate(); });
+</script>
 
 </body>
 </html>
