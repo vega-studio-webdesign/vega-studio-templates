@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Chez Leroy Peinture — Template Local</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#1D4035;--sage:#4A7C59;--cream:#F7F3EE;--terracotta:#C4581D;--dark:#1A1A1A;--muted:#6B6560;--white:#fff}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--dark)}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{background:var(--cream);border-bottom:1px solid rgba(0,0,0,.08);padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green)}
+.nav-logo small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.65rem;color:var(--muted);font-weight:400;letter-spacing:.08em;text-transform:uppercase;margin-top:-4px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.88rem;color:var(--muted)}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--terracotta);color:#fff;padding:.6rem 1.5rem;border-radius:3px;font-size:.9rem;font-weight:500}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:3fr 2fr;min-height:85vh;overflow:hidden}
+.hero-left{background:var(--green);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:2rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4rem);color:#fff;line-height:1.2}
+.hero-title em{font-style:italic;color:rgba(255,255,255,.65)}
+.hero-body{color:rgba(255,255,255,.6);font-size:.95rem;font-weight:300;line-height:1.8;margin-top:1.75rem;max-width:400px}
+.hero-actions{margin-top:3rem;display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.btn-terra{background:var(--terracotta);color:#fff;padding:.85rem 2rem;font-size:.95rem;font-weight:500;border-radius:3px;display:inline-block}
+.btn-tel{color:rgba(255,255,255,.7);font-size:.88rem;font-weight:400;display:flex;align-items:center;gap:.5rem}
+.hero-right{background:var(--sage);position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,#3D6B4A 0%,#1D4035 100%)}
+.hero-pattern{position:absolute;inset:0;opacity:.08;background-image:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.5) 30px,rgba(255,255,255,.5) 31px)}
+.hero-quote-block{position:absolute;bottom:3rem;left:2.5rem;right:2.5rem}
+.hero-quote{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.5}
+.hero-quote-author{margin-top:1rem;font-size:.78rem;color:rgba(255,255,255,.45);letter-spacing:.05em}
+.hero-years{position:absolute;top:3rem;right:2.5rem;text-align:right}
+.hero-years-num{font-family:'Playfair Display',serif;font-size:4rem;color:rgba(255,255,255,.15);line-height:1}
+.hero-years-label{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+
+/* PRESENTATION */
+.pres{padding:5rem 3rem;background:var(--white)}
+.pres-inner{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:center;max-width:1060px;margin:0 auto}
+.pres-photo{background:var(--cream);border-radius:4px;height:380px;position:relative;overflow:hidden}
+.pres-photo::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sage) 0%,var(--green) 100%);opacity:.7}
+.pres-photo::after{content:'"Artisan depuis 1997"';position:absolute;bottom:2rem;left:2rem;right:2rem;font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.85)}
+.pres-text .label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.75rem}
+.pres-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);color:var(--green);line-height:1.25}
+.pres-text p{margin-top:1.25rem;font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300}
+.pres-text p+p{margin-top:.75rem}
+.pres-sign{margin-top:2.5rem;font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--green)}
+
+/* SERVICES */
+.services{background:var(--cream);padding:5rem 3rem}
+.services-header{text-align:center;margin-bottom:3.5rem}
+.services-header .label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.75rem}
+.services-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);color:var(--green)}
+.services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1060px;margin:0 auto}
+.sl{background:var(--white);padding:2.25rem 1.75rem;border-radius:4px;border-bottom:3px solid var(--terracotta)}
+.sl-icon{width:40px;height:40px;background:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.25rem}
+.sl h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--green);margin-bottom:.6rem}
+.sl p{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* GARANTIES */
+.guarantees{background:var(--green);padding:4rem 3rem}
+.g-inner{max-width:1060px;margin:0 auto}
+.g-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);color:#fff;text-align:center;margin-bottom:2.5rem;font-style:italic}
+.g-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.g-item{text-align:center}
+.g-num{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--terracotta)}
+.g-label{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem;letter-spacing:.03em}
+
+/* CTA */
+.cta{padding:5rem 3rem;background:var(--cream);text-align:center}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);color:var(--green)}
+.cta p{color:var(--muted);margin-top:.75rem;font-size:.95rem}
+.cta-btns{display:flex;justify-content:center;gap:1.5rem;margin-top:2.5rem;flex-wrap:wrap}
+.btn-green{background:var(--green);color:#fff;padding:.9rem 2.25rem;border-radius:3px;font-size:.95rem;font-weight:500}
+
+footer{background:var(--dark);color:rgba(255,255,255,.4);padding:1.75rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem}
+footer .foot-logo{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(255,255,255,.75)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Chez Leroy Peinture<small>Artisan peintre — depuis 1997</small></div>
+  <div class="nav-links">
+    <a href="#presentation">Qui je suis</a>
+    <a href="#services">Prestations</a>
+    <a href="#contact">Me contacter</a>
+  </div>
+  <a href="tel:0634567890" class="nav-cta">06 34 56 78 90</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Peintre artisan — Gironde 33</p>
+    <h1 class="hero-title">Un peintre<br />qui connaît<br /><em>son métier.</em></h1>
+    <p class="hero-body">Depuis 27 ans, je fais de la peinture de qualité — intérieure, extérieure, enduits, ravalement. Pas de sous-traitance, je viens moi-même.</p>
+    <div class="hero-actions">
+      <a href="tel:0634567890" class="btn-terra">Demander un devis gratuit</a>
+      <span class="btn-tel">📞 06 34 56 78 90 — rappel sous 2h</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-years"><div class="hero-years-num">27</div><div class="hero-years-label">ans de métier</div></div>
+    <div class="hero-quote-block">
+      <p class="hero-quote">« Je fais ce métier parce que je l'aime. Chaque chantier est différent, chaque client mérite le meilleur résultat. »</p>
+      <p class="hero-quote-author">— Marc Leroy, artisan peintre</p>
+    </div>
+  </div>
+</section>
+
+<section class="pres" id="presentation">
+  <div class="pres-inner">
+    <div class="pres-photo"></div>
+    <div class="pres-text">
+      <p class="label">Qui je suis</p>
+      <h2>Un artisan local, pas une entreprise anonyme.</h2>
+      <p>Je m'appelle Marc Leroy. J'ai débuté comme apprenti peintre à 17 ans à Bordeaux. J'ai travaillé pour de grandes entreprises du bâtiment avant de m'installer à mon compte en 2005.</p>
+      <p>Aujourd'hui, je travaille en Gironde et dans les Landes, principalement pour des particuliers qui veulent un résultat durable et soigné. Je travaille seul — ou avec un compagnon de confiance pour les grands chantiers.</p>
+      <p>Quand je donne un devis, c'est le prix final. Pas de mauvaises surprises.</p>
+      <div class="pres-sign">Marc Leroy</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <p class="label">Mes prestations</p>
+    <h2>Ce que je sais faire, et que je fais bien.</h2>
+  </div>
+  <div class="services-list">
+    <div class="sl"><div class="sl-icon">🖌️</div><h3>Peinture intérieure</h3><p>Plafonds, murs, boiseries. Préparation soignée des surfaces, finitions impeccables. Peintures haute durabilité.</p></div>
+    <div class="sl"><div class="sl-icon">🏠</div><h3>Façades & ravalement</h3><p>Nettoyage, réparation des fissures, peinture façade ou enduit projeté. Aspect garanti 10 ans.</p></div>
+    <div class="sl"><div class="sl-icon">🪟</div><h3>Enduits décoratifs</h3><p>Béton ciré, tadelakt, enduit à la chaux, stucco — pour une touche unique dans vos intérieurs.</p></div>
+    <div class="sl"><div class="sl-icon">🛡️</div><h3>Imperméabilisation</h3><p>Traitement des murs humides, sous-sol, cave. Protection durable contre les remontées capillaires.</p></div>
+    <div class="sl"><div class="sl-icon">🪑</div><h3>Papier peint</h3><p>Pose de toutes natures de revêtements muraux : papier peint, vinyle, tissu, panoramiques.</p></div>
+    <div class="sl"><div class="sl-icon">✨</div><h3>Rénovation complète</h3><p>Gestion de chantier de A à Z pour vos travaux de rénovation intérieure. Coordination avec les autres corps de métier.</p></div>
+  </div>
+</section>
+
+<div class="guarantees">
+  <div class="g-inner">
+    <p class="g-title">Pourquoi me choisir ?</p>
+    <div class="g-grid">
+      <div class="g-item"><div class="g-num">27 ans</div><div class="g-label">d'expérience</div></div>
+      <div class="g-item"><div class="g-num">100%</div><div class="g-label">travail personnel</div></div>
+      <div class="g-item"><div class="g-num">Gratuit</div><div class="g-label">devis détaillé</div></div>
+      <div class="g-item"><div class="g-num">10 ans</div><div class="g-label">garantie façade</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="cta" id="contact">
+  <h2>Un chantier à me confier ?</h2>
+  <p>Je me déplace gratuitement pour établir votre devis. Sous 48h.</p>
+  <div class="cta-btns">
+    <a href="tel:0634567890" class="btn-green">Appeler Marc — 06 34 56 78 90</a>
+    <a href="mailto:marc@leroy-peinture.fr" class="btn-terra">Envoyer un message</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Chez Leroy Peinture</div>
+  <span>Gironde et Landes — Auto-entrepreneur</span>
+  <span>Réalisé par <a href="https://vegastudio.fr" style="color:rgba(255,255,255,.5)">Vega Studio</a></span>
+</footer>
+</body>
+</html>

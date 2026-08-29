@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Templates — Vega Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0B0C10;--bg2:#0F1117;--line:rgba(238,238,245,.08);--purple:#8B7CF6;--lilac:#C4B8FF;--white:#EEEEF5;--muted:rgba(238,238,245,.5)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;padding:4rem 2rem}
+a{text-decoration:none;color:inherit}
+
+header{max-width:900px;margin:0 auto 4rem;border-bottom:1px solid var(--line);padding-bottom:2.5rem}
+.brand{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1.25rem}
+h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+header p{margin-top:.85rem;font-size:.92rem;color:var(--muted);font-weight:300;max-width:480px;line-height:1.7}
+
+.grid{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.card{background:var(--bg2);padding:2rem 2.25rem;display:flex;align-items:center;gap:3rem;transition:background .2s}
+.card:hover{background:#141620}
+.card-meta{flex:1;min-width:0}
+.card-tag{font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem}
+.card-name{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.4rem}
+.card-desc{font-size:.83rem;color:var(--muted);font-weight:300;line-height:1.6}
+.card-colors{display:flex;gap:.35rem;margin-top:.9rem}
+.dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
+.card-link{flex-shrink:0;border:1px solid rgba(238,238,245,.18);color:var(--white);font-size:.8rem;font-weight:500;padding:.6rem 1.35rem;border-radius:6px;transition:all .2s;white-space:nowrap}
+.card-link:hover{border-color:var(--purple);background:rgba(139,124,246,.1);color:var(--lilac)}
+
+footer{max-width:900px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a{color:var(--purple)}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="brand">Vega Studio — Bibliothèque de templates</p>
+  <h1>Nos modèles de sites<br />pour artisans.</h1>
+  <p>5 styles différents, chacun adapté à un type d'artisan. Cliquez sur un template pour le voir en taille réelle.</p>
+</header>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-meta">
+      <p class="card-tag">Plombier · Électricien · BTP</p>
+      <p class="card-name">Robuste</p>
+      <p class="card-desc">Fond sombre, orange vif, typographie ultra-bold. Direct, disponible, sans fioritures. Idéal pour les artisans qui veulent montrer leur efficacité.</p>
+      <div class="card-colors">
+        <div class="dot" style="background:#1A1A1A"></div>
+        <div class="dot" style="background:#E8621A"></div>
+        <div class="dot" style="background:#F4F1ED"></div>
+      </div>
+    </div>
+    <a href="template-robuste.html" target="_blank" class="card-link">Voir le template →</a>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">
+      <p class="card-tag">Électricien · Plombier · Multi-services</p>
+      <p class="card-name">Confiance</p>
+      <p class="card-desc">Bleu marine et jaune ambre, hero en 2 colonnes, formulaire de contact intégré. Professionnel et rassurant — pour les artisans qui veulent une image sérieuse.</p>
+      <div class="card-colors">
+        <div class="dot" style="background:#1B3A5C"></div>
+        <div class="dot" style="background:#F59E0B"></div>
+        <div class="dot" style="background:#F0F4F8"></div>
+      </div>
+    </div>
+    <a href="template-confiance.html" target="_blank" class="card-link">Voir le template →</a>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">
+      <p class="card-tag">Peintre · Plâtrier · Artisan local</p>
+      <p class="card-name">Local Chaleureux</p>
+      <p class="card-desc">Vert forêt, terre cuite, typographie serif. Ton personnel, signature de l'artisan, ancrage local fort. Pour ceux qui misent sur la proximité et la confiance humaine.</p>
+      <div class="card-colors">
+        <div class="dot" style="background:#1D4035"></div>
+        <div class="dot" style="background:#C4581D"></div>
+        <div class="dot" style="background:#F7F3EE"></div>
+      </div>
+    </div>
+    <a href="template-local.html" target="_blank" class="card-link">Voir le template →</a>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">
+      <p class="card-tag">Maçon · Charpentier · Gros œuvre</p>
+      <p class="card-name">Direct</p>
+      <p class="card-desc">Noir total, rouge vif, mise en page éditoriale. Titre massif, liste de services sobre. Pour les artisans qui veulent trancher radicalement avec la concurrence.</p>
+      <div class="card-colors">
+        <div class="dot" style="background:#0A0A0A"></div>
+        <div class="dot" style="background:#D42B2B"></div>
+        <div class="dot" style="background:#F5F5F3"></div>
+      </div>
+    </div>
+    <a href="template-direct.html" target="_blank" class="card-link">Voir le template →</a>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">
+      <p class="card-tag">Menuisier · Cuisiniste · Haut de gamme</p>
+      <p class="card-name">Premium</p>
+      <p class="card-desc">Sable, or, Cormorant Garamond, beaucoup d'espace. Pour les artisans qui travaillent sur des projets importants et veulent inspirer confiance à des clients exigeants.</p>
+      <div class="card-colors">
+        <div class="dot" style="background:#FAF8F5"></div>
+        <div class="dot" style="background:#B89050"></div>
+        <div class="dot" style="background:#1E1C1A"></div>
+      </div>
+    </div>
+    <a href="template-premium.html" target="_blank" class="card-link">Voir le template →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>Vega Studio — Agence web pour artisans</span>
+  <a href="https://vegastudio.fr">vegastudio.fr</a>
+</footer>
+
+</body>
+</html>

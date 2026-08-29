@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Dubois Électricité — Template Confiance</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B3A5C;--blue:#2563A8;--yellow:#F59E0B;--light:#F0F4F8;--white:#fff;--dark:#111827;--muted:#6B7280}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark)}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{background:#fff;border-bottom:1px solid #E5EAF0;padding:.8rem 3rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.nav-logo{display:flex;align-items:center;gap:.75rem}
+.nav-logo-icon{width:36px;height:36px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.nav-logo-icon svg{stroke:#fff}
+.nav-logo-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--navy)}
+.nav-logo-text small{display:block;font-family:'DM Sans',sans-serif;font-size:.65rem;color:var(--muted);font-weight:400;letter-spacing:.05em;text-transform:uppercase;margin-top:-2px}
+.nav-center{display:flex;gap:2.5rem}
+.nav-center a{font-size:.88rem;color:var(--muted);font-weight:400;transition:color .2s}
+.nav-center a:hover{color:var(--navy)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.urgence-badge{background:#FEF3C7;color:#92400E;font-size:.72rem;font-weight:600;padding:.3rem .75rem;border-radius:999px;letter-spacing:.03em}
+.nav-phone{background:var(--navy);color:#fff;padding:.55rem 1.25rem;border-radius:6px;font-size:.9rem;font-weight:500}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:88vh}
+.hero-left{background:var(--navy);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.hero-tag{font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);background:rgba(245,158,11,.12);padding:.35rem .8rem;border-radius:3px;display:inline-block;margin-bottom:2rem}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.5rem);color:#fff;line-height:1.15;margin-bottom:1.5rem}
+.hero-title em{font-style:normal;color:var(--yellow)}
+.hero-body{color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.75;max-width:420px;font-weight:300}
+.hero-ctas{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--yellow);color:#fff;padding:.85rem 1.75rem;border-radius:6px;font-size:.95rem;font-weight:600}
+.btn-outline{border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);padding:.85rem 1.75rem;border-radius:6px;font-size:.95rem}
+.hero-right{background:var(--light);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem}
+.hero-photo-placeholder{position:absolute;inset:0;background:linear-gradient(135deg,#C8D8EC 0%,#8FADC8 60%,#5A7FA3 100%)}
+.hero-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,92,.7) 0%,transparent 60%)}
+.hero-card{position:relative;z-index:2;background:#fff;border-radius:10px;padding:1.5rem;box-shadow:0 8px 40px rgba(0,0,0,.15)}
+.hero-card-title{font-size:.75rem;color:var(--muted);font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.75rem}
+.hero-card-stat{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--navy)}
+.hero-card-stat span{font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--muted);font-weight:400}
+.hero-card-line{width:100%;height:1px;background:#eee;margin:.75rem 0}
+.hero-card-row{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0}
+
+/* SERVICES */
+.services{padding:5rem 3rem;background:var(--white)}
+.services-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;gap:2rem;flex-wrap:wrap}
+.services-header h2{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3vw,2.5rem);color:var(--navy);line-height:1.2}
+.services-header p{font-size:.9rem;color:var(--muted);max-width:320px;line-height:1.7}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc{border:1.5px solid #E5EAF0;border-radius:10px;padding:2rem;transition:border-color .2s,box-shadow .2s}
+.svc:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(37,99,168,.08)}
+.svc-icon{width:44px;height:44px;background:var(--light);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.25rem}
+.svc h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
+.svc p{font-size:.85rem;color:var(--muted);line-height:1.65}
+
+/* TEMOIGNAGE */
+.testi-strip{background:var(--navy);padding:4rem 3rem;display:flex;gap:3rem;align-items:center;flex-wrap:wrap}
+.testi-text{flex:1;min-width:260px}
+.testi-text blockquote{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,2vw,1.6rem);color:#fff;line-height:1.45;font-style:italic}
+.testi-text cite{display:block;margin-top:1.25rem;font-size:.82rem;color:rgba(255,255,255,.5);font-style:normal}
+.testi-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.ts{text-align:center}
+.ts-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--yellow)}
+.ts-label{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:.2rem}
+
+/* CONTACT */
+.contact{padding:5rem 3rem;background:var(--light)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-left h2{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);color:var(--navy);line-height:1.2}
+.contact-left p{margin-top:1rem;font-size:.9rem;color:var(--muted);line-height:1.75}
+.contact-items{margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+.ci{display:flex;align-items:center;gap:.85rem;font-size:.9rem}
+.ci-icon{width:40px;height:40px;background:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{stroke:#fff}
+.ci-label{font-size:.72rem;color:var(--muted);margin-bottom:.1rem}
+.ci-val{color:var(--navy);font-weight:500}
+.contact-form{background:#fff;border-radius:12px;padding:2.5rem;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-field label{font-size:.75rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.form-field input,.form-field textarea,.form-field select{border:1.5px solid #E5EAF0;border-radius:7px;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--dark);outline:none;transition:border-color .2s}
+.form-field input:focus,.form-field textarea:focus{border-color:var(--blue)}
+.form-field textarea{resize:none;height:100px}
+.btn-submit{background:var(--navy);color:#fff;width:100%;padding:.9rem;border-radius:7px;font-size:.95rem;font-weight:600;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+footer{background:var(--dark);color:rgba(255,255,255,.4);padding:1.75rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.8rem}
+footer strong{color:rgba(255,255,255,.85);font-family:'DM Serif Display',serif}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-icon"><svg width="18" height="18" fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <div class="nav-logo-text">Dubois Électricité<small>Électricien certifié</small></div>
+  </div>
+  <nav class="nav-center">
+    <a href="#services">Prestations</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Devis gratuit</a>
+  </nav>
+  <div class="nav-right">
+    <span class="urgence-badge">Urgence 24h/7j</span>
+    <a href="tel:0623456789" class="nav-phone">06 23 45 67 89</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Électricien agréé — Loire-Atlantique</span>
+    <h1 class="hero-title">L'électricité de votre maison,<br />entre de <em>bonnes mains.</em></h1>
+    <p class="hero-body">Tableau électrique, installation complète, mise aux normes, dépannage — je m'occupe de tout, en toute sécurité. Devis gratuit sous 24h.</p>
+    <div class="hero-ctas">
+      <a href="tel:0623456789" class="btn-primary">Appeler maintenant</a>
+      <a href="#contact" class="btn-outline">Devis gratuit</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-placeholder"></div>
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-card">
+      <div class="hero-card-title">Disponibilité aujourd'hui</div>
+      <div class="hero-card-stat">3 <span>créneaux libres</span></div>
+      <div class="hero-card-line"></div>
+      <div class="hero-card-row"><div class="dot"></div> Intervention possible aujourd'hui</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <h2>Tout ce qu'un<br />électricien doit savoir faire.</h2>
+    <p>Particuliers et professionnels, petits dépannages ou chantiers complets — j'interviens sur tout le 44.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc"><div class="svc-icon">⚡</div><h3>Mise aux normes</h3><p>Tableau électrique, mise à la terre, diagnostic complet. Certificat de conformité délivré.</p></div>
+    <div class="svc"><div class="svc-icon">🔌</div><h3>Installation neuve</h3><p>Construction, rénovation — câblage complet, prises, éclairage, domotique.</p></div>
+    <div class="svc"><div class="svc-icon">🔧</div><h3>Dépannage</h3><p>Panne, court-circuit, disjoncteur qui saute — on identifie et on règle le problème vite.</p></div>
+    <div class="svc"><div class="svc-icon">☀️</div><h3>Panneaux solaires</h3><p>Installation et raccordement de panneaux photovoltaïques. Dossier ENEDIS géré.</p></div>
+    <div class="svc"><div class="svc-icon">🏠</div><h3>Domotique</h3><p>Volets, portail, alarme, éclairage connecté. On pilote tout depuis votre téléphone.</p></div>
+    <div class="svc"><div class="svc-icon">🏢</div><h3>Local commercial</h3><p>Mise aux normes ERP, installation comptoir, éclairage professionnel, enseigne.</p></div>
+  </div>
+</section>
+
+<div class="testi-strip">
+  <div class="testi-text">
+    <blockquote>« Dubois a refait l'intégralité du tableau électrique de ma maison. Propre, rapide, et il a tout expliqué. Je recommande sans hésiter. »</blockquote>
+    <cite>— Sophie M., Nantes (44)</cite>
+  </div>
+  <div class="testi-stats">
+    <div class="ts"><div class="ts-num">12 ans</div><div class="ts-label">d'expérience</div></div>
+    <div class="ts"><div class="ts-num">+600</div><div class="ts-label">clients</div></div>
+    <div class="ts"><div class="ts-num">4.9★</div><div class="ts-label">Google</div></div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <h2>Parlons de votre projet.</h2>
+      <p>Décrivez votre besoin, je vous rappelle sous 24h avec un devis clair. Gratuit, sans engagement, sans surprise.</p>
+      <div class="contact-items">
+        <div class="ci">
+          <div class="ci-icon"><svg width="16" height="16" fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.8 19.8 0 013.07 8.81 19.8 19.8 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16h0v.92z"/></svg></div>
+          <div><div class="ci-label">Téléphone</div><div class="ci-val">06 23 45 67 89</div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon"><svg width="16" height="16" fill="none" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
+          <div><div class="ci-label">Email</div><div class="ci-val">dubois@elec-44.fr</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-field"><label>Prénom</label><input type="text" placeholder="Jean"/></div>
+        <div class="form-field"><label>Nom</label><input type="text" placeholder="Dupont"/></div>
+      </div>
+      <div class="form-field"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"/></div>
+      <div class="form-field"><label>Type de travaux</label>
+        <select><option>Choisir...</option><option>Dépannage urgent</option><option>Mise aux normes</option><option>Installation neuve</option><option>Autre</option></select>
+      </div>
+      <div class="form-field"><label>Message</label><textarea placeholder="Décrivez votre besoin..."></textarea></div>
+      <button class="btn-submit">Envoyer la demande</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Dubois Électricité</strong>
+  <span>Loire-Atlantique (44) — SIRET 123 456 789 00012</span>
+  <span>Réalisé par <a href="https://vegastudio.fr" style="color:rgba(255,255,255,.5)">Vega Studio</a></span>
+</footer>
+</body>
+</html>
