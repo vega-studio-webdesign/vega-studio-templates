@@ -81,14 +81,7 @@ main {
   transform-origin: top center;
   pointer-events: none;
 }
-@supports (width: 1px) {
-  @media(max-width:1000px){
-    .preview iframe { scale: 0.195; }
-  }
-  @media(max-width:700px){
-    .preview iframe { scale: 0.13; }
-  }
-}
+
 
 .info { padding: 1rem 1.3rem 1.3rem; display: flex; flex-direction: column; gap: .4rem; }
 .info-name { font-size: .92rem; font-weight: 500; letter-spacing: -.01em; color: #1A1A1A; }
@@ -228,5 +221,19 @@ footer a:hover { color: #555; }
   <a class="foot-right" href="https://vegastudio.fr/mentions.html">Mentions légales</a>
 </footer>
 
+<script>
+function updatePreviewScales() {
+  const iframes = document.querySelectorAll('.preview iframe');
+  iframes.forEach(iframe => {
+    const preview = iframe.parentElement;
+    const cardWidth = preview.offsetWidth;
+    const scale = Math.min(cardWidth / 1440, 1);
+    iframe.style.transform = `translateX(-50%) scale(${scale})`;
+  });
+}
+
+updatePreviewScales();
+window.addEventListener('resize', updatePreviewScales);
+</script>
 </body>
 </html>
