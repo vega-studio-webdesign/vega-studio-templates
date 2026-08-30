@@ -3,188 +3,352 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Dubois Électricité</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--n:#1B3A5C;--b:#2660AA;--y:#F5A623;--l:#EEF4FB;--w:#fff;--d:#111827;--m:#6B7280;--bd:#E5E9F0}
-body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--d)}
+:root{
+  --navy:#1B3A5C;--blue:#2660AA;--amber:#F5A623;--light:#EEF4FB;
+  --white:#fff;--dark:#111827;--muted:#6B7280;--border:#E5E9F0
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-nav{background:var(--w);border-bottom:1px solid var(--bd);padding:.9rem 2.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.logo{display:flex;align-items:center;gap:.65rem}
-.logo-ic{width:34px;height:34px;background:var(--n);border-radius:6px;display:grid;place-items:center;color:var(--w);font-size:.9rem}
-.logo-t{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--n);line-height:1}
-.logo-s{font-size:.62rem;color:var(--m);font-family:'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.nav-r{display:flex;align-items:center;gap:1rem}
-.urgence{background:#FEF3C7;color:#92400E;font-size:.7rem;font-weight:600;padding:.3rem .75rem;border-radius:999px}
-.tel{background:var(--n);color:var(--w);padding:.52rem 1.2rem;border-radius:6px;font-size:.85rem;font-weight:500}
-@media(max-width:600px){.urgence{display:none}}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:60px;
+  background:var(--white);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+}
+.logo{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.logo-icon{width:36px;height:36px;background:var(--navy);border-radius:8px;display:grid;place-items:center;color:var(--white);font-weight:600;font-size:.9rem}
+.logo-text{font-family:'DM Serif Display',serif;font-size:1.08rem;font-weight:600;color:var(--navy);line-height:1}
+.nav-center{display:flex;gap:2rem;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-center a{font-size:.88rem;color:var(--muted);transition:color .2s}
+.nav-center a:hover{color:var(--dark)}
+.nav-right{display:flex;align-items:center;gap:1.2rem;flex-shrink:0}
+.urgence{background:#FEF3C7;color:#92400E;font-size:.7rem;font-weight:600;padding:.35rem .9rem;border-radius:20px}
+.btn-call{background:var(--navy);color:var(--white);font-size:.88rem;font-weight:600;padding:.55rem 1.3rem;border-radius:8px;transition:background .2s}
+.btn-call:hover{background:var(--blue)}
+
+.burger{display:none;flex-direction:column;width:28px;height:28px;background:none;border:none;cursor:pointer;gap:5px}
+.burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mob-menu{display:none;position:fixed;top:60px;left:0;right:0;z-index:199;background:var(--white);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.mob-menu.open{max-height:420px}
+.mob-menu a{display:block;padding:1.1rem 2.5rem;font-size:.95rem;color:var(--muted);border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mob-menu a:hover{color:var(--dark);background:var(--light)}
+.mob-menu .mob-cta{background:var(--navy);color:var(--white);text-align:center;font-weight:600;margin:1rem 1.5rem;padding:.8rem;border-radius:8px;border:none}
 
 /* HERO */
-.hero{background:var(--n);padding:5rem 2.5rem 0;display:flex;flex-direction:column}
-@media(min-width:800px){.hero{flex-direction:row;padding:0;min-height:85vh}}
-.hero-l{padding:5rem 3rem 5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;flex:1}
-@media(min-width:800px){.hero-l{max-width:520px}}
-.hero-tag{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--y);background:rgba(245,166,35,.12);padding:.32rem .8rem;border-radius:3px;display:inline-block;margin-bottom:2rem}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3.6rem);color:var(--w);line-height:1.15}
-h1 em{font-style:italic;color:var(--y)}
-.hero-body{color:rgba(255,255,255,.6);font-size:.92rem;line-height:1.8;margin-top:1.5rem;font-weight:300;max-width:400px}
-.hero-ctas{margin-top:2.5rem;display:flex;gap:.75rem;flex-wrap:wrap}
-.btn-y{background:var(--y);color:var(--w);padding:.85rem 1.75rem;border-radius:6px;font-size:.9rem;font-weight:600}
-.btn-out{border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);padding:.85rem 1.75rem;border-radius:6px;font-size:.9rem}
-.hero-r{flex:1;background:var(--b);position:relative;min-height:320px;overflow:hidden;display:flex;align-items:flex-end;padding:2.5rem}
-.hero-r::before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,#2A6BC8 0%,#1B3A5C 100%)}
-.hero-r::after{content:'⚡';position:absolute;right:2rem;top:2rem;font-size:8rem;opacity:.06}
-.hero-card{position:relative;z-index:1;background:var(--w);border-radius:10px;padding:1.5rem;width:100%;max-width:320px;box-shadow:0 12px 48px rgba(0,0,0,.18)}
-.hc-label{font-size:.68rem;color:var(--m);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem}
-.hc-stat{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--n)}
-.hc-sub{font-size:.78rem;color:var(--m);margin-top:.25rem}
-.hc-div{border-top:1px solid var(--bd);margin:.9rem 0}
-.hc-row{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--m)}
-.dot-g{width:8px;height:8px;border-radius:50%;background:#22C55E}
+.hero{
+  margin-top:60px;background:var(--navy);min-height:92vh;
+  padding:3.5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(245,166,35,.08) 0,transparent 65%);pointer-events:none}
+
+.hero-inner{width:100%;max-width:920px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center}
+
+.hero-left h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);color:var(--white);line-height:1.15;font-weight:400}
+.hero-left h1 em{font-style:italic;color:var(--amber)}
+.hero-left p{margin-top:1.3rem;font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;font-weight:300;max-width:420px}
+.hero-btns{margin-top:2.2rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-amber{background:var(--amber);color:var(--white);padding:.8rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:600;transition:transform .2s,box-shadow .2s}
+.btn-amber:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,.25)}
+.btn-white{border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);padding:.8rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:600;transition:border-color .2s,color .2s}
+.btn-white:hover{border-color:rgba(255,255,255,.6);color:var(--white)}
+
+.hero-card{background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 12px 40px rgba(0,0,0,.16);display:flex;flex-direction:column;gap:1.3rem}
+.hc-stat{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--navy);font-weight:400;line-height:1}
+.hc-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.hc-row{display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted)}
+.dot-green{width:8px;height:8px;border-radius:50%;background:#22C55E}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-card{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+}
+@media(max-width:768px){
+  nav{padding:0 1.5rem}
+  .nav-center,.urgence{display:none}
+  .burger{display:flex}
+  .mob-menu{display:block}
+  
+  .hero{padding:2.5rem 1.5rem;min-height:auto}
+  .hero-left h1{font-size:clamp(1.8rem,8vw,2.8rem)}
+  .hero-btns{flex-direction:column;gap:.6rem}
+  .btn-amber,.btn-white{width:100%}
+  .hero-card{grid-template-columns:1fr}
+}
 
 /* SERVICES */
-.svcs{padding:4.5rem 2.5rem;background:var(--w)}
-.s-head{margin-bottom:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end}
-@media(max-width:600px){.s-head{grid-template-columns:1fr}}
-.eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:.5rem}
-.s-head h2{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--n);line-height:1.2}
-.s-head p{font-size:.88rem;color:var(--m);line-height:1.75;font-weight:300;align-self:end}
-.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-@media(max-width:700px){.sg{grid-template-columns:1fr}}
-.sc{padding:1.75rem;border:1.5px solid var(--bd);border-radius:10px;transition:border-color .2s,box-shadow .2s}
-.sc:hover{border-color:var(--b);box-shadow:0 4px 24px rgba(38,96,170,.08)}
-.sc-ic{width:42px;height:42px;background:var(--l);border-radius:8px;display:grid;place-items:center;font-size:1.2rem;margin-bottom:1.1rem}
-.sc h3{font-size:.95rem;font-weight:600;color:var(--n);margin-bottom:.4rem}
-.sc p{font-size:.82rem;color:var(--m);line-height:1.65;font-weight:300}
+.services{padding:5rem 2.5rem;background:var(--white)}
+.s-top{margin-bottom:3.5rem;display:grid;grid-template-columns:2fr 1.3fr;gap:3rem;align-items:end}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+.s-top h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
+.s-top p{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300}
 
-/* TESTI */
-.testi{background:var(--n);padding:4rem 2.5rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc-card{padding:2rem;border:1.5px solid var(--border);border-radius:12px;transition:border-color .25s,box-shadow .25s,transform .25s}
+.svc-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(38,96,170,.12);transform:translateY(-3px)}
+.svc-icon{width:44px;height:44px;background:var(--light);border-radius:10px;display:grid;place-items:center;font-size:1.3rem;margin-bottom:1.2rem}
+.svc-card h3{font-size:.98rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
+.svc-card p{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+@media(max-width:900px){
+  .s-top{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .services{padding:3.5rem 1.5rem}
+  .svc-grid{grid-template-columns:1fr}
+}
+
+/* TESTIMONIALS */
+.testi{background:var(--navy);padding:5rem 2.5rem;color:var(--white)}
 .testi-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:4rem;align-items:center}
-@media(max-width:700px){.testi-inner{grid-template-columns:1fr;gap:2rem}}
-blockquote{font-family:'DM Serif Display',serif;font-size:clamp(1.15rem,2.5vw,1.55rem);color:var(--w);line-height:1.5;font-style:italic}
-cite{display:block;margin-top:1.25rem;font-size:.78rem;color:rgba(255,255,255,.45);font-style:normal}
-.testi-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.ts{border-left:2px solid rgba(245,166,35,.4);padding-left:1.1rem}
-.ts-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--y)}
-.ts-l{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem}
+blockquote{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--white);line-height:1.6;font-style:italic;font-weight:400}
+cite{display:block;margin-top:1.3rem;font-size:.8rem;color:rgba(255,255,255,.5);font-style:normal}
+.testi-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem}
+.stat{border-left:2px solid rgba(245,166,35,.4);padding-left:1.2rem}
+.stat-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--amber);font-weight:400;line-height:1}
+.stat-label{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.3rem;text-transform:uppercase}
+
+@media(max-width:800px){
+  .testi-inner{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:600px){
+  .testi{padding:3.5rem 1.5rem}
+}
 
 /* CONTACT */
-.contact{padding:4.5rem 2.5rem;background:var(--l)}
-.contact-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem}
-@media(max-width:700px){.contact-inner{grid-template-columns:1fr}}
-.cl h2{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);color:var(--n);line-height:1.25}
-.cl p{margin-top:1rem;font-size:.88rem;color:var(--m);line-height:1.75;font-weight:300}
-.ci-list{margin-top:2rem;display:flex;flex-direction:column;gap:.85rem}
-.ci{display:flex;align-items:center;gap:.85rem}
-.ci-ic{width:38px;height:38px;background:var(--n);border-radius:8px;display:grid;place-items:center;flex-shrink:0;color:var(--w);font-size:.9rem}
-.ci-l{font-size:.68rem;color:var(--m);text-transform:uppercase;letter-spacing:.05em}
-.ci-v{font-size:.88rem;color:var(--n);font-weight:500}
-form{background:var(--w);border-radius:12px;padding:2.25rem;box-shadow:0 2px 16px rgba(0,0,0,.06)}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.ff{display:flex;flex-direction:column;gap:.38rem;margin-bottom:.9rem}
-.ff label{font-size:.68rem;font-weight:600;color:var(--m);text-transform:uppercase;letter-spacing:.06em}
-.ff input,.ff textarea,.ff select{border:1.5px solid var(--bd);border-radius:7px;padding:.72rem .95rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--d);outline:none;transition:border-color .2s;background:var(--w)}
-.ff input:focus,.ff textarea:focus,.ff select:focus{border-color:var(--b)}
-.ff textarea{resize:none;height:90px}
-button{background:var(--n);color:var(--w);width:100%;padding:.88rem;border-radius:7px;font-size:.9rem;font-weight:600;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:.25rem}
+.contact{padding:5rem 2.5rem;background:var(--light)}
+.contact-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:4rem}
 
-footer{background:var(--d);color:rgba(255,255,255,.3);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.75rem}
-footer strong{color:rgba(255,255,255,.7);font-family:'DM Serif Display',serif}
-footer a{color:rgba(255,255,255,.3)}
+.contact-left h2{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--navy);line-height:1.25;font-weight:400}
+.contact-left p{margin-top:1rem;font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:380px}
+.contact-info{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.2rem}
+.info-item{display:flex;gap:1rem;align-items:flex-start}
+.info-icon{width:40px;height:40px;background:var(--navy);border-radius:10px;display:grid;place-items:center;flex-shrink:0;color:var(--white);font-size:.95rem}
+.info-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.info-value{font-size:.9rem;color:var(--navy);font-weight:500}
+
+form{background:var(--white);border-radius:14px;padding:2.5rem;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-group.full{grid-column:1/-1}
+.form-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.form-input,.form-textarea,.form-select{border:1.5px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s;background:var(--white)}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(38,96,170,.1)}
+.form-textarea{resize:none;min-height:100px}
+.form-submit{background:var(--navy);color:var(--white);padding:.9rem 2rem;border-radius:8px;font-size:.92rem;font-weight:600;border:none;cursor:pointer;width:100%;transition:background .2s,transform .15s}
+.form-submit:hover{background:var(--blue);transform:translateY(-1px)}
+
+@media(max-width:900px){
+  .contact-inner{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:600px){
+  .contact{padding:3.5rem 1.5rem}
+  .form-row{grid-template-columns:1fr}
+}
+
+/* FOOTER */
+footer{background:var(--dark);padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;border-top:1px solid rgba(255,255,255,.1)}
+.foot-left{font-size:.85rem;color:rgba(255,255,255,.4)}
+.foot-left strong{display:block;font-family:'DM Serif Display',serif;font-size:.95rem;color:rgba(255,255,255,.8);margin-bottom:.2rem;font-weight:600}
+.foot-center{font-size:.82rem;color:rgba(255,255,255,.25);text-align:center}
+.foot-right{display:flex;justify-content:flex-end;gap:2rem;font-size:.82rem}
+.foot-right a{color:rgba(255,255,255,.4);transition:color .2s}
+.foot-right a:hover{color:rgba(255,255,255,.7)}
+
+@media(max-width:600px){
+  footer{grid-template-columns:1fr;text-align:center;gap:.75rem}
+  .foot-right{justify-content:center}
+}
 </style>
 </head>
 <body>
+
 <nav>
   <div class="logo">
-    <div class="logo-ic">⚡</div>
-    <div><div class="logo-t">Dubois Électricité</div><div class="logo-s">Électricien certifié</div></div>
+    <div class="logo-icon">⚡</div>
+    <div class="logo-text">Dubois</div>
   </div>
-  <div class="nav-r">
-    <span class="urgence">Urgence 24h/7j</span>
-    <a href="tel:0623456789" class="tel">06 23 45 67 89</a>
+  <div class="nav-center">
+    <a href="#services">Prestations</a>
+    <a href="#testi">Témoignages</a>
+    <a href="#contact">Contact</a>
   </div>
+  <div class="nav-right">
+    <div class="urgence">Urgence 24h/24</div>
+    <a href="tel:0612345678" class="btn-call">06 12 34 56 78</a>
+  </div>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 
+<div class="mob-menu" id="mob-menu">
+  <a href="#services">Prestations</a>
+  <a href="#testi">Témoignages</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:0612345678" class="mob-cta">Appeler 06 12 34 56 78</a>
+</div>
+
 <section class="hero">
-  <div class="hero-l">
-    <span class="hero-tag">Électricien agréé — Loire-Atlantique 44</span>
-    <h1>L'électricité de votre maison<br />entre de <em>bonnes mains.</em></h1>
-    <p class="hero-body">Tableau électrique, mise aux normes, installation complète, dépannage — je m'occupe de tout, en toute sécurité. Devis gratuit sous 24h.</p>
-    <div class="hero-ctas">
-      <a href="tel:0623456789" class="btn-y">Appeler maintenant</a>
-      <a href="#contact" class="btn-out">Devis gratuit</a>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>Électricité<br><em>en confiance.</em></h1>
+      <p>Depuis 15 ans, nous intervenons sur tous vos besoins électriques. Installation, dépannage, diagnostic — prix transparent, délai respecté.</p>
+      <div class="hero-btns">
+        <a href="tel:0612345678" class="btn-amber">Appeler maintenant</a>
+        <a href="#contact" class="btn-white">Demander un devis</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-r">
     <div class="hero-card">
-      <p class="hc-label">Disponibilité</p>
-      <p class="hc-stat">Aujourd'hui</p>
-      <p class="hc-sub">2 créneaux disponibles</p>
-      <div class="hc-div"></div>
-      <div class="hc-row"><div class="dot-g"></div> Intervention possible le jour même</div>
+      <div>
+        <div class="hc-stat">15 ans</div>
+        <div class="hc-label">d'expérience</div>
+      </div>
+      <div>
+        <div class="hc-stat">+2500</div>
+        <div class="hc-label">clients satisfaits</div>
+      </div>
+      <div class="hc-row">
+        <div class="dot-green"></div>
+        <span>Agréé RGE</span>
+      </div>
+      <div class="hc-row">
+        <div class="dot-green"></div>
+        <span>Garantie 10 ans</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="svcs" id="services">
-  <div class="s-head">
-    <div><p class="eyebrow">Prestations</p><h2>Tout ce qu'un bon électricien doit savoir faire.</h2></div>
-    <p>Particuliers et pros, petites pannes ou gros chantiers — j'interviens sur tout le 44 et ses alentours.</p>
-  </div>
-  <div class="sg">
-    <div class="sc"><div class="sc-ic">🔌</div><h3>Mise aux normes</h3><p>Tableau, mise à la terre, diagnostic. Certificat de conformité délivré à la fin.</p></div>
-    <div class="sc"><div class="sc-ic">🏠</div><h3>Installation neuve</h3><p>Câblage complet, prises, éclairage, VMC. Construction ou rénovation totale.</p></div>
-    <div class="sc"><div class="sc-ic">⚡</div><h3>Dépannage urgent</h3><p>Panne, court-circuit, disjoncteur qui saute — intervention rapide, même le week-end.</p></div>
-    <div class="sc"><div class="sc-ic">☀️</div><h3>Panneaux solaires</h3><p>Installation et raccordement de panneaux photovoltaïques. Dossier ENEDIS géré pour vous.</p></div>
-    <div class="sc"><div class="sc-ic">🏢</div><h3>Local commercial</h3><p>Mise aux normes ERP, éclairage professionnel, enseigne lumineuse, comptoir de vente.</p></div>
-    <div class="sc"><div class="sc-ic">📱</div><h3>Domotique</h3><p>Volets, alarme, éclairage connecté. Pilotez tout depuis votre téléphone.</p></div>
-  </div>
-</section>
-
-<section class="testi">
-  <div class="testi-inner">
+<section class="services" id="services">
+  <div class="s-top">
     <div>
-      <blockquote>« Dubois a refait l'intégralité du tableau électrique de notre maison en une journée. Propre, rapide, et il a tout expliqué. Je recommande sans hésiter. »</blockquote>
-      <cite>— Sophie M., Nantes (44)</cite>
+      <p class="eyebrow">Nos services</p>
+      <h2>Tous les besoins<br>électriques.</h2>
     </div>
+    <p>Petit dépannage ou grand chantier, nous avons l'expertise pour intervenir vite et bien.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🔧</div>
+      <h3>Dépannage</h3>
+      <p>Panne, prise défectueuse, disjoncteur qui saute — intervention d'urgence sous 2h.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚡</div>
+      <h3>Installation</h3>
+      <p>Pose de luminaires, câblage neuf, tableau électrique — conformité aux normes.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔍</div>
+      <h3>Diagnostic</h3>
+      <p>Audit électrique complet avant travaux, détection anomalies, rapport détaillé.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testi" id="testi">
+  <div class="testi-inner">
+    <blockquote>Vraiment satisfait. L'électricien était à l'heure, le travail de qualité, et les explications claires. Je recommande vivement.</blockquote>
     <div class="testi-stats">
-      <div class="ts"><div class="ts-n">12 ans</div><div class="ts-l">d'expérience</div></div>
-      <div class="ts"><div class="ts-n">+600</div><div class="ts-l">clients</div></div>
-      <div class="ts"><div class="ts-n">4.9★</div><div class="ts-l">sur Google</div></div>
-      <div class="ts"><div class="ts-n">24h</div><div class="ts-l">délai de réponse</div></div>
+      <div class="stat">
+        <div class="stat-num">4.9</div>
+        <div class="stat-label">Note moyenne</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">450+</div>
+        <div class="stat-label">Avis clients</div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="contact-inner">
-    <div class="cl">
-      <p class="eyebrow">Contact</p>
-      <h2>Parlons de votre projet.</h2>
-      <p>Décrivez votre besoin, je vous rappelle sous 24h avec un devis clair. Gratuit, sans engagement.</p>
-      <div class="ci-list">
-        <div class="ci"><div class="ci-ic">📞</div><div><div class="ci-l">Téléphone</div><div class="ci-v">06 23 45 67 89</div></div></div>
-        <div class="ci"><div class="ci-ic">✉️</div><div><div class="ci-l">Email</div><div class="ci-v">dubois@elec-44.fr</div></div></div>
+    <div class="contact-left">
+      <h2>Un projet ? Parlons-en.</h2>
+      <p>Nous étudions votre situation gratuitement et sans engagement. Devis détaillé en 24h.</p>
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Téléphone</div>
+            <div class="info-value">06 12 34 56 78</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <div class="info-label">Email</div>
+            <div class="info-value">contact@duboiselec.fr</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Zone d'intervention</div>
+            <div class="info-value">Lille &amp; alentours</div>
+          </div>
+        </div>
       </div>
     </div>
     <form>
-      <div class="fr">
-        <div class="ff"><label>Prénom</label><input type="text" placeholder="Jean"/></div>
-        <div class="ff"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"/></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nom</label>
+          <input type="text" class="form-input" placeholder="Votre nom"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="votre@email.com"/>
+        </div>
       </div>
-      <div class="ff"><label>Type de travaux</label><select><option>Choisir...</option><option>Dépannage urgent</option><option>Mise aux normes</option><option>Installation neuve</option><option>Autre</option></select></div>
-      <div class="ff"><label>Message</label><textarea placeholder="Décrivez votre besoin..."></textarea></div>
-      <button type="submit">Envoyer ma demande</button>
+      <div class="form-group">
+        <label class="form-label">Demande</label>
+        <select class="form-select">
+          <option>Sélectionner une demande</option>
+          <option>Dépannage d'urgence</option>
+          <option>Installation électrique</option>
+          <option>Diagnostic</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Décrivez votre situation..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Envoyer la demande</button>
     </form>
   </div>
 </section>
 
 <footer>
-  <strong>Dubois Électricité</strong>
-  <span>Loire-Atlantique (44)</span>
-  <a href="https://vegastudio.fr">Vega Studio</a>
+  <div class="foot-left">
+    <strong>Dubois Électricité</strong>
+    <span>Lille — Nord 59</span>
+  </div>
+  <div class="foot-center">© 2026 Dubois Électricité</div>
+  <div class="foot-right">
+    <a href="#">Mentions légales</a>
+    <a href="https://vegastudio.fr">Vega Studio</a>
+  </div>
 </footer>
+
+<script>
+const burger = document.getElementById('burger');
+const mobMenu = document.getElementById('mob-menu');
+burger.addEventListener('click',e=>{e.stopPropagation();const o=mobMenu.classList.toggle('open');burger.classList.toggle('open',o)});
+mobMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobMenu.classList.remove('open');burger.classList.remove('open')}));
+document.addEventListener('click',e=>{if(!burger.contains(e.target)&&!mobMenu.contains(e.target)){mobMenu.classList.remove('open');burger.classList.remove('open')}});
+</script>
 </body>
 </html>
