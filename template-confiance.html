@@ -8,7 +8,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#1B3A5C;--blue:#2660AA;--amber:#F5A623;--light:#EEF4FB;
-  --white:#fff;--dark:#111827;--muted:#6B7280;--border:#E5E9F0
+  --white:#fff;--dark:#111827;--muted:#6B7280;--border:#E5E9F0;
+  --success:#10B981
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -46,32 +47,31 @@ nav{
 
 /* HERO */
 .hero{
-  margin-top:60px;background:var(--navy);min-height:92vh;
-  padding:3.5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;
+  margin-top:60px;background:linear-gradient(135deg,var(--navy) 0%,#0F2341 100%);
+  min-height:90vh;padding:4rem 2.5rem;display:flex;flex-direction:column;justify-content:center;
   position:relative;overflow:hidden;
 }
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(245,166,35,.08) 0,transparent 65%);pointer-events:none}
 
-.hero-inner{width:100%;max-width:920px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center}
+.hero-inner{width:100%;max-width:1000px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center}
 
-.hero-left h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);color:var(--white);line-height:1.15;font-weight:400}
+.hero-left h1{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5vw,3.6rem);color:var(--white);line-height:1.1;font-weight:400}
 .hero-left h1 em{font-style:italic;color:var(--amber)}
-.hero-left p{margin-top:1.3rem;font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;font-weight:300;max-width:420px}
-.hero-btns{margin-top:2.2rem;display:flex;gap:.8rem;flex-wrap:wrap}
-.btn-amber{background:var(--amber);color:var(--white);padding:.8rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:600;transition:transform .2s,box-shadow .2s}
-.btn-amber:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,.25)}
-.btn-white{border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);padding:.8rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:600;transition:border-color .2s,color .2s}
-.btn-white:hover{border-color:rgba(255,255,255,.6);color:var(--white)}
+.hero-left p{margin-top:1.5rem;font-size:1rem;color:rgba(255,255,255,.7);line-height:1.9;font-weight:300;max-width:450px}
+.hero-btns{margin-top:2.5rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-amber{background:var(--amber);color:#fff;padding:.9rem 2rem;border-radius:8px;font-size:.95rem;font-weight:600;transition:transform .2s,box-shadow .2s}
+.btn-amber:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,166,35,.3)}
+.btn-white{border:2px solid rgba(255,255,255,.3);color:rgba(255,255,255,.9);padding:.9rem 2rem;border-radius:8px;font-size:.95rem;font-weight:600;transition:border-color .2s,background .2s}
+.btn-white:hover{border-color:var(--amber);background:rgba(245,166,35,.1)}
 
-.hero-card{background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 12px 40px rgba(0,0,0,.16);display:flex;flex-direction:column;gap:1.3rem}
-.hc-stat{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--navy);font-weight:400;line-height:1}
-.hc-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.hero-card{background:var(--white);border-radius:14px;padding:2.2rem;box-shadow:0 16px 50px rgba(0,0,0,.15);display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.hc-stat{font-family:'DM Serif Display',serif;font-size:2.4rem;color:var(--navy);font-weight:400;line-height:1}
+.hc-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600;margin-top:.3rem}
 .hc-row{display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--muted)}
-.dot-green{width:8px;height:8px;border-radius:50%;background:#22C55E}
+.dot-green{width:8px;height:8px;border-radius:50%;background:var(--success);flex-shrink:0}
 
-@media(max-width:900px){
+@media(max-width:1000px){
   .hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  .hero-card{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 }
 @media(max-width:768px){
   nav{padding:0 1.5rem}
@@ -81,27 +81,40 @@ nav{
   
   .hero{padding:2.5rem 1.5rem;min-height:auto}
   .hero-left h1{font-size:clamp(1.8rem,8vw,2.8rem)}
-  .hero-btns{flex-direction:column;gap:.6rem}
+  .hero-btns{flex-direction:column}
   .btn-amber,.btn-white{width:100%}
   .hero-card{grid-template-columns:1fr}
 }
 
-/* SERVICES */
-.services{padding:5rem 2.5rem;background:var(--white)}
-.s-top{margin-bottom:3.5rem;display:grid;grid-template-columns:2fr 1.3fr;gap:3rem;align-items:end}
-.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
-.s-top h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
-.s-top p{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300}
-
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.svc-card{padding:2rem;border:1.5px solid var(--border);border-radius:12px;transition:border-color .25s,box-shadow .25s,transform .25s}
-.svc-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(38,96,170,.12);transform:translateY(-3px)}
-.svc-icon{width:44px;height:44px;background:var(--light);border-radius:10px;display:grid;place-items:center;font-size:1.3rem;margin-bottom:1.2rem}
-.svc-card h3{font-size:.98rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
-.svc-card p{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300}
+/* HERO STATS */
+.hero-stats{background:rgba(31,70,118,.5);padding:2rem 2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;border-radius:12px;backdrop-filter:blur(10px)}
+.stat-box{text-align:center}
+.stat-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--amber);font-weight:400}
+.stat-txt{font-size:.75rem;color:rgba(255,255,255,.6);margin-top:.4rem;text-transform:uppercase;letter-spacing:.05em}
 
 @media(max-width:900px){
-  .s-top{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
+}
+@media(max-width:600px){
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .stat-num{font-size:1.8rem}
+}
+
+/* SERVICES */
+.services{padding:5.5rem 2.5rem;background:var(--white);text-align:center}
+.services-header{max-width:700px;margin:0 auto 4rem}
+.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
+.services h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400;margin-bottom:1rem}
+.services-desc{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.svc-card{padding:2.2rem;border:1.5px solid var(--border);border-radius:12px;text-align:left;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.svc-card:hover{border-color:var(--blue);box-shadow:0 12px 36px rgba(38,96,170,.15);transform:translateY(-4px)}
+.svc-icon{width:52px;height:52px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.3rem;color:var(--blue)}
+.svc-card h3{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.6rem}
+.svc-card p{font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300}
+
+@media(max-width:1000px){
   .svc-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){
@@ -109,66 +122,82 @@ nav{
   .svc-grid{grid-template-columns:1fr}
 }
 
-/* TESTIMONIALS */
-.testi{background:var(--navy);padding:5rem 2.5rem;color:var(--white)}
-.testi-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:4rem;align-items:center}
-blockquote{font-family:'DM Serif Display',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--white);line-height:1.6;font-style:italic;font-weight:400}
-cite{display:block;margin-top:1.3rem;font-size:.8rem;color:rgba(255,255,255,.5);font-style:normal}
-.testi-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem}
-.stat{border-left:2px solid rgba(245,166,35,.4);padding-left:1.2rem}
-.stat-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--amber);font-weight:400;line-height:1}
-.stat-label{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:.3rem;text-transform:uppercase}
+/* REVIEWS */
+.reviews{background:var(--light);padding:5.5rem 2.5rem;text-align:center}
+.reviews-header{max-width:700px;margin:0 auto 4rem}
+.reviews h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
+.reviews-desc{font-size:.95rem;color:var(--muted);margin-top:1rem;line-height:1.8}
 
-@media(max-width:800px){
-  .testi-inner{grid-template-columns:1fr;gap:2.5rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:0 auto}
+.review-card{background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:left;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.review-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
+
+.review-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.review-avatar{width:44px;height:44px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:600;flex-shrink:0;font-size:.85rem}
+.review-info h4{font-size:.88rem;font-weight:600;color:var(--dark)}
+.review-info p{font-size:.75rem;color:var(--muted);margin-top:.2rem}
+
+.review-stars{display:flex;gap:.2rem;margin-bottom:1rem}
+.star{color:#FFC107;font-size:.9rem}
+.review-text{font-size:.88rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:.8rem}
+.review-date{font-size:.7rem;color:#AAA;text-transform:uppercase;letter-spacing:.02em}
+
+@media(max-width:1000px){
+  .reviews-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){
-  .testi{padding:3.5rem 1.5rem}
+  .reviews{padding:3.5rem 1.5rem}
+  .reviews-grid{grid-template-columns:1fr}
 }
 
-/* CONTACT */
-.contact{padding:5rem 2.5rem;background:var(--light)}
-.contact-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:4rem}
+/* FEATURES */
+.features{padding:5.5rem 2.5rem;background:var(--white);text-align:center}
+.features-header{max-width:700px;margin:0 auto 4rem}
+.features h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
 
-.contact-left h2{font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--navy);line-height:1.25;font-weight:400}
-.contact-left p{margin-top:1rem;font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:380px}
-.contact-info{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.2rem}
-.info-item{display:flex;gap:1rem;align-items:flex-start}
-.info-icon{width:40px;height:40px;background:var(--navy);border-radius:10px;display:grid;place-items:center;flex-shrink:0;color:var(--white);font-size:.95rem}
-.info-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.info-value{font-size:.9rem;color:var(--navy);font-weight:500}
-
-form{background:var(--white);border-radius:14px;padding:2.5rem;box-shadow:0 4px 16px rgba(0,0,0,.08)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
-.form-group.full{grid-column:1/-1}
-.form-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.form-input,.form-textarea,.form-select{border:1.5px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s;background:var(--white)}
-.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(38,96,170,.1)}
-.form-textarea{resize:none;min-height:100px}
-.form-submit{background:var(--navy);color:var(--white);padding:.9rem 2rem;border-radius:8px;font-size:.92rem;font-weight:600;border:none;cursor:pointer;width:100%;transition:background .2s,transform .15s}
-.form-submit:hover{background:var(--blue);transform:translateY(-1px)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
+.feat-item{padding:1.8rem;text-align:center}
+.feat-icon{width:60px;height:60px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--blue);font-size:1.8rem;font-weight:600}
+.feat-item h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.6rem}
+.feat-item p{font-size:.88rem;color:var(--muted);line-height:1.7;font-weight:300}
 
 @media(max-width:900px){
-  .contact-inner{grid-template-columns:1fr;gap:2.5rem}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){
-  .contact{padding:3.5rem 1.5rem}
-  .form-row{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+}
+
+/* CONTACT CTA */
+.cta-section{background:linear-gradient(135deg,var(--navy) 0%,#0F2341 100%);padding:4rem 2.5rem;text-align:center;color:var(--white)}
+.cta-inner{max-width:800px;margin:0 auto}
+.cta-inner h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.15;font-weight:400;margin-bottom:1.5rem}
+.cta-inner p{font-size:1rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-btn{padding:1rem 2.2rem;border-radius:8px;font-size:.95rem;font-weight:600;transition:all .2s}
+.cta-primary{background:var(--amber);color:#fff}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(245,166,35,.3)}
+.cta-secondary{border:2px solid rgba(255,255,255,.4);color:rgba(255,255,255,.9)}
+.cta-secondary:hover{border-color:var(--amber);background:rgba(245,166,35,.1)}
+
+@media(max-width:600px){
+  .cta-btns{flex-direction:column}
+  .cta-btn{width:100%}
 }
 
 /* FOOTER */
-footer{background:var(--dark);padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;border-top:1px solid rgba(255,255,255,.1)}
+footer{background:var(--dark);padding:2.5rem 2.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;border-top:1px solid rgba(255,255,255,.1)}
 .foot-left{font-size:.85rem;color:rgba(255,255,255,.4)}
 .foot-left strong{display:block;font-family:'DM Serif Display',serif;font-size:.95rem;color:rgba(255,255,255,.8);margin-bottom:.2rem;font-weight:600}
 .foot-center{font-size:.82rem;color:rgba(255,255,255,.25);text-align:center}
-.foot-right{display:flex;justify-content:flex-end;gap:2rem;font-size:.82rem}
+.foot-right{font-size:.85rem;display:flex;gap:1.5rem}
 .foot-right a{color:rgba(255,255,255,.4);transition:color .2s}
 .foot-right a:hover{color:rgba(255,255,255,.7)}
 
-@media(max-width:600px){
-  footer{grid-template-columns:1fr;text-align:center;gap:.75rem}
-  .foot-right{justify-content:center}
+@media(max-width:768px){
+  footer{grid-template-columns:1fr;gap:.5rem;padding:1.5rem;text-align:center}
+  .foot-left,.foot-right{justify-self:center}
+  .foot-right{flex-direction:column;gap:.3rem}
 }
 </style>
 </head>
@@ -176,33 +205,35 @@ footer{background:var(--dark);padding:2rem 2.5rem;display:grid;grid-template-col
 
 <nav>
   <div class="logo">
-    <div class="logo-icon">⚡</div>
+    <div class="logo-icon">D</div>
     <div class="logo-text">Dubois</div>
   </div>
   <div class="nav-center">
     <a href="#services">Prestations</a>
-    <a href="#testi">Témoignages</a>
+    <a href="#reviews">Avis clients</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
-    <div class="urgence">Urgence 24h/24</div>
+    <span class="urgence">Urgence 24/24</span>
     <a href="tel:0612345678" class="btn-call">06 12 34 56 78</a>
   </div>
-  <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  <button class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="mob-menu" id="mob-menu">
   <a href="#services">Prestations</a>
-  <a href="#testi">Témoignages</a>
+  <a href="#reviews">Avis clients</a>
   <a href="#contact">Contact</a>
-  <a href="tel:0612345678" class="mob-cta">Appeler 06 12 34 56 78</a>
+  <a href="tel:0612345678" class="mob-cta">Appeler maintenant</a>
 </div>
 
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
       <h1>Électricité<br><em>en confiance.</em></h1>
-      <p>Depuis 15 ans, nous intervenons sur tous vos besoins électriques. Installation, dépannage, diagnostic — prix transparent, délai respecté.</p>
+      <p>Depuis 15 ans, nous intervenons sur tous vos besoins électriques. Installation, dépannage, diagnostic — prix transparent, délai respecté. Agréés RGE, garantie 10 ans.</p>
       <div class="hero-btns">
         <a href="tel:0612345678" class="btn-amber">Appeler maintenant</a>
         <a href="#contact" class="btn-white">Demander un devis</a>
@@ -227,107 +258,152 @@ footer{background:var(--dark);padding:2rem 2.5rem;display:grid;grid-template-col
       </div>
     </div>
   </div>
+  <div class="hero-stats">
+    <div class="stat-box">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-txt">Note Google</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">450+</div>
+      <div class="stat-txt">Avis vérifiés</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">&lt;2h</div>
+      <div class="stat-txt">Délai d'urgence</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">Gratuit</div>
+      <div class="stat-txt">Devis & visite</div>
+    </div>
+  </div>
 </section>
 
 <section class="services" id="services">
-  <div class="s-top">
-    <div>
-      <p class="eyebrow">Nos services</p>
-      <h2>Tous les besoins<br>électriques.</h2>
-    </div>
-    <p>Petit dépannage ou grand chantier, nous avons l'expertise pour intervenir vite et bien.</p>
+  <div class="services-header">
+    <p class="eyebrow">Nos domaines de compétence</p>
+    <h2>Tous vos besoins électriques couverts</h2>
+    <p class="services-desc">Petit dépannage ou grand chantier, diagnostic ou installation neuve — nous avons l'expertise et le matériel pour intervenir vite, bien et aux bonnes conditions.</p>
   </div>
   <div class="svc-grid">
     <div class="svc-card">
-      <div class="svc-icon">🔧</div>
-      <h3>Dépannage</h3>
-      <p>Panne, prise défectueuse, disjoncteur qui saute — intervention d'urgence sous 2h.</p>
+      <div class="svc-icon">⚡</div>
+      <h3>Dépannage d'urgence</h3>
+      <p>Panne, prise défectueuse, disjoncteur qui saute. Intervention dans l'heure, diagnostic gratuit, prix annoncé avant travaux.</p>
     </div>
     <div class="svc-card">
-      <div class="svc-icon">⚡</div>
-      <h3>Installation</h3>
-      <p>Pose de luminaires, câblage neuf, tableau électrique — conformité aux normes.</p>
+      <div class="svc-icon">🔧</div>
+      <h3>Installation électrique</h3>
+      <p>Pose de luminaires, tableaux électriques, câblage complet. Travaux aux normes NF, conformité vérifiée, garantie 10 ans.</p>
     </div>
     <div class="svc-card">
       <div class="svc-icon">🔍</div>
-      <h3>Diagnostic</h3>
-      <p>Audit électrique complet avant travaux, détection anomalies, rapport détaillé.</p>
+      <h3>Diagnostic complet</h3>
+      <p>Audit électrique avant acquisition, détection d'anomalies, rapport détaillé. Sécurité de votre installation vérifiée.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💡</div>
+      <h3>Rénovation</h3>
+      <p>Refonte complète des installations anciennes. Mise aux normes, meilleure isolation, économies d'énergie garanties.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🏠</div>
+      <h3>Domotique</h3>
+      <p>Installation de systèmes connectés, automatisation des luminaires et chauffage, gestion centralisée via app mobile.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔋</div>
+      <h3>Énergies renouvelables</h3>
+      <p>Panneaux solaires, bornes de recharge pour véhicules électriques. Installation complète, subventions étudiées.</p>
     </div>
   </div>
 </section>
 
-<section class="testi" id="testi">
-  <div class="testi-inner">
-    <blockquote>Vraiment satisfait. L'électricien était à l'heure, le travail de qualité, et les explications claires. Je recommande vivement.</blockquote>
-    <div class="testi-stats">
-      <div class="stat">
-        <div class="stat-num">4.9</div>
-        <div class="stat-label">Note moyenne</div>
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <p class="eyebrow">Témoignages clients</p>
+    <h2>Ils nous font confiance</h2>
+    <p class="reviews-desc">Plus de 450 avis Google, 4.9 étoiles. Décourez ce que disent nos clients.</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">MG</div>
+        <div class="review-info">
+          <h4>Michèle G.</h4>
+          <p>Vérifiée sur Google</p>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-num">450+</div>
-        <div class="stat-label">Avis clients</div>
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
       </div>
+      <p class="review-text">Vraiment satisfaite. L'électricien était à l'heure, le travail de qualité, les explications claires. Je recommande vivement.</p>
+      <span class="review-date">Il y a 2 semaines</span>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:#2660AA">PD</div>
+        <div class="review-info">
+          <h4>Philippe D.</h4>
+          <p>Vérifiée sur Google</p>
+        </div>
+      </div>
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="review-text">Service d'urgence impeccable. Ils sont venus en moins d'une heure, diagnostiqué le problème en 10 min, réparation correcte. Bravo.</p>
+      <span class="review-date">Il y a 1 mois</span>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background:#F5A623;color:#fff">SC</div>
+        <div class="review-info">
+          <h4>Sophie C.</h4>
+          <p>Vérifiée sur Google</p>
+        </div>
+      </div>
+      <div class="review-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="review-text">Très professionnel pour la rénovation complète. Devis clair, pas de surprise, site propre pendant les travaux. À refaire sans hésiter.</p>
+      <span class="review-date">Il y a 3 semaines</span>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <h2>Un projet ? Parlons-en.</h2>
-      <p>Nous étudions votre situation gratuitement et sans engagement. Devis détaillé en 24h.</p>
-      <div class="contact-info">
-        <div class="info-item">
-          <div class="info-icon">📞</div>
-          <div>
-            <div class="info-label">Téléphone</div>
-            <div class="info-value">06 12 34 56 78</div>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">✉️</div>
-          <div>
-            <div class="info-label">Email</div>
-            <div class="info-value">contact@duboiselec.fr</div>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icon">📍</div>
-          <div>
-            <div class="info-label">Zone d'intervention</div>
-            <div class="info-value">Lille &amp; alentours</div>
-          </div>
-        </div>
-      </div>
+<section class="features">
+  <div class="features-header">
+    <p class="eyebrow">Pourquoi nous choisir</p>
+    <h2>L'électricité en toute confiance</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-item">
+      <div class="feat-icon">✓</div>
+      <h3>15 ans d'expérience</h3>
+      <p>Équipe formée, agréée RGE, connaissance approfondie des installations anciennes et modernes.</p>
     </div>
-    <form>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Nom</label>
-          <input type="text" class="form-input" placeholder="Votre nom"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="votre@email.com"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Demande</label>
-        <select class="form-select">
-          <option>Sélectionner une demande</option>
-          <option>Dépannage d'urgence</option>
-          <option>Installation électrique</option>
-          <option>Diagnostic</option>
-          <option>Autre</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" placeholder="Décrivez votre situation..."></textarea>
-      </div>
-      <button type="submit" class="form-submit">Envoyer la demande</button>
-    </form>
+    <div class="feat-item">
+      <div class="feat-icon">✓</div>
+      <h3>Tarifs transparents</h3>
+      <p>Devis gratuit et détaillé, pas de frais cachés. Prix annoncé avant intervention, respect du délai.</p>
+    </div>
+    <div class="feat-item">
+      <div class="feat-icon">✓</div>
+      <h3>Garantie 10 ans</h3>
+      <p>Tous les travaux garantis. Suivi après-vente, intervention rapide en cas de problème.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <h2>Un projet ? Parlons-en.</h2>
+    <p>Que ce soit une urgence ou un chantier planifié, nous étudions votre situation gratuitement et sans engagement. Devis détaillé en 24h maximum.</p>
+    <div class="cta-btns">
+      <a href="tel:0612345678" class="cta-btn cta-primary">Appeler maintenant</a>
+      <a href="mailto:contact@duboiselec.fr" class="cta-btn cta-secondary">Envoyer un email</a>
+    </div>
   </div>
 </section>
 
