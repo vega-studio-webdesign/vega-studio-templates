@@ -148,10 +148,9 @@ nav {
 
 .hero h1 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(2.8rem, 7.5vw, 6.5rem);
-  font-weight: 800; line-height: .95;
+  font-size: clamp(2.4rem, 5.8vw, 5.2rem);
+  font-weight: 800; line-height: 1.0;
   letter-spacing: -.04em; color: var(--white);
-  max-width: 800px;
 }
 .hero h1 em { font-style: normal; color: var(--o); }
 
@@ -173,6 +172,7 @@ nav {
   background: var(--o); color: var(--white);
   padding: .95rem 2rem; border-radius: 5px;
   font-size: .95rem; font-weight: 500;
+  min-width: 210px; text-align: center;
   transition: background .2s, transform .15s;
 }
 .btn-o:hover { background: var(--od); transform: translateY(-1px); }
@@ -181,6 +181,7 @@ nav {
   color: rgba(255,255,255,.75);
   padding: .95rem 2rem; border-radius: 5px;
   font-size: .95rem; font-weight: 400;
+  min-width: 210px; text-align: center;
   transition: border-color .2s, color .2s;
 }
 .btn-ghost:hover { border-color: rgba(255,255,255,.55); color: var(--white); }
