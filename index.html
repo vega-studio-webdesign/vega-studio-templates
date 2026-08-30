@@ -66,18 +66,20 @@ main {
 .preview {
   height: 210px;
   overflow: hidden;
-  flex-shrink: 0;
+  position: relative;
   background: #e0e0de;
-  display: block;
+  flex-shrink: 0;
 }
 .preview iframe {
+  position: absolute;
+  top: 0;
+  left: 50%;
   width: 1440px;
   height: 860px;
   border: none;
-  transform: scale(0.278);
-  transform-origin: top left;
+  transform: translateX(-50%) scale(0.244);
+  transform-origin: top center;
   pointer-events: none;
-  display: block;
 }
 
 .info { padding: 1rem 1.3rem 1.3rem; display: flex; flex-direction: column; gap: .4rem; }
