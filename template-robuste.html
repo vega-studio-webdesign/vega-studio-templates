@@ -123,6 +123,7 @@ nav {
   padding-left: 2.5rem; padding-right: 2.5rem;
   min-height: 92vh;
   display: flex; flex-direction: column; justify-content: center;
+  align-items: center; text-align: center;
   position: relative; overflow: hidden;
 }
 .hero::before {
@@ -138,6 +139,7 @@ nav {
   font-size: .68rem; font-weight: 600;
   letter-spacing: .2em; text-transform: uppercase;
   color: var(--o); margin-bottom: 2rem;
+  justify-content: center;
 }
 .hero-kicker::before {
   content: ''; display: block;
@@ -149,6 +151,7 @@ nav {
   font-size: clamp(2.8rem, 7.5vw, 6.5rem);
   font-weight: 800; line-height: .95;
   letter-spacing: -.04em; color: var(--white);
+  max-width: 800px;
 }
 .hero h1 em { font-style: normal; color: var(--o); }
 
@@ -157,12 +160,14 @@ nav {
   font-size: clamp(.9rem, 1.4vw, 1.05rem);
   color: rgba(255,255,255,.48);
   line-height: 1.8; font-weight: 300;
-  max-width: 480px;
+  max-width: 540px;
+  margin-left: auto; margin-right: auto;
 }
 
 .hero-btns {
   display: flex; gap: .85rem;
   margin-top: 2.75rem; flex-wrap: wrap;
+  justify-content: center;
 }
 .btn-o {
   background: var(--o); color: var(--white);
@@ -256,13 +261,10 @@ nav {
 }
 .card-num {
   font-family: 'Syne', sans-serif;
-  font-size: .72rem; font-weight: 800;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--o); margin-bottom: 1.1rem;
-  display: flex; align-items: center; gap: .5rem;
-}
-.card-num::after {
-  content: ''; flex: 1; height: 1px; background: #E0DDD9;
+  font-size: 2.2rem; font-weight: 800;
+  color: var(--o); line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: -.03em;
 }
 .card h3 {
   font-family: 'Syne', sans-serif;
@@ -363,6 +365,7 @@ footer {
   font-size: .73rem; color: rgba(255,255,255,.3); transition: color .2s;
 }
 .foot-links a:hover { color: rgba(255,255,255,.7); }
+.mob-br { display: none; }
 
 /* ─── RESPONSIVE ───────────────────────────────────────── */
 
@@ -406,6 +409,7 @@ footer {
   }
 
   /* Urgence */
+  .mob-br { display: inline; }
   .urgence { padding: .9rem 1.25rem; flex-direction: column; gap: .6rem; text-align: center; }
 
   /* Services */
@@ -474,7 +478,7 @@ footer {
 
 <!-- URGENCE -->
 <div class="urgence">
-  <span>Urgence plomberie ? On intervient maintenant, 7j/7</span>
+  <span>Urgence plomberie ?<br class="mob-br"> On intervient maintenant, 7j/7</span>
   <a href="tel:0612345678">Appeler le 06 12 34 56 78</a>
 </div>
 
