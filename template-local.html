@@ -44,17 +44,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 /* HERO */
 .hero{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
 .hero-left{background:var(--green);padding:4.5rem 3.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.hero-left::before{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
-.hero-left::after{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(196,88,29,.1);pointer-events:none}
+.hero-left::before{content:'';position:absolute;bottom:-120px;left:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.hero-left::after{content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(196,88,29,.18);pointer-events:none}
+.hero-circle-mid{position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;z-index:0}
+.hero-circle-small{position:absolute;bottom:30%;right:10%;width:80px;height:80px;border-radius:50%;border:1.5px solid rgba(196,88,29,.3);pointer-events:none;z-index:0}
 
 .hero-kicker{display:flex;align-items:center;gap:.8rem;position:relative;z-index:1}
 .hero-kicker-line{width:32px;height:1.5px;background:var(--earth)}
 .hero-kicker span{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--white);line-height:1.05;font-weight:700;position:relative;z-index:1;margin:2rem 0}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,4.6rem);color:var(--white);line-height:1.05;font-weight:700;position:relative;z-index:1;margin:2.5rem 0}
 .hero-title em{font-style:italic;color:var(--earth);font-weight:400}
 
-.hero-left p{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.9;font-weight:300;max-width:400px;position:relative;z-index:1}
+.hero-left p{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.9;font-weight:300;max-width:420px;position:relative;z-index:1}
 .hero-btns{display:flex;gap:.8rem;margin-top:2.5rem;position:relative;z-index:1;flex-wrap:wrap}
 .btn-primary{background:var(--earth);color:var(--white);padding:.9rem 2rem;border-radius:6px;font-size:.9rem;font-weight:600;letter-spacing:.02em;transition:background .2s,transform .2s}
 .btn-primary:hover{background:var(--earth2);transform:translateY(-2px)}
@@ -106,16 +108,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 .realisations h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green);font-weight:700;margin-bottom:.5rem}
 .realisations-sub{font-size:.9rem;color:var(--muted);font-weight:300;margin-bottom:3.5rem}
 .real-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:1.5rem}
-.real-card{background:var(--white);border-radius:10px;padding:2.2rem;position:relative;overflow:hidden}
-.real-card.big{grid-row:1/3;display:flex;flex-direction:column;justify-content:flex-end;background:var(--green);min-height:360px}
-.real-card.big::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4) 0,transparent 60%)}
+.real-card{border-radius:10px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.real-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,28,20,.88) 0%,rgba(15,28,20,.25) 55%,transparent 100%);z-index:0}
+.real-card-inner{position:absolute;bottom:0;left:0;right:0;padding:1.6rem;z-index:1}
+
+/* Petites cartes : ratio 4/3 via padding-top */
+.real-card:not(.big){padding-top:75%}
+
+/* Grande carte : s'étire pour couvrir les 2 lignes */
+.real-card.big{grid-row:1/3;background-image:url('realisation-escalier.jpg')}
+.real-card:nth-child(2){background-image:url('realisation-bibliotheque.jpg')}
+.real-card:nth-child(3){background-image:url('realisation-porte.jpg')}
+.real-card:nth-child(4){background-image:url('realisation-parquet.jpg')}
+.real-card:nth-child(5){background-image:url('realisation-dressing.jpg')}
 .real-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--earth);margin-bottom:.5rem;position:relative;z-index:1}
-.real-card.big .real-label{color:var(--earth)}
-.real-card.big h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);font-weight:700;position:relative;z-index:1;line-height:1.3}
-.real-card.big p{font-size:.83rem;color:rgba(255,255,255,.7);margin-top:.5rem;position:relative;z-index:1;font-weight:300}
-.real-card:not(.big) h3{font-size:.95rem;font-weight:600;color:var(--green);margin-bottom:.4rem}
-.real-card:not(.big) p{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.7}
-.real-tag{display:inline-block;background:var(--cream);font-size:.7rem;font-weight:600;color:var(--muted);padding:.3rem .8rem;border-radius:20px;margin-top:1rem;letter-spacing:.04em;text-transform:uppercase}
+.real-card h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--white);font-weight:700;position:relative;z-index:1;line-height:1.3}
+.real-card.big h3{font-size:1.4rem}
+.real-card p{font-size:.82rem;color:rgba(255,255,255,.7);margin-top:.4rem;position:relative;z-index:1;font-weight:300}
+.real-tag{display:inline-block;background:rgba(255,255,255,.15);backdrop-filter:blur(4px);font-size:.68rem;font-weight:600;color:rgba(255,255,255,.9);padding:.3rem .8rem;border-radius:20px;margin-top:.8rem;letter-spacing:.04em;text-transform:uppercase;position:relative;z-index:1;border:1px solid rgba(255,255,255,.2)}
 
 /* TEMOIGNAGES */
 .temoignages{padding:6rem 2.5rem;background:var(--cream)}
@@ -137,9 +147,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 .form-group{display:flex;flex-direction:column;gap:.4rem}
 .form-group.full{grid-column:1/-1}
 .form-group label{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.form-group input,.form-group textarea,.form-group select{font-family:'Jost',sans-serif;font-size:.9rem;color:var(--dark);background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:.75rem 1rem;outline:none;transition:border-color .2s;width:100%}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--green)}
+.form-group input,.form-group textarea{font-family:'Jost',sans-serif;font-size:.9rem;color:var(--dark);background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:.75rem 1rem;outline:none;transition:border-color .2s;width:100%}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--green)}
 .form-group textarea{resize:vertical;min-height:110px}
+
+/* Select custom */
+.select-wrapper{position:relative}
+.select-wrapper::after{content:'';position:absolute;right:1rem;top:50%;transform:translateY(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--green);pointer-events:none}
+.form-group select{font-family:'Jost',sans-serif;font-size:.9rem;color:var(--dark);background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:.75rem 2.5rem .75rem 1rem;outline:none;transition:border-color .2s,background .2s;width:100%;appearance:none;-webkit-appearance:none;cursor:pointer}
+.form-group select:focus{border-color:var(--green)}
+.form-group select option{padding:.5rem;background:var(--white);color:var(--dark)}
+.form-group select option:checked{background:var(--green);color:var(--white)}
+
 .form-submit{grid-column:1/-1;background:var(--earth);color:var(--white);border:none;padding:1rem 2.5rem;border-radius:6px;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:background .2s,transform .2s;width:100%}
 .form-submit:hover{background:var(--earth2);transform:translateY(-2px)}
 
@@ -248,6 +267,8 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
 
 <section class="hero">
   <div class="hero-left">
+    <div class="hero-circle-mid"></div>
+    <div class="hero-circle-small"></div>
     <div class="hero-kicker">
       <div class="hero-kicker-line"></div>
       <span>Menuisier artisan — Normandie</span>
@@ -362,33 +383,43 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
     <p class="realisations-sub">Chaque réalisation est unique. Voici une sélection de nos derniers chantiers.</p>
     <div class="real-grid">
       <div class="real-card big">
-        <p class="real-label">Projet phare — 2024</p>
-        <h3>Escalier hélicoïdal en chêne massif</h3>
-        <p>Réalisé pour une maison contemporaine à Rouen. 4 mois de fabrication, 3 artisans.</p>
+        <div class="real-card-inner">
+          <p class="real-label">Projet phare — 2024</p>
+          <h3>Escalier hélicoïdal en chêne massif</h3>
+          <p>Réalisé pour une maison contemporaine à Rouen. 4 mois de fabrication, 3 artisans.</p>
+        </div>
       </div>
       <div class="real-card">
-        <p class="real-label">Agencement</p>
-        <h3>Bibliothèque sur mesure</h3>
-        <p>Mur entier en hêtre huilé, Caen. Conçu en 2 semaines.</p>
-        <span class="real-tag">Hêtre</span>
+        <div class="real-card-inner">
+          <p class="real-label">Agencement</p>
+          <h3>Bibliothèque sur mesure</h3>
+          <p>Mur entier en hêtre huilé, Caen.</p>
+          <span class="real-tag">Hêtre</span>
+        </div>
       </div>
       <div class="real-card">
-        <p class="real-label">Extérieur</p>
-        <h3>Porte d'entrée double vantail</h3>
-        <p>Chêne massif, finition teintée anthracite. Normandie.</p>
-        <span class="real-tag">Chêne</span>
+        <div class="real-card-inner">
+          <p class="real-label">Extérieur</p>
+          <h3>Porte d'entrée double vantail</h3>
+          <p>Chêne massif, finition teintée anthracite.</p>
+          <span class="real-tag">Chêne</span>
+        </div>
       </div>
       <div class="real-card">
-        <p class="real-label">Rénovation</p>
-        <h3>Parquet ancien restauré</h3>
-        <p>Ponçage, rebouchage, vitrification. Maison XVIIIe, Évreux.</p>
-        <span class="real-tag">Restauration</span>
+        <div class="real-card-inner">
+          <p class="real-label">Rénovation</p>
+          <h3>Parquet ancien restauré</h3>
+          <p>Ponçage, rebouchage, vitrification. Maison XVIIIe, Évreux.</p>
+          <span class="real-tag">Restauration</span>
+        </div>
       </div>
       <div class="real-card">
-        <p class="real-label">Intérieur</p>
-        <h3>Dressing en noyer</h3>
-        <p>Coulissants, tiroirs intégrés, éclairage LED encastré. Le Havre.</p>
-        <span class="real-tag">Noyer</span>
+        <div class="real-card-inner">
+          <p class="real-label">Intérieur</p>
+          <h3>Dressing en noyer</h3>
+          <p>Coulissants, tiroirs intégrés, éclairage LED encastré.</p>
+          <span class="real-tag">Noyer</span>
+        </div>
       </div>
     </div>
   </div>
@@ -457,14 +488,16 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
       </div>
       <div class="form-group">
         <label for="type">Type de projet</label>
-        <select id="type">
-          <option value="" disabled selected>Choisir...</option>
-          <option>Escalier sur mesure</option>
-          <option>Menuiseries extérieures</option>
-          <option>Agencement intérieur</option>
-          <option>Restauration / rénovation</option>
-          <option>Autre</option>
-        </select>
+        <div class="select-wrapper">
+          <select id="type">
+            <option value="" disabled selected>Choisir...</option>
+            <option>Escalier sur mesure</option>
+            <option>Menuiseries extérieures</option>
+            <option>Agencement intérieur</option>
+            <option>Restauration / rénovation</option>
+            <option>Autre</option>
+          </select>
+        </div>
       </div>
       <div class="form-group full">
         <label for="message">Décrivez votre projet</label>
