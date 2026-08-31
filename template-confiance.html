@@ -89,7 +89,7 @@ nav{
   
   .reviews{padding:3.5rem 1.5rem}
   .reviews-grid{display:block;overflow:hidden}
-  .reviews-track{display:flex !important;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+  .reviews-track{display:flex !important;gap:0 !important;transition:transform .45s cubic-bezier(.4,0,.2,1)}
   .review-card{min-width:100% !important;width:100% !important;flex:none !important;box-sizing:border-box}
   
   .services{padding:3.5rem 1.5rem}
@@ -142,8 +142,8 @@ nav{
 .reviews h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
 .reviews-desc{font-size:.95rem;color:var(--muted);margin-top:1rem;line-height:1.8}
 
-.reviews-grid{display:flex;justify-content:center;gap:2rem;max-width:1200px;margin:0 auto}
-.reviews-track{display:contents}
+.reviews-grid{display:flex;justify-content:center;gap:2rem;max-width:1200px;margin:0 auto;overflow:hidden}
+.reviews-track{display:flex;gap:2rem;width:100%}
 .review-card{flex:1;min-width:0;background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:left;border:1px solid rgba(0,0,0,.04);transition:box-shadow .3s,transform .3s}
 .review-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
 
@@ -467,9 +467,9 @@ function initReviewsCarousel() {
   if (!track || !grid) return;
 
   if (window.innerWidth > 768) {
-    // Desktop : reset tout
-    track.style.cssText = '';
-    grid.style.cssText  = '';
+    track.style.transition = '';
+    track.style.transform  = '';
+    track.style.gap        = '';
     Array.from(track.querySelectorAll('.review-card.clone')).forEach(c => c.remove());
     track.dataset.cloned = '';
     return;
@@ -486,7 +486,7 @@ function initReviewsCarousel() {
     track.dataset.cloned = 'true';
   }
 
-  const cardW = grid.offsetWidth;
+  const cardW = track.children[0].offsetWidth;
   const total  = track.querySelectorAll('.review-card:not(.clone)').length;
   let index = 0;
 
