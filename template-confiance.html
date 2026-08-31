@@ -88,9 +88,10 @@ nav{
   .hero-card{grid-template-columns:1fr}
   
   .reviews{padding:3.5rem 1.5rem}
-  .reviews-grid{grid-template-columns:1fr;position:relative;height:380px}
-  .review-card{position:absolute;top:0;left:0;right:0;opacity:0;transition:opacity .6s ease-in-out;pointer-events:none}
-  .review-card.active{opacity:1;pointer-events:auto}
+  .reviews-grid{grid-template-columns:1fr;position:relative;height:380px;overflow:hidden}
+  .review-card{position:absolute;top:0;left:0;width:100%;transform:translateX(100%);transition:transform .6s cubic-bezier(.4,0,.2,1);pointer-events:none}
+  .review-card.active{transform:translateX(0);pointer-events:auto}
+  .review-card.prev{transform:translateX(-100%)}
   
   .services{padding:3.5rem 1.5rem}
   .services-header{flex-direction:column}
@@ -131,6 +132,10 @@ nav{
   .services-header{flex-direction:column;align-items:flex-start}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
 }
+@media(max-width:600px){
+  .services-header{flex-direction:column}
+  .svc-grid{grid-template-columns:1fr}
+}
 
 /* REVIEWS */
 .reviews{background:var(--light);padding:5.5rem 2.5rem;text-align:center}
@@ -157,9 +162,6 @@ nav{
 }
 @media(max-width:600px){
   .reviews{padding:3.5rem 1.5rem}
-  .reviews-grid{grid-template-columns:1fr;position:relative;height:380px}
-  .review-card{position:absolute;top:0;left:0;right:0;opacity:0;transition:opacity .6s ease-in-out;pointer-events:none}
-  .review-card.active{opacity:1;pointer-events:auto}
 }
 
 /* FEATURES */
@@ -460,12 +462,18 @@ function initReviewsCarousel(){
   if(cards.length<2)return;
   
   let currentIndex=0;
-  cards[0].classList.add('active');
+  cards.forEach((c,i)=>c.classList.toggle('active',i===0));
   
   setInterval(()=>{
-    cards[currentIndex].classList.remove('active');
+    const prevIndex=currentIndex;
     currentIndex=(currentIndex+1)%cards.length;
+    
+    cards[prevIndex].classList.remove('active');
+    cards[prevIndex].classList.add('prev');
+    cards[currentIndex].classList.remove('prev');
     cards[currentIndex].classList.add('active');
+    
+    setTimeout(()=>cards[prevIndex].classList.remove('prev'),600);
   },1500);
 }
 
