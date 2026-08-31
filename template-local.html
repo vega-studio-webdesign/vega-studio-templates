@@ -132,9 +132,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 .temo-name{font-size:.85rem;font-weight:600;color:var(--dark)}
 .temo-info{font-size:.73rem;color:var(--muted);margin-top:.1rem}
 
-/* CTA */
+/* FORM */
+.contact-form{margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.form-group input,.form-group textarea,.form-group select{font-family:'Jost',sans-serif;font-size:.9rem;color:var(--dark);background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:.75rem 1rem;outline:none;transition:border-color .2s;width:100%}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--green)}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-submit{grid-column:1/-1;background:var(--earth);color:var(--white);border:none;padding:1rem 2.5rem;border-radius:6px;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:background .2s,transform .2s;width:100%}
+.form-submit:hover{background:var(--earth2);transform:translateY(-2px)}
+
+@media(max-width:600px){
+  .contact-form{grid-template-columns:1fr}
+  .form-group.full{grid-column:1}
+}
 .cta{padding:5rem 2.5rem;background:var(--cream2);text-align:center}
-.cta-inner{max-width:700px;margin:0 auto}
+.cta-inner{max-width:860px;margin:0 auto}
 .cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--green);line-height:1.15;font-weight:700;margin-bottom:1.2rem}
 .cta p{font-size:.95rem;color:var(--muted);line-height:1.9;font-weight:300;margin-bottom:2.5rem}
 .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
@@ -428,10 +442,36 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
     <p class="eyebrow" style="text-align:center">Parlons de votre projet</p>
     <h2>Un projet en tête ?</h2>
     <p>Que ce soit une petite réparation ou un chantier complet, nous vous accompagnons de A à Z. Devis gratuit, réponse sous 24h.</p>
-    <div class="cta-btns">
-      <a href="tel:0612345678" class="cta-main">Appeler maintenant</a>
-      <a href="mailto:contact@dupont-menuiserie.fr" class="cta-sec">Envoyer un message</a>
-    </div>
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="nom">Nom complet</label>
+        <input type="text" id="nom" placeholder="Jean Dupont"/>
+      </div>
+      <div class="form-group">
+        <label for="tel">Téléphone</label>
+        <input type="tel" id="tel" placeholder="06 12 34 56 78"/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="jean@email.fr"/>
+      </div>
+      <div class="form-group">
+        <label for="type">Type de projet</label>
+        <select id="type">
+          <option value="" disabled selected>Choisir...</option>
+          <option>Escalier sur mesure</option>
+          <option>Menuiseries extérieures</option>
+          <option>Agencement intérieur</option>
+          <option>Restauration / rénovation</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label for="message">Décrivez votre projet</label>
+        <textarea id="message" placeholder="Quelques mots sur votre projet, vos contraintes, votre délai..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Envoyer ma demande — réponse sous 24h</button>
+    </form>
   </div>
 </section>
 
