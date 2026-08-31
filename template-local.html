@@ -3,170 +3,204 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Dupont Menuiserie</title>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --green:#1D4035;--earth:#C4581D;--cream:#F7F3EE;
-  --white:#fff;--dark:#1A1816;--muted:#7A7570;--border:#E8E3DB
+  --green:#1D4035;--green2:#2A5C4A;--earth:#C4581D;--earth2:#A8481A;
+  --cream:#F5F0E8;--cream2:#EDE7DA;--white:#fff;
+  --dark:#1A1816;--muted:#7A7570;--border:#DDD7CE
 }
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;height:64px;
-  background:var(--white);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;
-}
-.logo{display:flex;align-items:center;gap:.8rem;flex-shrink:0}
-.logo-icon{width:38px;height:38px;background:var(--green);border-radius:8px;display:grid;place-items:center;color:var(--white);font-weight:600;font-size:1.1rem}
-.logo-text{font-family:'Crimson Text',serif;font-size:1.25rem;font-weight:600;color:var(--green)}
-.nav-center{display:flex;gap:2rem;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-center a{font-size:.9rem;color:var(--muted);font-weight:500;transition:color .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(--cream);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
+.logo{display:flex;align-items:center;gap:.9rem;flex-shrink:0}
+.logo-mark{width:36px;height:36px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center}
+.logo-mark span{width:12px;height:12px;background:var(--green);border-radius:50%;display:block}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--green);letter-spacing:.01em}
+.nav-center{display:flex;gap:2.5rem;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-center a{font-size:.88rem;color:var(--muted);font-weight:500;letter-spacing:.02em;transition:color .2s}
 .nav-center a:hover{color:var(--dark)}
-.nav-right{display:flex;align-items:center;gap:1.2rem;flex-shrink:0}
-.btn-call{background:var(--earth);color:var(--white);font-size:.88rem;font-weight:600;padding:.55rem 1.3rem;border-radius:8px;transition:background .2s}
-.btn-call:hover{background:#B0501A}
+.nav-right{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.devis-badge{font-size:.75rem;font-weight:600;color:var(--earth);border:1.5px solid var(--earth);padding:.3rem .9rem;border-radius:20px;letter-spacing:.02em}
+.btn-call{background:var(--green);color:var(--white);font-size:.85rem;font-weight:600;padding:.55rem 1.4rem;border-radius:6px;transition:background .2s;letter-spacing:.02em}
+.btn-call:hover{background:var(--green2)}
 
-.burger{display:none;flex-direction:column;width:28px;height:28px;background:none;border:none;cursor:pointer;gap:5px}
-.burger span{display:block;width:22px;height:2px;background:var(--green);border-radius:2px;transition:transform .3s,opacity .3s}
-.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger{display:none;flex-direction:column;justify-content:center;width:32px;height:32px;background:none;border:none;cursor:pointer;gap:6px}
+.burger span{display:block;width:22px;height:1.5px;background:var(--green);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
-.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;z-index:199;background:var(--white);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;z-index:199;background:var(--cream);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
 .mob-menu.open{max-height:420px}
-.mob-menu a{display:block;padding:1.1rem 2.5rem;font-size:.95rem;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
-.mob-menu a:hover{color:var(--dark);background:var(--cream)}
-.mob-menu .mob-cta{background:var(--earth);color:var(--white);text-align:center;font-weight:600;margin:1rem 1.5rem;padding:.8rem;border-radius:8px;border:none}
+.mob-menu a{display:block;padding:1.1rem 2.5rem;font-size:.95rem;color:var(--muted);border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mob-menu a:hover{color:var(--dark);background:var(--cream2)}
+.mob-menu .mob-cta{background:var(--green);color:var(--white);text-align:center;font-weight:600;margin:1rem 1.5rem;padding:.85rem;border-radius:6px;border:none;display:block;letter-spacing:.02em}
 
 /* HERO */
-.hero{
-  margin-top:64px;background:linear-gradient(135deg,var(--green) 0,#245C3C 100%);min-height:92vh;
-  padding:3.5rem 2.5rem;display:flex;flex-direction:column;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 50%,rgba(196,88,29,.1) 0,transparent 70%);pointer-events:none}
+.hero{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
+.hero-left{background:var(--green);padding:4.5rem 3.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
+.hero-left::after{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(196,88,29,.1);pointer-events:none}
 
-.hero-inner{width:100%;max-width:1000px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.3fr 1fr;gap:4rem;align-items:center}
+.hero-kicker{display:flex;align-items:center;gap:.8rem;position:relative;z-index:1}
+.hero-kicker-line{width:32px;height:1.5px;background:var(--earth)}
+.hero-kicker span{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
-.hero-left h1{font-family:'Crimson Text',serif;font-size:clamp(2.4rem,5vw,3.8rem);color:var(--white);line-height:1.1;font-weight:600}
-.hero-left h1 em{font-style:italic;color:var(--earth)}
-.hero-left p{margin-top:1.3rem;font-size:.95rem;color:rgba(255,255,255,.72);line-height:1.85;font-weight:300;max-width:420px}
-.hero-btns{margin-top:2.2rem;display:flex;gap:.8rem;flex-wrap:wrap}
-.btn-earth{background:var(--earth);color:var(--white);padding:.8rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:600;transition:transform .2s,box-shadow .2s}
-.btn-earth:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,88,29,.3)}
-.btn-outline{border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.9);padding:.8rem 1.8rem;border-radius:8px;font-size:.92rem;font-weight:600;transition:border-color .2s,color .2s}
-.btn-outline:hover{border-color:rgba(255,255,255,.7);color:var(--white)}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.2rem);color:var(--white);line-height:1.05;font-weight:700;position:relative;z-index:1;margin:2rem 0}
+.hero-title em{font-style:italic;color:var(--earth);font-weight:400}
 
-.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
-.stat{background:rgba(255,255,255,.08);border-radius:10px;padding:1.5rem;text-align:center}
-.stat-num{font-family:'Crimson Text',serif;font-size:2.4rem;color:var(--earth);font-weight:600;line-height:1}
-.stat-label{font-size:.8rem;color:rgba(255,255,255,.6);margin-top:.4rem;text-transform:uppercase;letter-spacing:.04em}
+.hero-left p{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.9;font-weight:300;max-width:400px;position:relative;z-index:1}
+.hero-btns{display:flex;gap:.8rem;margin-top:2.5rem;position:relative;z-index:1;flex-wrap:wrap}
+.btn-primary{background:var(--earth);color:var(--white);padding:.9rem 2rem;border-radius:6px;font-size:.9rem;font-weight:600;letter-spacing:.02em;transition:background .2s,transform .2s}
+.btn-primary:hover{background:var(--earth2);transform:translateY(-2px)}
+.btn-outline{border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.9);padding:.9rem 2rem;border-radius:6px;font-size:.9rem;font-weight:600;letter-spacing:.02em;transition:border-color .2s,background .2s}
+.btn-outline:hover{border-color:var(--earth);background:rgba(196,88,29,.1)}
 
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+.hero-right{background:var(--cream2);display:flex;flex-direction:column;justify-content:flex-end;padding:3.5rem}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 2rem;margin-bottom:3rem}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:3rem;color:var(--green);font-weight:700;line-height:1}
+.hero-stat-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.hero-quote{border-left:3px solid var(--earth);padding:1.2rem 1.5rem;background:var(--white);border-radius:0 8px 8px 0}
+.hero-quote p{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--dark);line-height:1.6}
+.hero-quote cite{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-top:.6rem;font-style:normal;letter-spacing:.04em;text-transform:uppercase}
+
+/* SAVOIR-FAIRE */
+.savoir{padding:6rem 2.5rem;background:var(--cream)}
+.savoir-inner{max-width:1100px;margin:0 auto}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:4rem}
+.section-head-left{}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--earth);margin-bottom:.8rem}
+.section-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green);line-height:1.2;font-weight:700}
+.section-head p{font-size:.9rem;color:var(--muted);max-width:280px;line-height:1.8;font-weight:300;text-align:right}
+
+.savoir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.savoir-card{background:var(--white);border-radius:10px;padding:2rem 1.6rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.savoir-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(29,64,53,.1)}
+.savoir-num{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--cream2);font-weight:700;line-height:1;position:absolute;top:1rem;right:1.2rem;transition:color .3s}
+.savoir-card:hover .savoir-num{color:rgba(196,88,29,.15)}
+.savoir-card h3{font-size:.95rem;font-weight:600;color:var(--green);margin-bottom:.6rem;position:relative;z-index:1}
+.savoir-card p{font-size:.83rem;color:var(--muted);line-height:1.75;font-weight:300;position:relative;z-index:1}
+.savoir-bar{width:32px;height:2px;background:var(--earth);margin-bottom:1rem;border-radius:2px}
+
+/* PROCESSUS */
+.process{padding:6rem 2.5rem;background:var(--green)}
+.process-inner{max-width:1100px;margin:0 auto}
+.process h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);line-height:1.2;font-weight:700;margin-bottom:.5rem}
+.process-sub{font-size:.95rem;color:rgba(255,255,255,.6);font-weight:300;margin-bottom:3.5rem;max-width:500px}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-steps::before{content:'';position:absolute;top:1.5rem;left:calc(12.5% + 1rem);right:calc(12.5% + 1rem);height:1px;background:rgba(255,255,255,.2);z-index:0}
+.step{text-align:center;padding:0 1rem;position:relative;z-index:1}
+.step-dot{width:3rem;height:3rem;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.3);display:grid;place-items:center;margin:0 auto 1.5rem;font-family:'Playfair Display',serif;font-size:1rem;color:var(--white);transition:background .3s,border-color .3s}
+.step:hover .step-dot{background:var(--earth);border-color:var(--earth)}
+.step h3{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:.5rem;letter-spacing:.02em}
+.step p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;font-weight:300}
+
+/* REALISATIONS */
+.realisations{padding:6rem 2.5rem;background:var(--cream2)}
+.realisations-inner{max-width:1100px;margin:0 auto}
+.realisations h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green);font-weight:700;margin-bottom:.5rem}
+.realisations-sub{font-size:.9rem;color:var(--muted);font-weight:300;margin-bottom:3.5rem}
+.real-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:1.5rem}
+.real-card{background:var(--white);border-radius:10px;padding:2.2rem;position:relative;overflow:hidden}
+.real-card.big{grid-row:1/3;display:flex;flex-direction:column;justify-content:flex-end;background:var(--green);min-height:360px}
+.real-card.big::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4) 0,transparent 60%)}
+.real-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--earth);margin-bottom:.5rem;position:relative;z-index:1}
+.real-card.big .real-label{color:var(--earth)}
+.real-card.big h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);font-weight:700;position:relative;z-index:1;line-height:1.3}
+.real-card.big p{font-size:.83rem;color:rgba(255,255,255,.7);margin-top:.5rem;position:relative;z-index:1;font-weight:300}
+.real-card:not(.big) h3{font-size:.95rem;font-weight:600;color:var(--green);margin-bottom:.4rem}
+.real-card:not(.big) p{font-size:.82rem;color:var(--muted);font-weight:300;line-height:1.7}
+.real-tag{display:inline-block;background:var(--cream);font-size:.7rem;font-weight:600;color:var(--muted);padding:.3rem .8rem;border-radius:20px;margin-top:1rem;letter-spacing:.04em;text-transform:uppercase}
+
+/* TEMOIGNAGES */
+.temoignages{padding:6rem 2.5rem;background:var(--cream)}
+.temoignages-inner{max-width:1100px;margin:0 auto}
+.temoignages h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green);font-weight:700;margin-bottom:.5rem}
+.temo-sub{font-size:.9rem;color:var(--muted);margin-bottom:3.5rem;font-weight:300}
+.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.temo-card{background:var(--white);border-radius:10px;padding:2rem}
+.temo-stars{display:flex;gap:.2rem;margin-bottom:1rem}
+.star{color:#E8A020;font-size:.85rem}
+.temo-text{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--dark);line-height:1.7;margin-bottom:1.2rem}
+.temo-author{display:flex;align-items:center;gap:.8rem}
+.temo-avatar{width:38px;height:38px;background:var(--green);border-radius:50%;display:grid;place-items:center;color:var(--white);font-size:.78rem;font-weight:600;flex-shrink:0}
+.temo-name{font-size:.85rem;font-weight:600;color:var(--dark)}
+.temo-info{font-size:.73rem;color:var(--muted);margin-top:.1rem}
+
+/* CTA */
+.cta{padding:5rem 2.5rem;background:var(--cream2);text-align:center}
+.cta-inner{max-width:700px;margin:0 auto}
+.cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--green);line-height:1.15;font-weight:700;margin-bottom:1.2rem}
+.cta p{font-size:.95rem;color:var(--muted);line-height:1.9;font-weight:300;margin-bottom:2.5rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-main{background:var(--earth);color:var(--white);padding:1rem 2.5rem;border-radius:6px;font-size:.95rem;font-weight:600;letter-spacing:.02em;transition:background .2s,transform .2s}
+.cta-main:hover{background:var(--earth2);transform:translateY(-2px)}
+.cta-sec{border:1.5px solid var(--green);color:var(--green);padding:1rem 2.5rem;border-radius:6px;font-size:.95rem;font-weight:600;letter-spacing:.02em;transition:background .2s}
+.cta-sec:hover{background:var(--green);color:var(--white)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:2.25rem 2.5rem}
+.foot-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+.foot-brand strong{display:block;font-family:'Playfair Display',serif;font-size:.95rem;color:rgba(255,255,255,.8);font-weight:600}
+.foot-brand span{font-size:.73rem;color:rgba(255,255,255,.3);margin-top:.2rem;display:block}
+.foot-copy{font-size:.73rem;color:rgba(255,255,255,.2);text-align:center}
+.foot-links{display:flex;justify-content:flex-end;gap:1.5rem}
+.foot-links a{font-size:.73rem;color:rgba(255,255,255,.3);transition:color .2s}
+.foot-links a:hover{color:rgba(255,255,255,.7)}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .savoir-grid{grid-template-columns:repeat(2,1fr)}
+  .process-steps{grid-template-columns:repeat(2,1fr);gap:2.5rem}
+  .process-steps::before{display:none}
+  .real-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .real-card.big{grid-row:auto;min-height:220px}
+  .temo-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   nav{padding:0 1.5rem}
-  .nav-center{display:none}
+  .nav-center,.devis-badge,.btn-call{display:none}
   .burger{display:flex}
   .mob-menu{display:block}
-  
-  .hero{padding:2.5rem 1.5rem;min-height:auto}
-  .hero-left h1{font-size:clamp(2rem,8vw,3rem)}
-  .hero-btns{flex-direction:column;gap:.6rem}
-  .btn-earth,.btn-outline{width:100%}
-  .hero-stats{grid-template-columns:1fr}
-}
 
-/* SERVICES */
-.services{padding:5rem 2.5rem;background:var(--white)}
-.s-top{margin-bottom:3.5rem;display:grid;grid-template-columns:2fr 1.3fr;gap:3rem;align-items:end}
-.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--earth);margin-bottom:.6rem}
-.s-top h2{font-family:'Crimson Text',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--green);line-height:1.2;font-weight:600}
-.s-top p{font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:400}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:3rem 1.5rem;text-align:center}
+  .hero-kicker{justify-content:center}
+  .hero-title{font-size:clamp(2.2rem,10vw,3rem);margin:1.5rem 0}
+  .hero-left p{margin:0 auto}
+  .hero-btns{justify-content:center;flex-direction:column}
+  .btn-primary,.btn-outline{width:100%}
+  .hero-right{padding:2.5rem 1.5rem}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+  .hero-stat-num{font-size:2.2rem}
 
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.svc-card{padding:2rem;background:var(--cream);border-radius:12px;border:1px solid var(--border);transition:border-color .25s,box-shadow .25s,transform .25s}
-.svc-card:hover{border-color:var(--earth);box-shadow:0 8px 28px rgba(196,88,29,.12);transform:translateY(-3px)}
-.svc-num{font-family:'Crimson Text',serif;font-size:2.2rem;color:var(--earth);font-weight:600;line-height:1;margin-bottom:.5rem}
-.svc-card h3{font-size:.98rem;font-weight:600;color:var(--green);margin-bottom:.5rem}
-.svc-card p{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:400}
+  .savoir{padding:4rem 1.5rem}
+  .section-head{flex-direction:column;align-items:flex-start;gap:1rem}
+  .section-head p{text-align:left;max-width:100%}
+  .savoir-grid{grid-template-columns:1fr}
 
-@media(max-width:900px){
-  .s-top{grid-template-columns:1fr}
-  .svc-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-  .services{padding:3.5rem 1.5rem}
-  .svc-grid{grid-template-columns:1fr}
-}
+  .process{padding:4rem 1.5rem}
+  .process-steps{grid-template-columns:1fr;gap:2rem}
 
-/* TESTIMONIALS */
-.testi{background:var(--cream);padding:5rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.testi-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:4rem;align-items:center}
-.testi-quote{font-family:'Crimson Text',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);color:var(--green);line-height:1.6;font-style:italic;font-weight:400}
-.testi-author{display:block;margin-top:1.3rem;font-size:.85rem;color:var(--muted);font-style:normal}
-.testi-author strong{color:var(--dark);font-weight:600}
-.testi-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem}
-.stat-box{background:var(--white);padding:1.5rem;border-radius:10px;text-align:center;border:1px solid var(--border)}
-.stat-box-num{font-family:'Crimson Text',serif;font-size:2.2rem;color:var(--earth);font-weight:600;line-height:1}
-.stat-box-label{font-size:.75rem;color:var(--muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:.04em}
+  .realisations{padding:4rem 1.5rem}
+  .real-grid{grid-template-columns:1fr}
+  .real-card.big{min-height:200px}
 
-@media(max-width:800px){
-  .testi-inner{grid-template-columns:1fr;gap:2.5rem}
-}
-@media(max-width:600px){
-  .testi{padding:3.5rem 1.5rem}
-}
+  .temoignages{padding:4rem 1.5rem}
+  .temo-grid{grid-template-columns:1fr}
 
-/* CONTACT */
-.contact{padding:5rem 2.5rem;background:var(--white)}
-.contact-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:4rem}
+  .cta{padding:4rem 1.5rem}
+  .cta-btns{flex-direction:column}
+  .cta-main,.cta-sec{width:100%}
 
-.contact-left h2{font-family:'Crimson Text',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--green);line-height:1.25;font-weight:600}
-.contact-left p{margin-top:1rem;font-size:.9rem;color:var(--muted);line-height:1.8;font-weight:400;max-width:380px}
-.contact-info{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.2rem}
-.info-item{display:flex;gap:1rem;align-items:flex-start}
-.info-icon{width:40px;height:40px;background:var(--earth);border-radius:10px;display:grid;place-items:center;flex-shrink:0;color:var(--white);font-size:.95rem}
-.info-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.info-value{font-size:.9rem;color:var(--green);font-weight:600}
-
-form{background:var(--cream);border-radius:14px;padding:2.5rem;border:1px solid var(--border)}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
-.form-group.full{grid-column:1/-1}
-.form-label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-.form-input,.form-textarea,.form-select{border:1.5px solid var(--border);border-radius:8px;padding:.8rem 1rem;font-family:'Poppins',sans-serif;font-size:.88rem;color:var(--dark);outline:none;transition:border-color .2s,box-shadow .2s;background:var(--white)}
-.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--earth);box-shadow:0 0 0 3px rgba(196,88,29,.1)}
-.form-textarea{resize:none;min-height:100px}
-.form-submit{background:var(--green);color:var(--white);padding:.9rem 2rem;border-radius:8px;font-size:.92rem;font-weight:600;border:none;cursor:pointer;width:100%;transition:background .2s,transform .15s}
-.form-submit:hover{background:#16372E;transform:translateY(-1px)}
-
-@media(max-width:900px){
-  .contact-inner{grid-template-columns:1fr;gap:2.5rem}
-}
-@media(max-width:600px){
-  .contact{padding:3.5rem 1.5rem}
-  .form-row{grid-template-columns:1fr}
-}
-
-/* FOOTER */
-footer{background:var(--dark);padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;border-top:1px solid rgba(255,255,255,.08)}
-.foot-left{font-size:.85rem;color:rgba(255,255,255,.5)}
-.foot-left strong{display:block;font-family:'Crimson Text',serif;font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:.2rem;font-weight:600}
-.foot-center{font-size:.82rem;color:rgba(255,255,255,.35);text-align:center}
-.foot-right{display:flex;justify-content:flex-end;gap:2rem;font-size:.82rem}
-.foot-right a{color:rgba(255,255,255,.4);transition:color .2s}
-.foot-right a:hover{color:rgba(255,255,255,.75)}
-
-@media(max-width:600px){
-  footer{grid-template-columns:1fr;text-align:center;gap:.75rem}
-  .foot-right{justify-content:center}
+  footer{padding:2rem 1.5rem}
+  .foot-inner{grid-template-columns:1fr;text-align:center;gap:.75rem}
+  .foot-links{justify-content:center}
 }
 </style>
 </head>
@@ -174,173 +208,265 @@ footer{background:var(--dark);padding:2rem 2.5rem;display:grid;grid-template-col
 
 <nav>
   <div class="logo">
-    <div class="logo-icon">🪵</div>
-    <div class="logo-text">Dupont</div>
+    <div class="logo-mark"><span></span></div>
+    <div class="logo-text">Dupont Menuiserie</div>
   </div>
   <div class="nav-center">
-    <a href="#services">Nos services</a>
-    <a href="#testi">Clients</a>
+    <a href="#savoir">Savoir-faire</a>
+    <a href="#realisations">Réalisations</a>
+    <a href="#temoignages">Témoignages</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
+    <span class="devis-badge">Devis gratuit</span>
     <a href="tel:0612345678" class="btn-call">06 12 34 56 78</a>
   </div>
   <button class="burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob-menu" id="mob-menu">
-  <a href="#services">Nos services</a>
-  <a href="#testi">Clients</a>
+  <a href="#savoir">Savoir-faire</a>
+  <a href="#realisations">Réalisations</a>
+  <a href="#temoignages">Témoignages</a>
   <a href="#contact">Contact</a>
-  <a href="tel:0612345678" class="mob-cta">Appeler 06 12 34 56 78</a>
+  <a href="tel:0612345678" class="mob-cta">Appeler maintenant</a>
 </div>
 
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <h1>Menuiserie<br><em>sur mesure.</em></h1>
-      <p>Depuis 20 ans, nous créons des menuiseries sur mesure. Portes, fenêtres, agencements — du projet à la pose, on s'occupe de tout.</p>
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <div class="hero-kicker-line"></div>
+      <span>Menuisier artisan — Normandie</span>
+    </div>
+    <div>
+      <h1 class="hero-title">L'art du bois,<br><em>fait main.</em></h1>
+      <p>Escaliers, portes, fenêtres, agencements sur mesure. Depuis 20 ans, nous façonnons le bois avec soin, pour que chaque pièce soit unique et durable.</p>
       <div class="hero-btns">
-        <a href="tel:0612345678" class="btn-earth">Nous appeler</a>
-        <a href="#contact" class="btn-outline">Devis gratuit</a>
+        <a href="#contact" class="btn-primary">Demander un devis</a>
+        <a href="#realisations" class="btn-outline">Voir nos réalisations</a>
       </div>
     </div>
+  </div>
+  <div class="hero-right">
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">20 ans</div>
-        <div class="stat-label">d'expérience</div>
+      <div>
+        <div class="hero-stat-num">20</div>
+        <div class="hero-stat-label">ans d'expérience</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Projets livrés</div>
+      <div>
+        <div class="hero-stat-num">600</div>
+        <div class="hero-stat-label">projets réalisés</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">bois français</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">5 ans</div>
+        <div class="hero-stat-label">de garantie</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>On ne bâcle pas le bois. Chaque trait de rabot, chaque assemblage — c'est une signature.</p>
+      <cite>— Jean Dupont, fondateur</cite>
+    </div>
+  </div>
+</section>
+
+<section class="savoir" id="savoir">
+  <div class="savoir-inner">
+    <div class="section-head">
+      <div class="section-head-left">
+        <p class="eyebrow">Notre savoir-faire</p>
+        <h2>Ce que nous faisons,<br>nous le faisons bien.</h2>
+      </div>
+      <p>Chaque projet est unique. Nous travaillons avec vous de la conception à la pose, sans intermédiaire.</p>
+    </div>
+    <div class="savoir-grid">
+      <div class="savoir-card">
+        <span class="savoir-num">01</span>
+        <div class="savoir-bar"></div>
+        <h3>Escaliers sur mesure</h3>
+        <p>Droits, tournants, hélicoïdaux. Chaque escalier est conçu selon les contraintes de votre espace et de votre style.</p>
+      </div>
+      <div class="savoir-card">
+        <span class="savoir-num">02</span>
+        <div class="savoir-bar"></div>
+        <h3>Menuiseries extérieures</h3>
+        <p>Portes d'entrée, fenêtres, volets, portails. Performance thermique et esthétique garanties.</p>
+      </div>
+      <div class="savoir-card">
+        <span class="savoir-num">03</span>
+        <div class="savoir-bar"></div>
+        <h3>Agencement intérieur</h3>
+        <p>Bibliothèques, placards, dressings, cuisines. Des solutions qui épousent votre espace au centimètre près.</p>
+      </div>
+      <div class="savoir-card">
+        <span class="savoir-num">04</span>
+        <div class="savoir-bar"></div>
+        <h3>Restauration & rénovation</h3>
+        <p>Redonner vie à des menuiseries anciennes. Parquet, boiseries, volets — le respect du patrimoine est notre priorité.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="s-top">
-    <div>
-      <p class="eyebrow">Nos services</p>
-      <h2>Du sur mesure<br>pour votre maison.</h2>
-    </div>
-    <p>Chaque projet est unique. On écoute, on propose, on crée.</p>
-  </div>
-  <div class="svc-grid">
-    <div class="svc-card">
-      <div class="svc-num">01</div>
-      <h3>Fenêtres</h3>
-      <p>Bois, alu, mixte — toutes dimensions, toutes finitions. Thermique optimale, esthétique soignée.</p>
-    </div>
-    <div class="svc-card">
-      <div class="svc-num">02</div>
-      <h3>Portes</h3>
-      <p>Entrée, coulissante, patio — création sur mesure. Bois massif ou assemblé, tous motifs.</p>
-    </div>
-    <div class="svc-card">
-      <div class="svc-num">03</div>
-      <h3>Agencements</h3>
-      <p>Cuisines, dressings, rangements — optimisez votre espace. Entièrement sur mesure.</p>
-    </div>
-  </div>
-</section>
-
-<section class="testi" id="testi">
-  <div class="testi-inner">
-    <div>
-      <blockquote class="testi-quote">« Dupont a créé nos fenêtres sur mesure. Un vrai artisan qui écoute. »</blockquote>
-      <cite><strong>Sophie Martin</strong> — Lille</cite>
-    </div>
-    <div class="testi-stats">
-      <div class="stat-box">
-        <div class="stat-box-num">4.8</div>
-        <div class="stat-box-label">Note moyenne</div>
+<section class="process">
+  <div class="process-inner">
+    <p class="eyebrow" style="color:rgba(255,255,255,.5);margin-bottom:.8rem">Comment ça se passe</p>
+    <h2>De la demande à la livraison</h2>
+    <p class="process-sub">Un accompagnement simple, transparent, sans mauvaise surprise.</p>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-dot">I</div>
+        <h3>Premier contact</h3>
+        <p>Vous nous appelez ou remplissez le formulaire. On vous répond sous 24h.</p>
       </div>
-      <div class="stat-box">
-        <div class="stat-box-num">320+</div>
-        <div class="stat-box-label">Clients</div>
+      <div class="step">
+        <div class="step-dot">II</div>
+        <h3>Visite & devis</h3>
+        <p>On se déplace, on prend les mesures, on vous remet un devis détaillé — gratuit.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">III</div>
+        <h3>Fabrication</h3>
+        <p>Tout est fabriqué dans notre atelier normand, avec du bois français sélectionné.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">IV</div>
+        <h3>Pose & finitions</h3>
+        <p>Nos artisans posent et finissent sur place. Vous validez avant notre départ.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <h2>Parlons de votre projet.</h2>
-      <p>Visite gratuite à domicile, devis personnalisé, sans engagement. On étudie votre besoin en détail.</p>
-      <div class="contact-info">
-        <div class="info-item">
-          <div class="info-icon">📞</div>
+<section class="realisations" id="realisations">
+  <div class="realisations-inner">
+    <p class="eyebrow">Nos réalisations</p>
+    <h2>Quelques projets récents</h2>
+    <p class="realisations-sub">Chaque réalisation est unique. Voici une sélection de nos derniers chantiers.</p>
+    <div class="real-grid">
+      <div class="real-card big">
+        <p class="real-label">Projet phare — 2024</p>
+        <h3>Escalier hélicoïdal en chêne massif</h3>
+        <p>Réalisé pour une maison contemporaine à Rouen. 4 mois de fabrication, 3 artisans.</p>
+      </div>
+      <div class="real-card">
+        <p class="real-label">Agencement</p>
+        <h3>Bibliothèque sur mesure</h3>
+        <p>Mur entier en hêtre huilé, Caen. Conçu en 2 semaines.</p>
+        <span class="real-tag">Hêtre</span>
+      </div>
+      <div class="real-card">
+        <p class="real-label">Extérieur</p>
+        <h3>Porte d'entrée double vantail</h3>
+        <p>Chêne massif, finition teintée anthracite. Normandie.</p>
+        <span class="real-tag">Chêne</span>
+      </div>
+      <div class="real-card">
+        <p class="real-label">Rénovation</p>
+        <h3>Parquet ancien restauré</h3>
+        <p>Ponçage, rebouchage, vitrification. Maison XVIIIe, Évreux.</p>
+        <span class="real-tag">Restauration</span>
+      </div>
+      <div class="real-card">
+        <p class="real-label">Intérieur</p>
+        <h3>Dressing en noyer</h3>
+        <p>Coulissants, tiroirs intégrés, éclairage LED encastré. Le Havre.</p>
+        <span class="real-tag">Noyer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="temoignages" id="temoignages">
+  <div class="temoignages-inner">
+    <p class="eyebrow">Ils nous font confiance</p>
+    <h2>Ce que disent nos clients</h2>
+    <p class="temo-sub">Plus de 180 avis Google, note moyenne 4.9 sur 5.</p>
+    <div class="temo-grid">
+      <div class="temo-card">
+        <div class="temo-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="temo-text">L'escalier est magnifique. On voit vraiment le soin apporté à chaque détail. Un vrai artisan, pas un industriel.</p>
+        <div class="temo-author">
+          <div class="temo-avatar">CL</div>
           <div>
-            <div class="info-label">Téléphone</div>
-            <div class="info-value">06 12 34 56 78</div>
+            <div class="temo-name">Claire L.</div>
+            <div class="temo-info">Vérifiée sur Google · Il y a 3 semaines</div>
           </div>
         </div>
-        <div class="info-item">
-          <div class="info-icon">✉️</div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="temo-text">Devis rapide, délai respecté, finitions impeccables. La bibliothèque est exactement ce qu'on voulait. Merci à toute l'équipe.</p>
+        <div class="temo-author">
+          <div class="temo-avatar" style="background:#C4581D">MR</div>
           <div>
-            <div class="info-label">Email</div>
-            <div class="info-value">contact@dupontbois.fr</div>
+            <div class="temo-name">Marc R.</div>
+            <div class="temo-info">Vérifiée sur Google · Il y a 1 mois</div>
           </div>
         </div>
-        <div class="info-item">
-          <div class="info-icon">📍</div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="temo-text">Restauration de notre parquet XVIIIe avec un résultat bluffant. On ne pensait pas que c'était récupérable. Travail exceptionnel.</p>
+        <div class="temo-author">
+          <div class="temo-avatar" style="background:#5C3D1D">SF</div>
           <div>
-            <div class="info-label">Secteur</div>
-            <div class="info-value">Nord — Pas-de-Calais</div>
+            <div class="temo-name">Sophie F.</div>
+            <div class="temo-info">Vérifiée sur Google · Il y a 2 mois</div>
           </div>
         </div>
       </div>
     </div>
-    <form>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Nom</label>
-          <input type="text" class="form-input" placeholder="Votre nom"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Téléphone</label>
-          <input type="tel" class="form-input" placeholder="06 12 34 56 78"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Type de projet</label>
-        <select class="form-select">
-          <option>Sélectionner un projet</option>
-          <option>Fenêtres</option>
-          <option>Portes</option>
-          <option>Agencements</option>
-          <option>Autre</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label class="form-label">Votre demande</label>
-        <textarea class="form-textarea" placeholder="Décrivez votre projet..."></textarea>
-      </div>
-      <button type="submit" class="form-submit">Demander un devis</button>
-    </form>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <p class="eyebrow" style="text-align:center">Parlons de votre projet</p>
+    <h2>Un projet en tête ?</h2>
+    <p>Que ce soit une petite réparation ou un chantier complet, nous vous accompagnons de A à Z. Devis gratuit, réponse sous 24h.</p>
+    <div class="cta-btns">
+      <a href="tel:0612345678" class="cta-main">Appeler maintenant</a>
+      <a href="mailto:contact@dupont-menuiserie.fr" class="cta-sec">Envoyer un message</a>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="foot-left">
-    <strong>Dupont Menuiserie</strong>
-    <span>Nord — Pas-de-Calais</span>
-  </div>
-  <div class="foot-center">© 2026 Dupont Menuiserie</div>
-  <div class="foot-right">
-    <a href="#">Mentions légales</a>
-    <a href="https://vegastudio.fr">Vega Studio</a>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <strong>Dupont Menuiserie</strong>
+      <span>Normandie — Artisan depuis 2004</span>
+    </div>
+    <div class="foot-copy">© 2026 Dupont Menuiserie</div>
+    <div class="foot-links">
+      <a href="#">Mentions légales</a>
+      <a href="https://vegastudio.fr">Vega Studio</a>
+    </div>
   </div>
 </footer>
 
 <script>
 const burger = document.getElementById('burger');
 const mobMenu = document.getElementById('mob-menu');
-burger.addEventListener('click',e=>{e.stopPropagation();const o=mobMenu.classList.toggle('open');burger.classList.toggle('open',o)});
-mobMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobMenu.classList.remove('open');burger.classList.remove('open')}));
-document.addEventListener('click',e=>{if(!burger.contains(e.target)&&!mobMenu.contains(e.target)){mobMenu.classList.remove('open');burger.classList.remove('open')}});
+burger.addEventListener('click', e => {
+  e.stopPropagation();
+  const o = mobMenu.classList.toggle('open');
+  burger.classList.toggle('open', o);
+});
+mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobMenu.classList.remove('open');
+  burger.classList.remove('open');
+}));
+document.addEventListener('click', e => {
+  if (!burger.contains(e.target) && !mobMenu.contains(e.target)) {
+    mobMenu.classList.remove('open');
+    burger.classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
