@@ -4,6 +4,11 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Dupont Menuiserie</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="realisation-escalier.jpg"/>
+<link rel="preload" as="image" href="realisation-bibliotheque.jpg"/>
+<link rel="preload" as="image" href="realisation-porte.jpg"/>
+<link rel="preload" as="image" href="realisation-parquet.jpg"/>
+<link rel="preload" as="image" href="realisation-dressing.jpg"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -557,6 +562,9 @@ function initRealCarousel() {
     track.dataset.cloned = '';
     return;
   }
+  const GAP = 16; // px entre chaque carte
+  track.style.gap = GAP + 'px';
+
   if (!track.dataset.cloned) {
     Array.from(track.children).forEach(card => {
       const clone = card.cloneNode(true);
@@ -571,8 +579,8 @@ function initRealCarousel() {
   track.style.transform  = 'translateX(0)';
   realCarouselInterval = setInterval(() => {
     index++;
-    const cardW = track.children[0].offsetWidth;
-    track.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+    const cardW = track.children[0].offsetWidth + GAP;
+    track.style.transition = 'transform .75s cubic-bezier(.4,0,.2,1)';
     track.style.transform  = `translateX(-${index * cardW}px)`;
     if (index >= total) {
       track.addEventListener('transitionend', function reset() {
@@ -582,7 +590,7 @@ function initRealCarousel() {
         index = 0;
       }, { once: true });
     }
-  }, 2000);
+  }, 3000);
 }
 initRealCarousel();
 window.addEventListener('resize', initRealCarousel);
