@@ -82,9 +82,10 @@ main {
 }
 
 
-.preview-unavailable{height:210px;background:#F2F2F0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;flex-shrink:0}
-.preview-unavailable span:first-child{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C0BDB8;border:1px solid #D8D5D0;padding:.3rem .8rem;border-radius:2px}
-.preview-unavailable span:last-child{font-size:.7rem;color:#C8C5C0;font-weight:300}
+.preview-unavailable{height:210px;background:#B0ABA4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;flex-shrink:0}
+.preview-unavailable span:first-child{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.6);padding:.3rem .8rem;border-radius:2px}
+.preview-unavailable span:last-child{font-size:.7rem;color:rgba(255,255,255,.75);font-weight:300}
+.info { padding: 1rem 1.3rem 1.3rem; display: flex; flex-direction: column; gap: .4rem; }
 .info-name { font-size: .92rem; font-weight: 500; letter-spacing: -.01em; color: #1A1A1A; }
 .info-desc { font-size: .75rem; color: #999; line-height: 1.55; font-weight: 300; }
 .info-colors { display: flex; gap: .3rem; margin-top: .4rem; }
@@ -183,9 +184,7 @@ footer a:hover { color: #555; }
       </div>
     </a>
 
-    </div>
-
-    <div class="card" style="cursor:default">
+    <div class="card" style="cursor:default;pointer-events:none">
       <div class="preview-unavailable">
         <span>Indisponible</span>
         <span>Bientôt disponible</span>
@@ -201,7 +200,7 @@ footer a:hover { color: #555; }
       </div>
     </div>
 
-    <div class="card" style="cursor:default">
+    <div class="card" style="cursor:default;pointer-events:none">
       <div class="preview-unavailable">
         <span>Indisponible</span>
         <span>Bientôt disponible</span>
