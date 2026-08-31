@@ -43,7 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 
 /* HERO */
 .hero{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px)}
-.hero-left{background:var(--green);padding:4rem 5.5rem;display:flex;flex-direction:column;justify-content:center;gap:2.5rem;position:relative;overflow:hidden}
+.hero-left{background:var(--green);padding:4rem 5.5rem;display:flex;flex-direction:column;justify-content:center;gap:3.5rem;position:relative;overflow:hidden}
 .hero-left::before{content:'';position:absolute;bottom:-140px;left:-140px;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
 .hero-left::after{content:'';position:absolute;top:-100px;right:-100px;width:380px;height:380px;border-radius:50%;background:rgba(196,88,29,.2);pointer-events:none}
 .hero-circle-1{position:absolute;top:20%;left:55%;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;z-index:0}
@@ -56,11 +56,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 .hero-kicker-line{width:36px;height:2px;background:var(--earth)}
 .hero-kicker span{font-size:.85rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
 
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,5.8vw,5rem);color:var(--white);line-height:1.05;font-weight:700;position:relative;z-index:1}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,5.8vw,5rem);color:var(--white);line-height:1.05;font-weight:700;position:relative;z-index:1;margin-bottom:1.8rem}
 .hero-title em{font-style:italic;color:var(--earth);font-weight:400}
 
 .hero-left p{font-size:1rem;color:rgba(255,255,255,.7);line-height:1.9;font-weight:300;max-width:440px;position:relative;z-index:1}
-.hero-btns{display:flex;gap:.8rem;position:relative;z-index:1;flex-wrap:wrap}
+.hero-btns{display:flex;gap:.8rem;margin-top:2rem;position:relative;z-index:1;flex-wrap:wrap}
 .btn-primary{background:var(--earth);color:var(--white);padding:.95rem 2.2rem;border-radius:6px;font-size:.92rem;font-weight:600;letter-spacing:.02em;transition:background .2s,transform .2s}
 .btn-primary:hover{background:var(--earth2);transform:translateY(-2px)}
 .btn-outline{border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.9);padding:.95rem 2.2rem;border-radius:6px;font-size:.92rem;font-weight:600;letter-spacing:.02em;transition:border-color .2s,background .2s}
