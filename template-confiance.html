@@ -81,11 +81,20 @@ nav{
   
   .hero{padding:2.5rem 1.5rem;min-height:auto}
   .hero-left{text-align:center}
-  .hero-left h1{font-size:clamp(1.8rem,8vw,2.8rem)}
+  .hero-left h1{font-size:clamp(2.7rem,12vw,3.4rem)}
   .hero-left p{margin-left:auto;margin-right:auto}
   .hero-btns{flex-direction:column;justify-content:center}
   .btn-amber,.btn-white{width:100%}
   .hero-card{grid-template-columns:1fr}
+  
+  .reviews{padding:3.5rem 1.5rem}
+  .reviews-grid{grid-template-columns:1fr;position:relative;height:380px}
+  .review-card{position:absolute;top:0;left:0;right:0;opacity:0;transition:opacity .6s ease-in-out;pointer-events:none}
+  .review-card.active{opacity:1;pointer-events:auto}
+  
+  .services{padding:3.5rem 1.5rem}
+  .services-header{flex-direction:column}
+  .svc-grid{grid-template-columns:1fr}
 }
 
 /* HERO STATS */
@@ -104,13 +113,14 @@ nav{
 }
 
 /* SERVICES */
-.services{padding:5.5rem 2.5rem;background:var(--white);text-align:center}
-.services-header{max-width:700px;margin:0 auto 4rem}
+.services{padding:5.5rem 2.5rem;background:var(--white)}
+.services-header{max-width:900px;margin:0 auto 4rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem}
+.services-header-text{flex:1}
 .eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
-.services h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400;margin-bottom:1rem}
-.services-desc{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300}
+.services h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
+.services-desc{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;max-width:400px}
 
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto}
 .svc-card{padding:2.2rem;border:1.5px solid var(--border);border-radius:12px;text-align:left;transition:all .3s cubic-bezier(.4,0,.2,1)}
 .svc-card:hover{border-color:var(--blue);box-shadow:0 12px 36px rgba(38,96,170,.15);transform:translateY(-4px)}
 .svc-icon{width:52px;height:52px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.3rem;color:var(--blue);font-weight:600;font-family:'DM Sans',sans-serif}
@@ -118,11 +128,8 @@ nav{
 .svc-card p{font-size:.88rem;color:var(--muted);line-height:1.8;font-weight:300}
 
 @media(max-width:1000px){
+  .services-header{flex-direction:column;align-items:flex-start}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:600px){
-  .services{padding:3.5rem 1.5rem}
-  .svc-grid{grid-template-columns:1fr}
 }
 
 /* REVIEWS */
@@ -150,24 +157,29 @@ nav{
 }
 @media(max-width:600px){
   .reviews{padding:3.5rem 1.5rem}
-  .reviews-grid{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr;position:relative;height:380px}
+  .review-card{position:absolute;top:0;left:0;right:0;opacity:0;transition:opacity .6s ease-in-out;pointer-events:none}
+  .review-card.active{opacity:1;pointer-events:auto}
 }
 
 /* FEATURES */
-.features{padding:5.5rem 2.5rem;background:var(--white);text-align:center}
-.features-header{max-width:700px;margin:0 auto 4rem}
-.features h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
+.features{padding:5.5rem 2.5rem;background:var(--light)}
+.features-header{max-width:900px;margin:0 auto 4rem;text-align:center}
+.features h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400;margin-bottom:.5rem}
+.features-sub{font-size:.95rem;color:var(--muted);line-height:1.8;margin-top:1rem}
 
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1000px;margin:0 auto}
-.feat-item{padding:1.8rem;text-align:center}
-.feat-icon{width:60px;height:60px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:var(--blue);font-size:1.8rem;font-weight:600}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;max-width:1100px;margin:0 auto}
+.feat-item{padding:2rem;background:var(--white);border-radius:12px;text-align:center;border:1px solid var(--border);transition:all .3s}
+.feat-item:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.feat-icon{width:60px;height:60px;background:var(--light);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;color:var(--blue);font-size:1.8rem;font-weight:600}
 .feat-item h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.6rem}
 .feat-item p{font-size:.88rem;color:var(--muted);line-height:1.7;font-weight:300}
 
 @media(max-width:900px){
-  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}
 }
 @media(max-width:600px){
+  .features{padding:3.5rem 1.5rem}
   .feat-grid{grid-template-columns:1fr}
 }
 
@@ -288,9 +300,11 @@ footer{background:#081A2C;padding:2.25rem 2.5rem}
 
 <section class="services" id="services">
   <div class="services-header">
-    <p class="eyebrow">Nos domaines de compétence</p>
-    <h2>Tous vos besoins électriques couverts</h2>
-    <p class="services-desc">Petit dépannage ou grand chantier, diagnostic ou installation neuve — nous avons l'expertise et le matériel pour intervenir vite, bien et aux bonnes conditions.</p>
+    <div class="services-header-text">
+      <p class="eyebrow">Nos domaines de compétence</p>
+      <h2>Tous vos besoins électriques couverts</h2>
+      <p class="services-desc">Petit dépannage ou grand chantier, diagnostic ou installation neuve — nous avons l'expertise et le matériel pour intervenir vite, bien et aux bonnes conditions.</p>
+    </div>
   </div>
   <div class="svc-grid">
     <div class="svc-card">
@@ -384,6 +398,7 @@ footer{background:#081A2C;padding:2.25rem 2.5rem}
   <div class="features-header">
     <p class="eyebrow">Pourquoi nous choisir</p>
     <h2>L'électricité en toute confiance</h2>
+    <p class="features-sub">15 ans d'expérience, des tarifs transparents, et une garantie 10 ans sur tous nos travaux.</p>
   </div>
   <div class="feat-grid">
     <div class="feat-item">
@@ -435,6 +450,27 @@ const mobMenu = document.getElementById('mob-menu');
 burger.addEventListener('click',e=>{e.stopPropagation();const o=mobMenu.classList.toggle('open');burger.classList.toggle('open',o)});
 mobMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobMenu.classList.remove('open');burger.classList.remove('open')}));
 document.addEventListener('click',e=>{if(!burger.contains(e.target)&&!mobMenu.contains(e.target)){mobMenu.classList.remove('open');burger.classList.remove('open')}});
+
+// Carousel avis sur mobile
+function initReviewsCarousel(){
+  const isMobile=window.innerWidth<=768;
+  if(!isMobile)return;
+  
+  const cards=document.querySelectorAll('.review-card');
+  if(cards.length<2)return;
+  
+  let currentIndex=0;
+  cards[0].classList.add('active');
+  
+  setInterval(()=>{
+    cards[currentIndex].classList.remove('active');
+    currentIndex=(currentIndex+1)%cards.length;
+    cards[currentIndex].classList.add('active');
+  },1500);
+}
+
+initReviewsCarousel();
+window.addEventListener('resize',initReviewsCarousel);
 </script>
 </body>
 </html>
