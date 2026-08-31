@@ -2,188 +2,146 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Studio Noir — Agence Créative</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Fraunces:ital,wght@1,300;1,600&display=swap" rel="stylesheet"/>
+<title>Atelier Forme — Studio créatif</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=Fraunces:ital,wght@1,300&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0F0F0F;
-  --red:#D42B2B;
-  --red2:#B01F1F;
-  --paper:#F5F3EE;
-  --paper2:#EDEBE5;
-  --white:#FFFFFF;
-  --muted:#7A7570;
-  --border:#E0DDD7;
-  --border-dark:rgba(15,15,15,.12)
+  --ink:#111;--white:#fff;--off:#F8F7F5;--pale:#EFEFEC;
+  --accent:#2D6A4F;--accent2:#245A42;--warm:#E8C547;
+  --muted:#888;--border:#E2E0DC;--text:#333
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:62px;background:var(--paper);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 3rem}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.06em;color:var(--ink)}
-.nav-logo span{color:var(--red)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:var(--white);border-bottom:1px solid var(--border)}
+.logo{font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.logo span{color:var(--accent)}
 .nav-links{display:flex;gap:2.5rem;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.nav-links a{font-size:.78rem;color:var(--muted);letter-spacing:.04em;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
+.nav-cta{font-size:.78rem;font-weight:600;color:var(--accent);letter-spacing:.04em;border-bottom:1px solid var(--accent);padding-bottom:.1rem}
 .nav-tel{font-size:.78rem;color:var(--muted)}
-.btn-cta{background:var(--ink);color:var(--white);font-size:.75rem;font-weight:600;padding:.55rem 1.4rem;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s}
-.btn-cta:hover{background:#2A2A2A}
 
-.burger{display:none;flex-direction:column;justify-content:center;width:32px;height:32px;background:none;border:none;cursor:pointer;gap:6px}
-.burger span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
-.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger{display:none;flex-direction:column;justify-content:center;width:30px;height:30px;background:none;border:none;cursor:pointer;gap:5px}
+.burger span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;z-index:199;background:var(--paper);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;top:60px;left:0;right:0;z-index:199;background:var(--white);border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
 .mob-menu.open{max-height:420px}
-.mob-menu a{display:block;padding:1.1rem 2rem;font-size:.85rem;color:var(--muted);border-bottom:1px solid var(--border);letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.mob-menu a{display:block;padding:1.1rem 2rem;font-size:.9rem;color:var(--muted);border-bottom:1px solid var(--border)}
 .mob-menu a:hover{color:var(--ink)}
-.mob-menu .mob-cta{background:var(--ink);color:var(--white);text-align:center;margin:1rem 1.5rem;padding:.85rem;border-radius:3px;border:none;display:block;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.mob-menu .mob-cta{background:var(--accent);color:var(--white);text-align:center;margin:1rem 1.5rem;padding:.85rem;border-radius:4px;border:none;display:block;font-weight:600;letter-spacing:.04em}
 
-/* HERO */
-.hero{margin-top:62px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 62px);border-bottom:1px solid var(--border)}
+/* HERO — grande bande typographique */
+.hero{margin-top:60px;padding:5rem 3rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero-inner{max-width:1300px;margin:0 auto}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4rem}
+.hero-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero-label-right{text-align:right}
+.hero-label-right a{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:.1rem}
 
-/* Colonne gauche */
-.hero-left{background:var(--ink);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.hero-left::before{content:'';position:absolute;top:-120px;right:-120px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none}
-.hero-left::after{content:'';position:absolute;bottom:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(212,43,43,.08);pointer-events:none}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,11vw,14rem);line-height:.88;letter-spacing:.01em;color:var(--ink);position:relative}
+.hero-title .line-italic{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--accent);display:block}
+.hero-title .line-outline{color:transparent;-webkit-text-stroke:1.5px var(--border);display:block;user-select:none}
 
-.hero-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:.8rem}
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--red);display:block}
+.hero-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.hero-bottom-col{}
+.hero-col-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
+.hero-col-text{font-size:.88rem;color:var(--text);line-height:1.8;font-weight:300}
+.hero-col-text strong{font-weight:600;color:var(--ink)}
+.hero-stat{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--ink);line-height:1}
+.hero-col-btns{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
+.btn-main{background:var(--accent);color:var(--white);padding:.85rem 1.8rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-radius:4px;transition:background .2s;text-align:center}
+.btn-main:hover{background:var(--accent2)}
+.btn-sec{border:1.5px solid var(--border);color:var(--text);padding:.85rem 1.8rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-radius:4px;transition:border-color .2s,color .2s;text-align:center}
+.btn-sec:hover{border-color:var(--ink);color:var(--ink)}
 
-.hero-title{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;position:relative;z-index:1}
-.hero-title .l1{font-size:clamp(4rem,7vw,8.5rem);color:var(--white);display:block;line-height:.92}
-.hero-title .l2{font-size:clamp(4rem,7vw,8.5rem);color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.25);display:block;line-height:.92;margin-top:.4rem}
-.hero-title .l3{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(2.5rem,4.5vw,5.5rem);color:var(--red);display:block;line-height:1.1;margin-top:.6rem;font-weight:300}
+/* BANDE DÉFILANTE */
+.ticker{background:var(--accent);padding:.9rem 0;overflow:hidden;white-space:nowrap;border-top:1px solid var(--border)}
+.ticker-inner{display:inline-flex;animation:ticker 22s linear infinite}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.1em;color:var(--white);padding:0 2.5rem}
+.ticker-sep{color:var(--warm);padding:0 .5rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.hero-left-bottom{}
-.hero-sub{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.9;font-weight:300;max-width:360px;margin-bottom:2rem}
-.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
-.btn-red{background:var(--red);color:var(--white);padding:.85rem 2rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;transition:background .2s}
-.btn-red:hover{background:var(--red2)}
-.btn-ghost{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);padding:.85rem 2rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;transition:all .2s}
-.btn-ghost:hover{border-color:rgba(255,255,255,.5);color:var(--white)}
+/* SERVICES — liste horizontale */
+.services{padding:6rem 3rem;border-bottom:1px solid var(--border)}
+.services-inner{max-width:1300px;margin:0 auto}
+.services-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem}
+.eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.services-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,4.5vw,5rem);letter-spacing:.02em;line-height:.92;color:var(--ink)}
+.services-head p{font-size:.88rem;color:var(--muted);max-width:260px;line-height:1.8;font-weight:300;text-align:right}
 
-/* Colonne droite */
-.hero-right{display:flex;flex-direction:column;background:var(--paper)}
-.hero-right-stats{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);flex-shrink:0}
-.hero-stat{padding:2.8rem 2.5rem;border-right:1px solid var(--border)}
-.hero-stat:last-child{border-right:none}
-.hero-stat-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--ink);line-height:1}
-.hero-stat-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.svc-rows{}
+.svc-row{display:grid;grid-template-columns:3rem 1fr 2fr 1fr;gap:2rem;align-items:start;padding:2rem 0;border-top:1px solid var(--border);transition:background .2s;cursor:default}
+.svc-row:last-child{border-bottom:1px solid var(--border)}
+.svc-row:hover .svc-row-title{color:var(--accent)}
+.svc-n{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--pale);padding-top:.2rem}
+.svc-row:hover .svc-n{color:var(--accent)}
+.svc-row-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.03em;color:var(--ink);line-height:1;transition:color .2s}
+.svc-row-desc{font-size:.83rem;color:var(--muted);line-height:1.8;font-weight:300;padding-top:.3rem}
+.svc-row-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.3rem .8rem;border-radius:2px;justify-self:end;align-self:start;margin-top:.3rem;transition:color .2s,border-color .2s}
+.svc-row:hover .svc-row-tag{color:var(--accent);border-color:var(--accent)}
 
-.hero-right-body{flex:1;padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between}
-.hero-quote-block{border-left:3px solid var(--red);padding-left:1.4rem}
-.hero-quote{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:1.1rem;color:var(--ink);line-height:1.65}
-.hero-quote-author{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.8rem}
-
-.hero-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:2.5rem}
-.pill{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.3rem .9rem;border-radius:2px}
-
-.hero-right-footer{background:var(--red);padding:1.6rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.hero-right-footer span{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-.hero-right-footer a{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:.1rem;transition:border-color .2s}
-.hero-right-footer a:hover{border-color:var(--white)}
-
-/* SERVICES */
-.services{padding:7rem 3rem;border-bottom:1px solid var(--border);background:var(--white)}
-.services-inner{max-width:1200px;margin:0 auto}
-.section-eyebrow{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin-bottom:4rem;display:flex;align-items:center;gap:1rem}
-.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
-.services-head{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:5rem}
-.services-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5.5vw,6.5rem);line-height:.92;letter-spacing:.02em;color:var(--ink)}
-.services-head p{font-size:.9rem;color:var(--muted);line-height:1.9;font-weight:300}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border)}
-.svc-item{padding:2.5rem 2.2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;transition:background .3s}
-.svc-item:hover{background:var(--paper)}
-.svc-n{font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:var(--paper2);line-height:1;position:absolute;bottom:-.8rem;right:.8rem;pointer-events:none;transition:color .3s}
-.svc-item:hover .svc-n{color:rgba(212,43,43,.12)}
-.svc-bar{width:28px;height:2px;background:var(--red);margin-bottom:1.2rem;border-radius:2px}
-.svc-item h3{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.6rem}
-.svc-item p{font-size:.82rem;color:var(--muted);line-height:1.8;font-weight:300;position:relative;z-index:1}
-
-/* APPROCHE */
-.approche{padding:7rem 3rem;border-bottom:1px solid var(--border);background:var(--ink)}
-.approche-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start}
-.approche-left h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5.5vw,6rem);line-height:.92;color:var(--white);letter-spacing:.02em;margin-bottom:2rem}
-.approche-left p{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.9;font-weight:300}
-.a-steps{margin-top:3rem;display:flex;flex-direction:column}
-.a-step{display:flex;gap:2rem;padding:1.8rem 0;border-top:1px solid rgba(255,255,255,.08);align-items:flex-start}
-.a-step:last-child{border-bottom:1px solid rgba(255,255,255,.08)}
-.a-n{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);line-height:1;flex-shrink:0;width:2.5rem}
-.a-content h3{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:.4rem}
-.a-content p{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.75;font-weight:300}
-
-.approche-right{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
-.a-card{background:#1A1A1A;padding:2.2rem}
-.a-card-stat{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--red);line-height:1;margin-bottom:.5rem}
-.a-card h3{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:.4rem}
-.a-card p{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.75;font-weight:300}
+/* CHIFFRES */
+.chiffres{background:var(--off);padding:5rem 3rem;border-bottom:1px solid var(--border)}
+.chiffres-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.chiffre-item{padding:2.5rem 0;border-top:2px solid var(--border);position:relative}
+.chiffre-item:first-child{border-top-color:var(--accent)}
+.chiffre-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--ink);line-height:1;margin-bottom:.4rem}
+.chiffre-label{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chiffre-desc{font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300;margin-top:.6rem}
 
 /* TEMOIGNAGES */
-.temoignages{padding:7rem 3rem;border-bottom:1px solid var(--border);background:var(--paper)}
-.temo-inner{max-width:1200px;margin:0 auto}
-.temo-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem}
-.temo-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5.5vw,6rem);line-height:.92;color:var(--ink);letter-spacing:.02em}
-.temo-note{text-align:right}
-.temo-note-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--ink);line-height:1}
-.temo-note-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
-.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.temo-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:2.2rem;transition:border-color .3s}
-.temo-card:hover{border-color:rgba(212,43,43,.3)}
-.temo-stars{display:flex;gap:.2rem;margin-bottom:1.5rem}
-.star{color:var(--red);font-size:.8rem}
-.temo-text{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:.95rem;color:var(--ink);line-height:1.75;margin-bottom:1.8rem}
+.temoignages{padding:6rem 3rem;border-bottom:1px solid var(--border);background:var(--white)}
+.temo-inner{max-width:1300px;margin:0 auto}
+.temo-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem}
+.temo-top h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,4.5vw,5rem);letter-spacing:.02em;line-height:.92;color:var(--ink)}
+.temo-top p{font-size:.83rem;color:var(--muted);text-align:right;max-width:200px;line-height:1.7;font-weight:300}
+.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.temo-card{padding:2rem;background:var(--off);border-radius:6px;border:1px solid var(--border)}
+.temo-stars{display:flex;gap:.2rem;margin-bottom:1.2rem}
+.star{color:var(--accent);font-size:.8rem}
+.temo-text{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:.95rem;color:var(--ink);line-height:1.75;margin-bottom:1.5rem}
 .temo-author{display:flex;align-items:center;gap:.8rem;padding-top:1.2rem;border-top:1px solid var(--border)}
-.temo-avatar{width:36px;height:36px;background:var(--ink);border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:700;flex-shrink:0;color:var(--white)}
+.temo-avatar{width:36px;height:36px;background:var(--accent);border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:700;flex-shrink:0;color:var(--white)}
 .temo-name{font-size:.82rem;font-weight:600;color:var(--ink)}
-.temo-role{font-size:.7rem;color:var(--muted);margin-top:.15rem}
+.temo-role{font-size:.7rem;color:var(--muted);margin-top:.1rem}
 
 /* CTA */
-.cta{padding:0;background:var(--paper);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr}
-.cta-left{padding:6rem 4rem;background:var(--ink);display:flex;flex-direction:column;justify-content:center}
-.cta-left h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,6rem);line-height:.92;color:var(--white);letter-spacing:.02em;margin-bottom:1.5rem}
-.cta-left p{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.9;font-weight:300;max-width:400px;margin-bottom:3rem}
-.cta-btns{display:flex;flex-direction:column;gap:1rem}
-.btn-white{background:var(--white);color:var(--ink);padding:1.1rem 2.2rem;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;transition:opacity .2s;text-align:center}
-.btn-white:hover{opacity:.88}
-.btn-outline-ink{border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);padding:1.1rem 2.2rem;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;transition:all .2s;text-align:center}
-.btn-outline-ink:hover{border-color:rgba(255,255,255,.5);color:var(--white)}
-.cta-right{background:var(--red);padding:6rem 4rem;display:flex;flex-direction:column;justify-content:space-between}
-.cta-right-top{}
-.cta-right p{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1rem}
-.cta-right h3{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:1.8rem;color:var(--white);line-height:1.35}
-.cta-right-bottom{}
-.cta-detail{display:flex;flex-direction:column;gap:.6rem}
-.cta-detail-item{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.15)}
-.cta-detail-item:first-child{border-top:1px solid rgba(255,255,255,.15)}
-.cta-detail-item span:first-child{font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.cta-detail-item span:last-child{font-size:.82rem;font-weight:600;color:var(--white)}
+.cta{padding:6rem 3rem;background:var(--off);border-bottom:1px solid var(--border)}
+.cta-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,7rem);line-height:.92;letter-spacing:.02em;color:var(--ink)}
+.cta-sub{font-size:.95rem;color:var(--muted);line-height:1.9;font-weight:300;margin-top:1.5rem;margin-bottom:3rem}
+.cta-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.cta-right{display:flex;flex-direction:column;gap:0}
+.cta-item{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--border)}
+.cta-item:first-child{border-top:1px solid var(--border)}
+.cta-item-label{font-size:.75rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.cta-item-val{font-size:.88rem;font-weight:600;color:var(--ink)}
 
 /* FOOTER */
-footer{background:var(--ink);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.08)}
+footer{background:var(--ink);padding:2.25rem 3rem}
 .foot-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
-.foot-brand strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:rgba(255,255,255,.7)}
+.foot-brand strong{display:block;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .foot-brand span{font-size:.7rem;color:rgba(255,255,255,.25);margin-top:.15rem;display:block}
 .foot-copy{font-size:.7rem;color:rgba(255,255,255,.2);text-align:center;letter-spacing:.04em}
 .foot-links{display:flex;justify-content:flex-end;gap:1.5rem}
-.foot-links a{font-size:.7rem;color:rgba(255,255,255,.25);letter-spacing:.04em;transition:color .2s}
+.foot-links a{font-size:.7rem;color:rgba(255,255,255,.25);transition:color .2s}
 .foot-links a:hover{color:rgba(255,255,255,.6)}
 
 /* RESPONSIVE */
 @media(max-width:1100px){
-  .hero{grid-template-columns:1fr}
-  .hero-right-stats{grid-template-columns:1fr 1fr}
-  .services-head{grid-template-columns:1fr;gap:2rem}
-  .svc-grid{grid-template-columns:repeat(2,1fr)}
-  .approche-inner{grid-template-columns:1fr;gap:4rem}
-  .temo-grid{grid-template-columns:1fr}
-  .cta{grid-template-columns:1fr}
-  .cta-right{padding:4rem}
+  .hero-bottom{grid-template-columns:1fr 1fr}
+  .svc-row{grid-template-columns:3rem 1fr 2fr;grid-template-rows:auto auto}
+  .svc-row-tag{grid-column:2;grid-row:2;justify-self:start}
+  .chiffres-inner{grid-template-columns:repeat(2,1fr)}
+  .temo-grid{grid-template-columns:repeat(2,1fr)}
+  .cta-inner{grid-template-columns:1fr;gap:3rem}
 }
 @media(max-width:768px){
   nav{padding:0 1.5rem}
@@ -191,31 +149,30 @@ footer{background:var(--ink);padding:2.25rem 3rem;border-top:1px solid rgba(255,
   .burger{display:flex}
   .mob-menu{display:block}
 
-  .hero-left{padding:3rem 1.5rem;min-height:100svh}
-  .hero-title .l1,.hero-title .l2{font-size:clamp(3.5rem,14vw,6rem)}
-  .hero-title .l3{font-size:clamp(2rem,8vw,3.5rem)}
-  .hero-title .l2{margin-top:.3rem}
-  .hero-title .l3{margin-top:.4rem}
-  .hero-btns{flex-direction:column}
-  .btn-red,.btn-ghost{width:100%}
-  .hero-right-footer{flex-direction:column;align-items:flex-start;gap:.8rem}
+  .hero{padding:3rem 1.5rem}
+  .hero-top{flex-direction:column;gap:1rem}
+  .hero-title{font-size:clamp(4rem,15vw,7rem)}
+  .hero-bottom{grid-template-columns:1fr;gap:2rem}
 
   .services{padding:4rem 1.5rem}
-  .services-head{grid-template-columns:1fr;gap:1.5rem;margin-bottom:3rem}
-  .svc-grid{grid-template-columns:1fr;border:none}
-  .svc-item{border:none;border-bottom:1px solid var(--border);padding:2rem 0}
+  .services-head{flex-direction:column;align-items:flex-start;gap:1.5rem;margin-bottom:3rem}
+  .services-head p{text-align:left;max-width:100%}
+  .svc-row{grid-template-columns:2.5rem 1fr;gap:1rem}
+  .svc-row-desc{grid-column:2}
+  .svc-row-tag{grid-column:2;justify-self:start;margin-top:.5rem}
 
-  .approche{padding:4rem 1.5rem}
-  .approche-inner{grid-template-columns:1fr;gap:3rem}
+  .chiffres{padding:4rem 1.5rem}
+  .chiffres-inner{grid-template-columns:1fr 1fr;gap:1.5rem}
 
   .temoignages{padding:4rem 1.5rem}
-  .temo-head{flex-direction:column;align-items:flex-start;gap:1.5rem;margin-bottom:3rem}
+  .temo-top{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:3rem}
+  .temo-top p{text-align:left;max-width:100%}
   .temo-grid{grid-template-columns:1fr}
 
-  .cta{grid-template-columns:1fr}
-  .cta-left{padding:4rem 1.5rem}
-  .cta-right{padding:4rem 1.5rem}
-  .cta-btns .btn-white,.cta-btns .btn-outline-ink{width:100%}
+  .cta{padding:4rem 1.5rem}
+  .cta-inner{grid-template-columns:1fr;gap:3rem}
+  .cta-btns{flex-direction:column}
+  .btn-main,.btn-sec{width:100%}
 
   footer{padding:2rem 1.5rem}
   .foot-inner{grid-template-columns:1fr;text-align:center;gap:.75rem}
@@ -226,187 +183,161 @@ footer{background:var(--ink);padding:2.25rem 3rem;border-top:1px solid rgba(255,
 <body>
 
 <nav>
-  <div class="nav-logo">Studio<span>.</span>Noir</div>
+  <div class="logo">Atelier<span>.</span>Forme</div>
   <div class="nav-links">
     <a href="#services">Services</a>
-    <a href="#approche">Approche</a>
+    <a href="#chiffres">Studio</a>
     <a href="#temoignages">Avis</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-right">
     <span class="nav-tel">06 12 34 56 78</span>
-    <a href="#contact" class="btn-cta">Démarrer un projet</a>
+    <a href="#contact" class="nav-cta">Démarrer un projet</a>
   </div>
   <button class="burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 
 <div class="mob-menu" id="mob-menu">
   <a href="#services">Services</a>
-  <a href="#approche">Approche</a>
+  <a href="#chiffres">Studio</a>
   <a href="#temoignages">Avis</a>
   <a href="#contact">Contact</a>
   <a href="tel:0612345678" class="mob-cta">06 12 34 56 78</a>
 </div>
 
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Agence créative — Paris</div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <span class="hero-label">Studio créatif — Paris</span>
+      <div class="hero-label-right">
+        <a href="#contact">Prendre contact</a>
+      </div>
+    </div>
     <h1 class="hero-title">
-      <span class="l1">Votre marque,</span>
-      <span class="l2">repensée.</span>
-      <span class="l3">Vraiment.</span>
+      Votre marque,
+      <span class="line-italic">repensée.</span>
+      <span class="line-outline">Vraiment.</span>
     </h1>
-    <div class="hero-left-bottom">
-      <p class="hero-sub">Identité visuelle, sites web, motion design. Nous créons des expériences numériques qui marquent et qui convertissent.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-red">Démarrer un projet</a>
-        <a href="#services" class="btn-ghost">Voir nos services</a>
+    <div class="hero-bottom">
+      <div class="hero-bottom-col">
+        <div class="hero-col-label">Notre mission</div>
+        <p class="hero-col-text">Nous créons des <strong>identités visuelles</strong> et des <strong>expériences numériques</strong> qui marquent les esprits et convertissent. Du branding au lancement, on s'occupe de tout.</p>
       </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-right-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">120+</div>
-        <div class="hero-stat-label">Projets livrés</div>
+      <div class="hero-bottom-col">
+        <div class="hero-col-label">En chiffres</div>
+        <div class="hero-stat">120+</div>
+        <p class="hero-col-text" style="margin-top:.4rem">Projets livrés depuis 2019 — <strong>98%</strong> de clients satisfaits, <strong>4.9/5</strong> de note moyenne.</p>
       </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">98%</div>
-        <div class="hero-stat-label">Clients satisfaits</div>
+      <div class="hero-bottom-col">
+        <div class="hero-col-label">Par où commencer</div>
+        <div class="hero-col-btns">
+          <a href="#contact" class="btn-main">Démarrer un projet</a>
+          <a href="#services" class="btn-sec">Voir nos services</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-right-body">
-      <div class="hero-quote-block">
-        <p class="hero-quote">On ne livre pas des pixels. On livre des résultats. Chaque projet commence par une vraie compréhension de vos enjeux.</p>
-        <p class="hero-quote-author">— Thomas Renard, directeur créatif</p>
-      </div>
-      <div class="hero-tags">
-        <span class="pill">Branding</span>
-        <span class="pill">Web design</span>
-        <span class="pill">Motion</span>
-        <span class="pill">Stratégie</span>
-        <span class="pill">Copywriting</span>
-      </div>
-    </div>
-    <div class="hero-right-footer">
-      <span>Réponse sous 24h</span>
-      <a href="#contact">Prendre contact</a>
     </div>
   </div>
 </section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Branding</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Web Design</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Motion Design</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Stratégie Créative</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Copywriting</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Direction Artistique</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Identité Visuelle</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Branding</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Web Design</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Motion Design</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Stratégie Créative</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Copywriting</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Direction Artistique</span><span class="ticker-sep">—</span>
+    <span class="ticker-item">Identité Visuelle</span><span class="ticker-sep">—</span>
+  </div>
+</div>
 
 <section class="services" id="services">
   <div class="services-inner">
-    <p class="section-eyebrow">Ce qu'on fait</p>
     <div class="services-head">
-      <h2>Nos<br>expertises</h2>
-      <p>Du brief au lancement, nous prenons en charge chaque étape de votre projet créatif — avec rigueur, ambition et un oeil aiguisé sur les détails.</p>
+      <div>
+        <p class="eyebrow" style="margin-bottom:.8rem">Ce qu'on fait</p>
+        <h2>Nos<br>expertises</h2>
+      </div>
+      <p>Du brief au lancement, nous prenons en charge chaque étape de votre projet créatif, avec rigueur et ambition.</p>
     </div>
-    <div class="svc-grid">
-      <div class="svc-item">
+    <div class="svc-rows">
+      <div class="svc-row">
         <span class="svc-n">01</span>
-        <div class="svc-bar"></div>
-        <h3>Identité visuelle</h3>
-        <p>Logo, charte graphique, système de design. Une identité forte, mémorisable et cohérente sur tous vos supports.</p>
+        <div class="svc-row-title">Identité visuelle</div>
+        <div class="svc-row-desc">Logo, charte graphique, système de design. Une identité forte, mémorisable et cohérente sur tous vos supports — print et digital.</div>
+        <span class="svc-row-tag">Branding</span>
       </div>
-      <div class="svc-item">
+      <div class="svc-row">
         <span class="svc-n">02</span>
-        <div class="svc-bar"></div>
-        <h3>Design web</h3>
-        <p>Sites vitrines, landing pages, e-commerce. UX pensé pour convertir, UI pensé pour marquer les esprits.</p>
+        <div class="svc-row-title">Design web</div>
+        <div class="svc-row-desc">Sites vitrines, landing pages, e-commerce. UX pensé pour convertir, UI pensé pour marquer les esprits. Optimisé mobile et performance.</div>
+        <span class="svc-row-tag">Web</span>
       </div>
-      <div class="svc-item">
+      <div class="svc-row">
         <span class="svc-n">03</span>
-        <div class="svc-bar"></div>
-        <h3>Motion design</h3>
-        <p>Animations, vidéos de marque, intros, contenus réseaux. Le mouvement comme outil de communication.</p>
+        <div class="svc-row-title">Motion design</div>
+        <div class="svc-row-desc">Animations, vidéos de marque, intros, contenus réseaux. Le mouvement comme outil de communication puissant et mémorable.</div>
+        <span class="svc-row-tag">Animation</span>
       </div>
-      <div class="svc-item">
+      <div class="svc-row">
         <span class="svc-n">04</span>
-        <div class="svc-bar"></div>
-        <h3>Stratégie créative</h3>
-        <p>Positionnement, naming, direction artistique. Avant de créer, on réfléchit. Chaque décision est justifiée.</p>
+        <div class="svc-row-title">Stratégie créative</div>
+        <div class="svc-row-desc">Positionnement, naming, direction artistique. Avant de créer, on réfléchit. Chaque décision est justifiée par vos objectifs business.</div>
+        <span class="svc-row-tag">Stratégie</span>
       </div>
-      <div class="svc-item">
+      <div class="svc-row">
         <span class="svc-n">05</span>
-        <div class="svc-bar"></div>
-        <h3>Contenu & copywriting</h3>
-        <p>Textes de marque, scripts, newsletters. Des mots qui sonnent juste et qui vendent sans en avoir l'air.</p>
+        <div class="svc-row-title">Contenu & copywriting</div>
+        <div class="svc-row-desc">Textes de marque, scripts, newsletters. Des mots qui sonnent juste et qui vendent sans en avoir l'air. Votre voix, amplifiée.</div>
+        <span class="svc-row-tag">Contenu</span>
       </div>
-      <div class="svc-item">
+      <div class="svc-row">
         <span class="svc-n">06</span>
-        <div class="svc-bar"></div>
-        <h3>Maintenance & suivi</h3>
-        <p>Mises à jour, évolutions, support réactif. On reste là après la livraison — pas de client laissé pour compte.</p>
+        <div class="svc-row-title">Maintenance & suivi</div>
+        <div class="svc-row-desc">Mises à jour, évolutions, support réactif. On reste là après la livraison — pas de client laissé pour compte une fois le projet terminé.</div>
+        <span class="svc-row-tag">Support</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="approche" id="approche">
-  <div class="approche-inner">
-    <div class="approche-left">
-      <h2>Notre<br>méthode</h2>
-      <p>Pas de process flou, pas de mauvaise surprise. Quatre étapes claires qui garantissent des livrables à la hauteur de vos ambitions.</p>
-      <div class="a-steps">
-        <div class="a-step">
-          <span class="a-n">01</span>
-          <div class="a-content">
-            <h3>Brief & découverte</h3>
-            <p>On prend le temps de vous comprendre — vos objectifs, votre marché, vos concurrents. Rien n'est assumé.</p>
-          </div>
-        </div>
-        <div class="a-step">
-          <span class="a-n">02</span>
-          <div class="a-content">
-            <h3>Concept & direction</h3>
-            <p>Moodboards, directions artistiques, premières propositions. On valide ensemble avant de produire.</p>
-          </div>
-        </div>
-        <div class="a-step">
-          <span class="a-n">03</span>
-          <div class="a-content">
-            <h3>Production</h3>
-            <p>Design, développement, animation. Chaque livrable est testé, optimisé, documenté avec soin.</p>
-          </div>
-        </div>
-        <div class="a-step">
-          <span class="a-n">04</span>
-          <div class="a-content">
-            <h3>Lancement & suivi</h3>
-            <p>Mise en ligne, formation, suivi post-lancement. On mesure les résultats et on ajuste si besoin.</p>
-          </div>
-        </div>
-      </div>
+<section class="chiffres" id="chiffres">
+  <div class="chiffres-inner">
+    <div class="chiffre-item">
+      <div class="chiffre-num">120+</div>
+      <div class="chiffre-label">Projets livrés</div>
+      <p class="chiffre-desc">Depuis 2019, des projets de toutes tailles, de la start-up au grand groupe.</p>
     </div>
-    <div class="approche-right">
-      <div class="a-card">
-        <div class="a-card-stat">4.9/5</div>
-        <h3>Note moyenne clients</h3>
-        <p>Sur la base de 80+ avis vérifiés depuis 2019. La satisfaction client est au coeur de chaque décision.</p>
-      </div>
-      <div class="a-card">
-        <div class="a-card-stat">98%</div>
-        <h3>Projets livrés dans les délais</h3>
-        <p>Un process rigoureux, des jalons clairs, une communication transparente à chaque étape.</p>
-      </div>
-      <div class="a-card">
-        <div class="a-card-stat">3j</div>
-        <h3>Délai de première proposition</h3>
-        <p>Brief reçu, première direction artistique proposée en 3 jours ouvrés. Pas de semaines d'attente.</p>
-      </div>
+    <div class="chiffre-item">
+      <div class="chiffre-num">4.9/5</div>
+      <div class="chiffre-label">Note moyenne</div>
+      <p class="chiffre-desc">Sur la base de 80+ avis vérifiés. La satisfaction client guide chaque décision.</p>
+    </div>
+    <div class="chiffre-item">
+      <div class="chiffre-num">98%</div>
+      <div class="chiffre-label">Dans les délais</div>
+      <p class="chiffre-desc">Un process rigoureux, des jalons clairs, une communication transparente.</p>
+    </div>
+    <div class="chiffre-item">
+      <div class="chiffre-num">3j</div>
+      <div class="chiffre-label">Première proposition</div>
+      <p class="chiffre-desc">Brief reçu, première direction artistique proposée en 3 jours ouvrés.</p>
     </div>
   </div>
 </section>
 
 <section class="temoignages" id="temoignages">
   <div class="temo-inner">
-    <div class="temo-head">
+    <div class="temo-top">
       <h2>Ce qu'ils<br>disent</h2>
-      <div class="temo-note">
-        <div class="temo-note-num">4.9/5</div>
-        <div class="temo-note-label">80+ avis vérifiés</div>
-      </div>
+      <p>80+ avis vérifiés,<br>note moyenne 4.9/5.</p>
     </div>
     <div class="temo-grid">
       <div class="temo-card">
@@ -414,32 +345,23 @@ footer{background:var(--ink);padding:2.25rem 3rem;border-top:1px solid rgba(255,
         <p class="temo-text">Résultat au-delà de nos attentes. L'équipe a su comprendre notre univers en quelques échanges. Un vrai partenariat créatif.</p>
         <div class="temo-author">
           <div class="temo-avatar">MB</div>
-          <div>
-            <div class="temo-name">Martin B.</div>
-            <div class="temo-role">CEO — Fintech Paris</div>
-          </div>
+          <div><div class="temo-name">Martin B.</div><div class="temo-role">CEO — Fintech Paris</div></div>
         </div>
       </div>
       <div class="temo-card">
         <div class="temo-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <p class="temo-text">Professionnels, réactifs, créatifs. Notre site a été livré dans les délais et le résultat est vraiment premium. On continue avec eux.</p>
         <div class="temo-author">
-          <div class="temo-avatar" style="background:#444">LC</div>
-          <div>
-            <div class="temo-name">Laura C.</div>
-            <div class="temo-role">Directrice marketing</div>
-          </div>
+          <div class="temo-avatar" style="background:#555">LC</div>
+          <div><div class="temo-name">Laura C.</div><div class="temo-role">Directrice marketing</div></div>
         </div>
       </div>
       <div class="temo-card">
         <div class="temo-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
         <p class="temo-text">Notre identité a été transformée. En 3 mois, notre taux de conversion a augmenté de 40%. L'investissement vaut largement la peine.</p>
         <div class="temo-author">
-          <div class="temo-avatar" style="background:#222;border:1px solid #444">TR</div>
-          <div>
-            <div class="temo-name">Thomas R.</div>
-            <div class="temo-role">Fondateur — SaaS</div>
-          </div>
+          <div class="temo-avatar" style="background:#333">TR</div>
+          <div><div class="temo-name">Thomas R.</div><div class="temo-role">Fondateur — SaaS</div></div>
         </div>
       </div>
     </div>
@@ -447,37 +369,35 @@ footer{background:var(--ink);padding:2.25rem 3rem;border-top:1px solid rgba(255,
 </section>
 
 <section class="cta" id="contact">
-  <div class="cta-left">
-    <h2>Votre projet<br>commence ici.</h2>
-    <p>Un brief, un appel, et on voit si on est faits pour travailler ensemble. Réponse garantie sous 24h, devis gratuit et sans engagement.</p>
-    <div class="cta-btns">
-      <a href="tel:0612345678" class="btn-white">06 12 34 56 78</a>
-      <a href="mailto:hello@studionoir.fr" class="btn-outline-ink">hello@studionoir.fr</a>
+  <div class="cta-inner">
+    <div>
+      <h2>Votre projet<br>commence ici.</h2>
+      <p class="cta-sub">Un brief, un appel, et on voit si on est faits pour travailler ensemble. Réponse garantie sous 24h, devis gratuit et sans engagement.</p>
+      <div class="cta-btns">
+        <a href="tel:0612345678" class="btn-main">06 12 34 56 78</a>
+        <a href="mailto:hello@atelierformer.fr" class="btn-sec">Envoyer un email</a>
+      </div>
     </div>
-  </div>
-  <div class="cta-right">
-    <div class="cta-right-top">
-      <p>Pourquoi nous choisir</p>
-      <h3>Des créatifs qui comprennent les enjeux business.</h3>
-    </div>
-    <div class="cta-right-bottom">
-      <div class="cta-detail">
-        <div class="cta-detail-item">
-          <span>Devis</span>
-          <span>Gratuit & sans engagement</span>
-        </div>
-        <div class="cta-detail-item">
-          <span>Première réponse</span>
-          <span>Sous 24h</span>
-        </div>
-        <div class="cta-detail-item">
-          <span>Première direction</span>
-          <span>Sous 3 jours ouvrés</span>
-        </div>
-        <div class="cta-detail-item">
-          <span>Suivi après livraison</span>
-          <span>Inclus</span>
-        </div>
+    <div class="cta-right">
+      <div class="cta-item">
+        <span class="cta-item-label">Devis</span>
+        <span class="cta-item-val">Gratuit & sans engagement</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-label">Première réponse</span>
+        <span class="cta-item-val">Sous 24h</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-label">Première direction</span>
+        <span class="cta-item-val">Sous 3 jours ouvrés</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-label">Suivi post-livraison</span>
+        <span class="cta-item-val">Inclus</span>
+      </div>
+      <div class="cta-item">
+        <span class="cta-item-label">Localisation</span>
+        <span class="cta-item-val">Paris & remote</span>
       </div>
     </div>
   </div>
@@ -486,10 +406,10 @@ footer{background:var(--ink);padding:2.25rem 3rem;border-top:1px solid rgba(255,
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">
-      <strong>Studio.Noir</strong>
-      <span>Paris — Agence créative</span>
+      <strong>Atelier.Forme</strong>
+      <span>Paris — Studio créatif</span>
     </div>
-    <div class="foot-copy">© 2026 Studio.Noir</div>
+    <div class="foot-copy">© 2026 Atelier.Forme</div>
     <div class="foot-links">
       <a href="#">Mentions légales</a>
       <a href="https://vegastudio.fr">Vega Studio</a>
