@@ -88,9 +88,9 @@ nav{
   .hero-card{grid-template-columns:1fr}
   
   .reviews{padding:3.5rem 1.5rem}
-  .reviews-grid{display:block;overflow:hidden;position:relative}
-  .reviews-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);width:100%}
-  .review-card{min-width:calc(100vw - 3rem);width:calc(100vw - 3rem);flex-shrink:0;box-sizing:border-box}
+  .reviews-grid{display:block;overflow:hidden}
+  .reviews-track{display:flex !important;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+  .review-card{min-width:100% !important;width:100% !important;flex:none !important;box-sizing:border-box}
   
   .services{padding:3.5rem 1.5rem}
   .services-header{flex-direction:column}
@@ -142,8 +142,9 @@ nav{
 .reviews h2{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--navy);line-height:1.2;font-weight:400}
 .reviews-desc{font-size:.95rem;color:var(--muted);margin-top:1rem;line-height:1.8}
 
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:0 auto}
-.review-card{background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:left;border:1px solid rgba(0,0,0,.04);transition:all .3s}
+.reviews-grid{display:flex;justify-content:center;gap:2rem;max-width:1200px;margin:0 auto}
+.reviews-track{display:contents}
+.review-card{flex:1;min-width:0;background:var(--white);border-radius:12px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:left;border:1px solid rgba(0,0,0,.04);transition:box-shadow .3s,transform .3s}
 .review-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
 
 .review-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
@@ -157,7 +158,8 @@ nav{
 .review-date{font-size:.7rem;color:#AAA;text-transform:uppercase;letter-spacing:.02em}
 
 @media(max-width:1000px){
-  .reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{flex-wrap:wrap}
+  .review-card{min-width:calc(50% - 1rem)}
 }
 @media(max-width:600px){
   .reviews{padding:3.5rem 1.5rem}
@@ -454,42 +456,58 @@ burger.addEventListener('click',e=>{e.stopPropagation();const o=mobMenu.classLis
 mobMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobMenu.classList.remove('open');burger.classList.remove('open')}));
 document.addEventListener('click',e=>{if(!burger.contains(e.target)&&!mobMenu.contains(e.target)){mobMenu.classList.remove('open');burger.classList.remove('open')}});
 
-// Carousel avis sur mobile — loop infini
+// Carousel avis sur mobile — loop infini propre
 let carouselInterval = null;
 
 function initReviewsCarousel() {
   if (carouselInterval) { clearInterval(carouselInterval); carouselInterval = null; }
 
   const track = document.getElementById('reviews-track');
-  if (!track || window.innerWidth > 768) {
-    if (track) track.style.transform = '';
+  const grid  = document.getElementById('reviews-grid');
+  if (!track || !grid) return;
+
+  if (window.innerWidth > 768) {
+    // Desktop : reset tout
+    track.style.cssText = '';
+    grid.style.cssText  = '';
+    Array.from(track.querySelectorAll('.review-card.clone')).forEach(c => c.remove());
+    track.dataset.cloned = '';
     return;
   }
 
-  // Duplique les cartes pour le loop infini
+  // Mobile : setup une seule fois
   if (!track.dataset.cloned) {
     const originals = Array.from(track.children);
-    originals.forEach(card => track.appendChild(card.cloneNode(true)));
+    originals.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      track.appendChild(clone);
+    });
     track.dataset.cloned = 'true';
   }
 
-  const total = track.children.length / 2; // nombre d'originaux
+  const cardW = grid.offsetWidth;
+  const total  = track.querySelectorAll('.review-card:not(.clone)').length;
   let index = 0;
+
+  track.style.transition = 'none';
+  track.style.transform  = 'translateX(0)';
 
   carouselInterval = setInterval(() => {
     index++;
-    track.style.transition = 'transform .5s cubic-bezier(.4,0,.2,1)';
-    track.style.transform = `translateX(calc(-${index} * (100vw - 3rem)))`;
+    track.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+    track.style.transform  = `translateX(-${index * cardW}px)`;
 
-    // Quand on arrive à la fin des clones, on saute silencieusement au début
     if (index >= total) {
-      setTimeout(() => {
+      // Après l'animation, saut silencieux au début
+      track.addEventListener('transitionend', function reset() {
+        track.removeEventListener('transitionend', reset);
         track.style.transition = 'none';
-        track.style.transform = 'translateX(0)';
+        track.style.transform  = 'translateX(0)';
         index = 0;
-      }, 500);
+      }, { once: true });
     }
-  }, 1500);
+  }, 2000);
 }
 
 initReviewsCarousel();
