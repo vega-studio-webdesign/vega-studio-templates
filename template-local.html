@@ -86,7 +86,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:var(-
 .savoir-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
 .savoir-card{background:var(--white);border-radius:10px;padding:2rem 1.6rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .savoir-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(29,64,53,.1)}
-.savoir-num{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--cream2);font-weight:700;line-height:1;position:absolute;top:1rem;right:1.2rem;transition:color .3s}
+.savoir-num{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--cream2);font-weight:700;line-height:1;position:absolute;top:-0.5rem;right:1.2rem;transition:color .3s}
 .savoir-card:hover .savoir-num{color:rgba(196,88,29,.15)}
 .savoir-card h3{font-size:.95rem;font-weight:600;color:var(--green);margin-bottom:.6rem;position:relative;z-index:1}
 .savoir-card p{font-size:.83rem;color:var(--muted);line-height:1.75;font-weight:300;position:relative;z-index:1}
@@ -201,15 +201,21 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
   .mob-menu{display:block}
 
   .hero{grid-template-columns:1fr;min-height:auto}
-  .hero-left{padding:3rem 1.5rem;text-align:center}
+  .hero-left{padding:3rem 1.5rem;text-align:center;min-height:100svh}
   .hero-kicker{justify-content:center}
   .hero-title{font-size:clamp(2.2rem,10vw,3rem);margin:1.5rem 0}
   .hero-left p{margin:0 auto}
   .hero-btns{justify-content:center;flex-direction:column}
   .btn-primary,.btn-outline{width:100%}
-  .hero-right{padding:2.5rem 1.5rem}
-  .hero-stats{grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem}
+  .hero-right{padding:2.5rem 1.5rem;gap:1.5rem}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:1.5rem}
   .hero-stat-num{font-size:2.2rem}
+
+  .realisations{padding:4rem 1.5rem}
+  .real-grid{display:block;overflow:hidden}
+  .real-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+  .real-card{min-width:100%;width:100%;flex-shrink:0;box-sizing:border-box;padding-top:75% !important}
+  .real-card.big{grid-row:auto}
 
   .savoir{padding:4rem 1.5rem}
   .section-head{flex-direction:column;align-items:flex-start;gap:1rem}
@@ -218,10 +224,6 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
 
   .process{padding:4rem 1.5rem}
   .process-steps{grid-template-columns:1fr;gap:2rem}
-
-  .realisations{padding:4rem 1.5rem}
-  .real-grid{grid-template-columns:1fr}
-  .real-card.big{min-height:200px}
 
   .temoignages{padding:4rem 1.5rem}
   .temo-grid{grid-template-columns:1fr}
@@ -317,7 +319,6 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
         <p class="eyebrow">Notre savoir-faire</p>
         <h2>Ce que nous faisons,<br>nous le faisons bien.</h2>
       </div>
-      <p>Chaque projet est unique. Nous travaillons avec vous de la conception à la pose, sans intermédiaire.</p>
     </div>
     <div class="savoir-grid">
       <div class="savoir-card">
@@ -383,7 +384,8 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
     <p class="eyebrow">Nos réalisations</p>
     <h2>Quelques projets récents</h2>
     <p class="realisations-sub">Chaque réalisation est unique. Voici une sélection de nos derniers chantiers.</p>
-    <div class="real-grid">
+    <div class="real-grid" id="real-grid">
+      <div class="real-track" id="real-track">
       <div class="real-card big">
         <div class="real-card-inner">
           <span class="real-label">Projet phare — 2024</span>
@@ -418,6 +420,7 @@ footer{background:var(--dark);padding:2.25rem 2.5rem}
           <h3>Dressing en noyer</h3>
           <p class="real-card-desc">Coulissants, tiroirs intégrés, éclairage LED encastré. Le Havre.</p>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -538,6 +541,51 @@ document.addEventListener('click', e => {
     burger.classList.remove('open');
   }
 });
+
+// Carousel réalisations mobile — loop infini
+let realCarouselInterval = null;
+function initRealCarousel() {
+  if (realCarouselInterval) { clearInterval(realCarouselInterval); realCarouselInterval = null; }
+  const track = document.getElementById('real-track');
+  const grid  = document.getElementById('real-grid');
+  if (!track || !grid) return;
+  if (window.innerWidth > 768) {
+    track.style.transition = '';
+    track.style.transform  = '';
+    track.style.gap        = '';
+    Array.from(track.querySelectorAll('.real-card.clone')).forEach(c => c.remove());
+    track.dataset.cloned = '';
+    return;
+  }
+  if (!track.dataset.cloned) {
+    Array.from(track.children).forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      track.appendChild(clone);
+    });
+    track.dataset.cloned = 'true';
+  }
+  const total = track.querySelectorAll('.real-card:not(.clone)').length;
+  let index = 0;
+  track.style.transition = 'none';
+  track.style.transform  = 'translateX(0)';
+  realCarouselInterval = setInterval(() => {
+    index++;
+    const cardW = track.children[0].offsetWidth;
+    track.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+    track.style.transform  = `translateX(-${index * cardW}px)`;
+    if (index >= total) {
+      track.addEventListener('transitionend', function reset() {
+        track.removeEventListener('transitionend', reset);
+        track.style.transition = 'none';
+        track.style.transform  = 'translateX(0)';
+        index = 0;
+      }, { once: true });
+    }
+  }, 2000);
+}
+initRealCarousel();
+window.addEventListener('resize', initRealCarousel);
 </script>
 </body>
 </html>
