@@ -40,14 +40,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 /* HERO — grande bande typographique */
 .hero{margin-top:60px;padding:5rem 3rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .hero-inner{max-width:1300px;margin:0 auto}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4rem}
-.hero-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.hero-label-right{text-align:right}
-.hero-label-right a{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:.1rem}
+.hero-top{display:flex;justify-content:flex-start;align-items:flex-start;margin-bottom:4rem}
+.hero-label{font-size:.88rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,11vw,14rem);line-height:.88;letter-spacing:.01em;color:var(--ink);position:relative}
-.hero-title .line-italic{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--accent);display:block}
-.hero-title .line-outline{color:transparent;-webkit-text-stroke:1.5px var(--border);display:block;user-select:none}
+.hero-title .line-left{display:block;text-align:left}
+.hero-title .line-italic{font-family:'Fraunces',serif;font-style:italic;font-weight:300;color:var(--accent);display:block;text-align:center}
+.hero-title .line-outline{color:transparent;-webkit-text-stroke:1.5px var(--border);display:block;text-align:right;user-select:none}
 
 .hero-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--border)}
 .hero-bottom-col{}
@@ -80,7 +79,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 .svc-row{display:grid;grid-template-columns:3rem 1fr 2fr 1fr;gap:2rem;align-items:start;padding:2rem 0;border-top:1px solid var(--border);transition:background .2s;cursor:default}
 .svc-row:last-child{border-bottom:1px solid var(--border)}
 .svc-row:hover .svc-row-title{color:var(--accent)}
-.svc-n{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--pale);padding-top:.2rem}
+.svc-n{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:#C5C0B8;padding-top:.1rem;transition:color .2s}
 .svc-row:hover .svc-n{color:var(--accent)}
 .svc-row-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.03em;color:var(--ink);line-height:1;transition:color .2s}
 .svc-row-desc{font-size:.83rem;color:var(--muted);line-height:1.8;font-weight:300;padding-top:.3rem}
@@ -99,9 +98,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 /* TEMOIGNAGES */
 .temoignages{padding:6rem 3rem;border-bottom:1px solid var(--border);background:var(--white)}
 .temo-inner{max-width:1300px;margin:0 auto}
-.temo-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem}
+.temo-top{margin-bottom:4rem}
 .temo-top h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,4.5vw,5rem);letter-spacing:.02em;line-height:.92;color:var(--ink)}
-.temo-top p{font-size:.83rem;color:var(--muted);text-align:right;max-width:200px;line-height:1.7;font-weight:300}
+.temo-top p{font-size:.83rem;color:var(--muted);line-height:1.7;font-weight:300;margin-top:.8rem}
 .temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .temo-card{padding:2rem;background:var(--off);border-radius:6px;border:1px solid var(--border)}
 .temo-stars{display:flex;gap:.2rem;margin-bottom:1.2rem}
@@ -145,14 +144,19 @@ footer{background:var(--ink);padding:2.25rem 3rem}
 }
 @media(max-width:768px){
   nav{padding:0 1.5rem}
-  .nav-links,.nav-tel{display:none}
+  .nav-links,.nav-tel,.nav-cta{display:none}
   .burger{display:flex}
   .mob-menu{display:block}
 
   .hero{padding:3rem 1.5rem}
-  .hero-top{flex-direction:column;gap:1rem}
-  .hero-title{font-size:clamp(4rem,15vw,7rem)}
+  .hero-title{font-size:clamp(3.8rem,16vw,6.5rem);line-height:1.05;text-align:center}
+  .hero-title .line-left,.hero-title .line-italic,.hero-title .line-outline{text-align:center;-webkit-text-stroke:1px rgba(15,15,15,.25)}
+  .hero-title .line-left{margin-bottom:.2rem}
+  .hero-title .line-italic{margin-bottom:.2rem}
   .hero-bottom{grid-template-columns:1fr;gap:2rem}
+  .hero-stat{display:none}
+  .hero-col-text strong.stat-inline{display:inline}
+  .hero-col-btns{margin-top:0}
 
   .services{padding:4rem 1.5rem}
   .services-head{flex-direction:column;align-items:flex-start;gap:1.5rem;margin-bottom:3rem}
@@ -163,6 +167,8 @@ footer{background:var(--ink);padding:2.25rem 3rem}
 
   .chiffres{padding:4rem 1.5rem}
   .chiffres-inner{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .chiffre-item{text-align:center}
+  .chiffre-num{font-size:3rem}
 
   .temoignages{padding:4rem 1.5rem}
   .temo-top{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:3rem}
@@ -209,19 +215,17 @@ footer{background:var(--ink);padding:2.25rem 3rem}
   <div class="hero-inner">
     <div class="hero-top">
       <span class="hero-label">Studio créatif — Paris</span>
-      <div class="hero-label-right">
-        <a href="#contact">Prendre contact</a>
-      </div>
     </div>
     <h1 class="hero-title">
-      Votre marque,
+      <span class="line-left">Votre marque,</span>
       <span class="line-italic">repensée.</span>
       <span class="line-outline">Vraiment.</span>
     </h1>
     <div class="hero-bottom">
       <div class="hero-bottom-col">
         <div class="hero-col-label">Notre mission</div>
-        <p class="hero-col-text">Nous créons des <strong>identités visuelles</strong> et des <strong>expériences numériques</strong> qui marquent les esprits et convertissent. Du branding au lancement, on s'occupe de tout.</p>
+        <div class="hero-stat">Studio.</div>
+        <p class="hero-col-text" style="margin-top:.4rem">Nous créons des <strong>identités visuelles</strong> et des <strong>expériences numériques</strong> qui marquent les esprits et convertissent.</p>
       </div>
       <div class="hero-bottom-col">
         <div class="hero-col-label">En chiffres</div>
@@ -229,7 +233,6 @@ footer{background:var(--ink);padding:2.25rem 3rem}
         <p class="hero-col-text" style="margin-top:.4rem">Projets livrés depuis 2019 — <strong>98%</strong> de clients satisfaits, <strong>4.9/5</strong> de note moyenne.</p>
       </div>
       <div class="hero-bottom-col">
-        <div class="hero-col-label">Par où commencer</div>
         <div class="hero-col-btns">
           <a href="#contact" class="btn-main">Démarrer un projet</a>
           <a href="#services" class="btn-sec">Voir nos services</a>
@@ -265,7 +268,6 @@ footer{background:var(--ink);padding:2.25rem 3rem}
         <p class="eyebrow" style="margin-bottom:.8rem">Ce qu'on fait</p>
         <h2>Nos<br>expertises</h2>
       </div>
-      <p>Du brief au lancement, nous prenons en charge chaque étape de votre projet créatif, avec rigueur et ambition.</p>
     </div>
     <div class="svc-rows">
       <div class="svc-row">
@@ -336,8 +338,8 @@ footer{background:var(--ink);padding:2.25rem 3rem}
 <section class="temoignages" id="temoignages">
   <div class="temo-inner">
     <div class="temo-top">
-      <h2>Ce qu'ils<br>disent</h2>
-      <p>80+ avis vérifiés,<br>note moyenne 4.9/5.</p>
+      <h2>Ce qu'ils disent</h2>
+      <p>80+ avis vérifiés, note moyenne 4.9/5.</p>
     </div>
     <div class="temo-grid">
       <div class="temo-card">
